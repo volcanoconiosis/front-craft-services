@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import cookie from "react-cookies";
+
 /*
 - form inside this component to give feedback
       - title
@@ -11,6 +12,8 @@ import cookie from "react-cookies";
 
 */
 function HisWork() {
+
+ const role = cookie.load("user");
   const Api = "https://craft-service.herokuapp.com";
   const [title, setTitle] = useState("");
   const [imges, setImg] = useState({});
@@ -49,15 +52,20 @@ function HisWork() {
       title: title,
       imges: arr.data,
     };
+    
+    if(role==="worker"){
+        let res = await axios.post(`${Api}/worker/hiswork`, reqBody, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          })
 
-    let res = await axios.post(`${Api}/worker/hiswork`, reqBody, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
+          console.log(res);
+    }
+    
 
     console.log(arr.data);
-    console.log(res);
+    
   };
   return (
     <div>

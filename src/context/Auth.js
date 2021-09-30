@@ -10,6 +10,7 @@ export default function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
+
   const login = async (username, password) => {
     try {
       const response = await superagent
@@ -19,6 +20,8 @@ export default function LoginProvider(props) {
           `Basic ${base64.encode(`${username}:${password}`)}`
         );
       console.log(response.body);
+      cookie.save("user", response.body.user.role);
+   
       validateMyToken(response.body.token);
     } catch (err) {
       console.log(err);
@@ -85,7 +88,8 @@ export default function LoginProvider(props) {
     login: login,
     logout: logout,
     user: user,
-    signUp: signUp
+    signUp: signUp,
+    
   };
 
   return (
