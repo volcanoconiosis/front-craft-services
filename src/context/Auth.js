@@ -9,7 +9,8 @@ const API = "https://craft-service.herokuapp.com";
 export default function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-
+  const [list, setList]=useState({});
+  const [list2, setList2]=useState({});
 
   const login = async (username, password) => {
     try {
@@ -89,7 +90,10 @@ export default function LoginProvider(props) {
     logout: logout,
     user: user,
     signUp: signUp,
-    
+    setList:setList,
+    setList2:setList2,
+    list2:list2,
+    list:list
   };
 
   return (
