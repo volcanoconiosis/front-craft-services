@@ -16,6 +16,7 @@ function HisWork() {
   const Api = "https://craft-service.herokuapp.com";
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
+  const token = cookie.load("token");
 
   const handleImg = async (e) => {
     setImg(e.target.files);
@@ -26,7 +27,7 @@ function HisWork() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = cookie.load("token");
+    
     const body = new FormData();
     for (const file of Object.entries(imges)) {
       file.forEach((el) => {
