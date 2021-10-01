@@ -12,9 +12,10 @@ function SignUp() {
       }
 	const handlerSubmit=async e=>{
 		e.preventDefault();
+        e.target.reset()
 		// handle login function 
         await context.signUp(values)
-        e.target.reset()
+        
     // window.location.href="/"
 		
 	}

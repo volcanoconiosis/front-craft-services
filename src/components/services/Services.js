@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import ViewProfile from "../profiles/ViewProfile";
 import {LoginContext} from "../../context/Auth"
 function Services() {
   const [list, setList] = useState([]);
@@ -90,7 +89,7 @@ function Services() {
 
           return (
             <>
-
+              
               {
 
                 oo.profilePicture.includes('upload') ?
