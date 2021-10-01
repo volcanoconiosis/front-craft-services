@@ -13,6 +13,7 @@ import Services from './components/services/Services'
 import SignIn from './components/Sign/SignIn'
 import SignUp from './components/Sign/SignUp'
 import Test from './components/test'
+import ViewProfile from './components/profiles/ViewProfile'
 function App() {
     return (
         <>
@@ -28,6 +29,7 @@ function App() {
             <Tools/>
             <Services/>
             <Test/>
+            <ViewProfile/>
         </>
     )
 }
