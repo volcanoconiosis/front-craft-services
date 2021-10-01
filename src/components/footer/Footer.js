@@ -6,6 +6,7 @@ function Footer() {
         - contact-us 
         - about-us 
         - information 
+        - quick links
         
         
     

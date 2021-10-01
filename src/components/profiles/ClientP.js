@@ -3,7 +3,6 @@ import React from 'react'
 function ClientP() {
 
     /*
-
     :::functions::: 
     - useEffect async 
       - get data endPoint( get,"/getCurrentUser")information personal about client

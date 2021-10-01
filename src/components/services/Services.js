@@ -18,8 +18,8 @@ function Services() {
     - option for filter with type of works that we have 
     - card for showing the workers button add to fav 
     - another filter for  
-      - loction  
-      - avilable  
+      - loction   
+      - workType 
 
     ::: links :::   dont forget Routes to transform between pages
      */
