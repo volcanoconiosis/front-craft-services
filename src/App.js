@@ -1,6 +1,8 @@
 import React from 'react'
 import ContactUs from './components/contact-us/ContactUs'
 import HisWork from './components/forms/HisWork'
+import Review from './components/forms/Review'
+import Tools from './components/forms/Tools'
 // import {
 //     BrowserRouter ,
 //     Switch,
@@ -20,6 +22,8 @@ function App() {
             <ContactUs/>
 
             <HisWork/>
+            <Review/>
+            <Tools/>
         </>
     )
 }

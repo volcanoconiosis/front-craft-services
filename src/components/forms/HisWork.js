@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import cookie from "react-cookies";
 
 /*
@@ -8,21 +8,20 @@ import cookie from "react-cookies";
       - img  
       - description 
       - date 2/2/2022
-      - loction
+      - location
 
 */
 function HisWork() {
-
- const role = cookie.load("user");
+  //  const role = cookie.load("user");
   const Api = "https://craft-service.herokuapp.com";
-  const [title, setTitle] = useState("");
+  const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
 
   const handleImg = async (e) => {
     setImg(e.target.files);
   };
-  const handleTitle = async (e) => {
-    setTitle(e.target.value);
+  const handleChange = async (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +37,7 @@ function HisWork() {
     }
     console.log("----------------", body);
 
-    let arr = await axios({
+    let arrayOfFiles = await axios({
       method: "post",
       url: `${Api}/uploadImg`,
       data: body,
@@ -47,25 +46,24 @@ function HisWork() {
         authorization: `Bearer ${token}`,
       },
     });
+    let pathImges = arrayOfFiles.data.map((el) => {
+      return el.path;
+    });
 
     let reqBody = {
-      title: title,
-      imges: arr.data,
+      title: values.title,
+      description: values.description,
+      date: values.date,
+      location: values.location,
+      imges: pathImges,
     };
-    
-    if(role==="worker"){
-        let res = await axios.post(`${Api}/worker/hiswork`, reqBody, {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          })
 
-          console.log(res);
-    }
-    
-
-    console.log(arr.data);
-    
+    let res = await axios.post(`${Api}/worker/hiswork`, reqBody, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(res);
   };
   return (
     <div>
@@ -77,11 +75,33 @@ function HisWork() {
           multiple
           accept="image/*"
           name="uploadedImages"
-          id="file"
           onChange={handleImg}
         />
-        <span class="hint">Supported files: jpg, jpeg, png.</span>
-        <input type="text" placeholder="title" onChange={handleTitle} />
+
+        <input
+          type="text"
+          placeholder="title"
+          name="title"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="location"
+          name="location"
+          onChange={handleChange}
+        />
+        <textarea
+          name="description"
+          rows="4"
+          cols="50"
+          onChange={handleChange}
+          placeholder="description"
+        />
+        <input
+          type="datetime-local"
+          name="date"
+          onChange={handleChange}
+        />
         <button type="submit">upload</button>
       </form>
     </div>
