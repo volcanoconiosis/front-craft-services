@@ -12,9 +12,10 @@ function SignUp() {
       }
 	const handlerSubmit=async e=>{
 		e.preventDefault();
+        e.target.reset()
 		// handle login function 
         await context.signUp(values)
-        e.target.reset()
+        
     // window.location.href="/"
 		
 	}
@@ -33,11 +34,10 @@ function SignUp() {
             <input type="text" name="location" onChange={handleChange} placeholder="location"/>
             <input type="text" name="store" onChange={handleChange} placeholder="store"/>
             <select name="workType" onChange={handleChange} placeholder="workType">
-                <option value="moserje">moserje</option>
-                <option value="khrabje"> khrabje</option>
-                <option value="bleet">bleet</option>
-                <option value="dheen">dheen</option>
-                <option value="dheen">dheen</option>
+                <option value="moserje" name="moserje">moserje</option>
+                <option value="khrabje" name="khrabje"> khrabje</option>
+                <option value="bleet" name="bleet">bleet</option>
+                <option value="dheen" name="dheen">dheen</option>
 
             </select>
 

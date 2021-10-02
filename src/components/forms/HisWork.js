@@ -26,7 +26,7 @@ function HisWork() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     
     const body = new FormData();
     for (const file of Object.entries(imges)) {
@@ -65,10 +65,11 @@ function HisWork() {
       },
     });
     console.log(res);
+    e.target.reset()
   };
   return (
     <div>
-      <h2>sjjjjjjjjjjjjjjjjaskd</h2>
+      <h2>for adding to his work</h2>
       <form onSubmit={handleSubmit}>
         <label for="file">Select your image:</label>
         <input

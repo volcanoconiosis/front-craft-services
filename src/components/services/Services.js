@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import {LoginContext} from "../../context/Auth"
 function Services() {
   const [list, setList] = useState([]);
   const [list2, setList2] = useState([]);
+  const [filterlist, setFilterlist] = useState([]);
+  const [worktype, setWorktype] = useState('');
+  const context= useContext(LoginContext)
 
   const Api = "https://craft-service.herokuapp.com";
   /* 
@@ -23,48 +27,93 @@ function Services() {
 
     ::: links :::   dont forget Routes to transform between pages
      */
-    
+
+
 
   useEffect(() => {
-   axios.get(`${Api}/getAllWorkers`).then((res) => {
+    axios.get(`${Api}/getAllWorkers`).then((res) => {
       setList(res.data);
-      console.log('dddddddddddddddddddddd',res.data);
+      setFilterlist(res.data)
+      console.log('dddddddddddddddddddddd', res.data);
     });
-   axios.get(`${Api}/getWorkersData`).then((res) => {
+    axios.get(`${Api}/getWorkersData`).then((res) => {
       setList2(res.data);
-      console.log('ssssssssssss',res.data);
+      console.log('ssssssssssss', res.data);
     });
     
 
   }, []);
 
+  const handleChange = (e) => {
+    setWorktype(e.target.value)
+  }
+
+  const handelSubmit=(e)=>{
+    e.preventDefault();
+    if (worktype==='all') {
+      setFilterlist(list)
+    }else{let filter = list.filter(item => {
+      return item.workType === worktype ? item.workType : ''
+    })
+    console.log('worType-->',worktype);
+    console.log('filter-->', filter);
+    setFilterlist(filter);}
+    
+  }
+  const handelclick= async(item,oo)=>{
+    await context.setList(item)
+    await context.setList2(oo)
+    console.log('oo-->',oo);
+    console.log('list22-->',context.list2);
+    console.log('list-->',context.list);
+  }
+
   return (
     <div>
-      {list.length>0&&list2.length>0&&
-      list.map((item) => {
-      let oo=  list2.find(o => o.userId === item.id)
-        return (
-          <>  
+      <form onSubmit={handelSubmit}>
+      <label>filter by work type</label> 
+      <select name="workType" onChange={handleChange} placeholder="workType">
+        <option value="all" name="all">all</option>
+        <option value="moserje" name="moserje">moserje</option>
+        <option value="khrabje" name="khrabje"> khrabje</option>
+        <option value="bleet" name="bleet">bleet</option>
+        <option value="dheen" name="dheen">dheen</option>
+      </select>
+      <button>click</button>
+    </form>
+    <br></br>
 
-          {
-            
-          oo.profilePicture.includes('upload')?
-          <img src={`${Api}/${oo.profilePicture}`} / >
+      {list.length > 0 && list2.length > 0 &&
+        filterlist.map((item) => {
+          let oo = list2.find(o => o.userId === item.id)
 
-            :<img src={oo.profilePicture} / >
-          }
-           
-            <p>{item.username}</p>
-            <p>{item.id}</p>
-            <p>
-              {item.firstName} {item.lastName}
-            </p>
-            <p>{item.workType}</p>
-            <p>{item.location}</p>
-            <hr />
-          </>
-        );
-      })}
+          return (
+            <>
+              
+              {
+
+                oo.profilePicture.includes('upload') ?
+                  <img src={`${Api}/${oo.profilePicture}`} />
+
+                  : <img src={oo.profilePicture} />
+              }
+
+              <p>{item.username}</p>
+              <p>{item.id}</p>
+              <p>
+                {item.firstName} {item.lastName}
+              </p>
+              <p>{item.workType}</p>
+              <p>{item.location}</p>
+              <button onClick={()=>{handelclick(item,oo)}}>View Profile</button>
+              
+              <hr />
+            </>
+          );
+
+
+
+        })}
     </div>
   );
 }
