@@ -18,6 +18,7 @@ function Review() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     let reqBody = {
       name: values.name,
       message: values.message,
@@ -31,6 +32,7 @@ function Review() {
       },
     });
     console.log(res);
+    e.target.reset()
   };
   return (
     <div>

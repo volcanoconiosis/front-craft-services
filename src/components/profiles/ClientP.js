@@ -89,7 +89,7 @@ function ClientP() {
         authorization: `Bearer ${token}`,
       },
     });
-    console.log(res);
+    setUserModelList(res.data);
   };
 
   // delete favImg
@@ -99,7 +99,7 @@ function ClientP() {
         authorization: `Bearer ${token}`,
       },
     });
-    console.log(res);
+    setUserModelList(res.data);
   };
   // delete favWorker
   const deleteFavWorker = async (indx) => {
@@ -108,7 +108,7 @@ function ClientP() {
         authorization: `Bearer ${token}`,
       },
     });
-    console.log(res);
+    setUserModelList(res.data);
   };
 
   function handleChange(e) {
@@ -143,8 +143,8 @@ function ClientP() {
   };
   return (
     <div>
+      {/*  :::::: render personal information ::::: */}
       <p>{userList.username}</p>
-      <p>{userList.id}</p>
       <p>{userList.id}</p>
 
       {userModelList.profilePicture &&
@@ -156,7 +156,7 @@ function ClientP() {
       ) : (
         <img src={userModelList.profilePicture} alt={userModelList.id} />
       )}
-      {/* for render the favWorker */}
+      {/* ::::::: for render the favWorker ::::: */}
       <div>
         {userModelList.favoriteWorker &&
           userModelList.favoriteWorker.map((item, indx) => {
@@ -186,7 +186,7 @@ function ClientP() {
       </div>
       <hr />
 
-      {/* for render the favoriteImg */}
+      {/* :::::: for render the favoriteImg :::::: 🟢 */}
       <div>
         {userModelList.favoriteImg &&
           userModelList.favoriteImg.map((item, indx) => {

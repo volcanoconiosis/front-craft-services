@@ -20,7 +20,7 @@ function Tools() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+   
     const token = cookie.load("token");
     const body = new FormData();
     for (const file of Object.entries(imges)) {
@@ -57,6 +57,7 @@ function Tools() {
       },
     });
     console.log(res);
+    e.target.reset()
   };
   return (
     <div>
