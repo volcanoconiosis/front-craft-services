@@ -127,8 +127,8 @@ function AboutUs() {
             <br />
 
 
-            <Card className="card1" border="primary">
-              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' />
+            <Card  border="primary" >
+              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' style={{width:"50px"}}/>
               <Card.Body>
                 <Card.Title className='text'>Munther AbdelRhman</Card.Title>
                 <Card.Text className='text'>
@@ -144,7 +144,7 @@ function AboutUs() {
               </Card.Body>
             </Card>
 
-            <Card className="card1">
+            <Card >
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images' />
               <Card.Body>
                 <Card.Title>Ahmad Nofal</Card.Title>
@@ -161,7 +161,7 @@ function AboutUs() {
               </Card.Body>
             </Card>
 
-            <Card className="card1">
+            <Card >
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' />
               <Card.Body>
                 <Card.Title className='text'>Ibrahem Alomari</Card.Title>
@@ -177,7 +177,7 @@ function AboutUs() {
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
               </Card.Body>
             </Card>
-            <Card className="card1">
+            <Card >
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images' />
               <Card.Body>
                 <Card.Title> Osama Momani</Card.Title>
@@ -185,9 +185,7 @@ function AboutUs() {
                   Full Stack Develpoer
                 </Card.Text>
                 <p>
-                nly five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of L
+               
                 </p>
                 <a href="https://www.linkedin.com/in/munther-abdel-rahman-833814172/"><img className="smallimg" src="   https://www.pngjoy.com/pngm/381/7044985_linkedin-logo-png-linkedin-logo-png-black-transparent.png " alt="LinkedIn" /></a>
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
