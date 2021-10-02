@@ -13,23 +13,26 @@ import Services from './components/services/Services'
 import SignIn from './components/Sign/SignIn'
 import SignUp from './components/Sign/SignUp'
 import Test from './components/test'
+import AboutUs from './components/about-us/AboutUs'
 import ViewProfile from './components/profiles/ViewProfile'
 import ClientP from './components/profiles/ClientP'
 import WorkerProfile from './components/profiles/WorkerProfile'
 function App() {
     return (
         <>
-            <SignIn/>
+            {/* <SignIn/>
             <div>
                 <p>kkkkkkkkk</p>
                 <SignUp/>
             </div>
-            <ContactUs/>
+            <ContactUs/> */}
+            <AboutUs/>
 
-            <HisWork/>
+            {/* <HisWork/>
             <Review/>
             <Tools/>
             <Services/>
+            <Test/> */}
             <Test/>
             <ViewProfile/>
             <ClientP/>
