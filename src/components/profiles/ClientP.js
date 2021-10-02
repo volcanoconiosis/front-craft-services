@@ -29,6 +29,10 @@ function ClientP() {
           profilePicture:profilePicture,
           workType:workType,
           loction:loction
+
+        
+
+
       }
     - favImg   https://craft-service.herokuapp.com/client/favoriteImg post /delete
        - obj {
