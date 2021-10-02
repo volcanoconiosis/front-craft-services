@@ -59,7 +59,7 @@
     
 }
 
-.insideimage{
+.sideimage{
     position: relative;
     float:left;
     margin: 180px;
@@ -67,27 +67,24 @@
 
 }
 
-h2.our{
-    float: right;
-    text-align:left;
-    color:#F2A16F;
-    /* border-right: 120px; */
-    margin-top: 179px;
-    margin-left: 100px;
-    text-align:center;
-
-    
-}
-
-    
-
 .our{
     float: right;
-    margin-top: -225px;
-    margin-right: -700px;
+    color:#F2A16F;
+    /* border-right: 120px; */
+    margin-top: -580px;
+    margin-bottom: 300px;
+    margin-left: 100px; 
     text-align:center;
+    width: 48%;
+    
+
     
 }
+
+
+    
+
+
 
 
 #firstimg{
@@ -154,7 +151,34 @@ h2.our{
     display:center;
     color: #F2A16F;
     font-weight: bold;
-    margin-left: 750px;
+    margin-left: 700px;
     
 }
 
+
+.cardgroup{
+    display:inline-flex;
+}
+
+.card1{
+    display:table-cell;
+    position: relative;
+    left: 0px;
+    text-align: center;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    width:20%;
+   
+}
+
+.images{
+    /* border-radius: 200px; */
+    width:300px;
+    border-radius: 50%;
+    
+}
+.images1{
+    width: 293px;
+    height:293px;
+    border-radius: 50%;
+}
