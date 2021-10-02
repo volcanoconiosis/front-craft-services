@@ -53,20 +53,21 @@ function AboutUs() {
       </div>
       <br />
      
-      <section>
-        <div className="insideimage">
+    
+        <div className="sideimage">
           <img src="https://png2.cleanpng.com/sh/b55817bcbb9298a83010fd522ef8823b/L0KzQYm3VMA1N5Z9iZH0aYP2gLBuTfFza5lujNdsdIX1cb20hf5ocZ9qfeRybnewcsbwjPRqdpgye9H3c4T1hbT7if9vNZ5mRdV4boP3gsbqlPlwdl54geZuLUXkc4a7g8g0amEATqk7LkS2R4e3VMk5OWY3SqoCOUa0SYi5U8MveJ9s/kisspng-architectural-engineering-building-construction-ma-construction-site-5ac54c83b09672.4376049815228796197233.png" id="firstimg" />
           <img src="https://image.freepik.com/free-vector/builders-helmets-working-construction-site-machine-building-worker-flat-vector-illustration-engineering-development_74855-8259.jpg" id="secimg" />
-          <h2 className="our">
+          </div>
+          
+          <div className="our">
+          <h2 >
             Our vision
-          </h2>
-          <br />
-
-
-          <p className="our" >
+          </h2>         
+          <p >
             ver since the 1500s, when an unknouries, but also the leap in electronic typesetting, remaining essentially unchanged.
             It was popularised
           </p>
+          
         </div>
         <br />
         <br />
@@ -95,20 +96,9 @@ function AboutUs() {
         <br /><br />
         <br />
         <br />
-        <br /><br />
+    
         <br />
-        <br />
-        <br /><br />
-        <br />
-        <br />
-        <br /><br />
-        <br />
-        <br />
-        <br /><br />
-        <br />
-        <br />
-        <br />
-      </section>
+    
 
 
 
@@ -118,17 +108,20 @@ function AboutUs() {
 
 
       <section>
-        <div>
+        <div >
 
-          <div className="cardgroup">
             <h1 className="textteam" >Our Team</h1>
+          <div className="cardgroup">
             <br />
             <br />
             <br />
 
 
-            <Card  border="primary" >
-              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' style={{width:"50px"}}/>
+
+
+
+            <Card  border="primary"  className="card1">
+              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' />
               <Card.Body>
                 <Card.Title className='text'>Munther AbdelRhman</Card.Title>
                 <Card.Text className='text'>
@@ -144,7 +137,7 @@ function AboutUs() {
               </Card.Body>
             </Card>
 
-            <Card >
+            <Card  className="card1">
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images' />
               <Card.Body>
                 <Card.Title>Ahmad Nofal</Card.Title>
@@ -161,7 +154,7 @@ function AboutUs() {
               </Card.Body>
             </Card>
 
-            <Card >
+            <Card className="card1">
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' />
               <Card.Body>
                 <Card.Title className='text'>Ibrahem Alomari</Card.Title>
@@ -177,7 +170,7 @@ function AboutUs() {
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
               </Card.Body>
             </Card>
-            <Card >
+            <Card className="card1">
               <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images' />
               <Card.Body>
                 <Card.Title> Osama Momani</Card.Title>
@@ -196,6 +189,9 @@ function AboutUs() {
           </div>
         </div>
       </section>
+      <br /><br />
+        <br />
+        <br />
             <ContactUs/>
     </>
   )
