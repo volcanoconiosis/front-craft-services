@@ -40,6 +40,17 @@ function WorkerProfile() {
       });
   }, []);
 
+   // :::::::::: delete account ::::::::::
+   const handleDeleteAccount = async () => {
+    let res = await axios.delete(`${Api}/deleteaccount`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(res);
+  };
+
+
   //  ::::::::::: delete favWorker ::::::: 🔴🔴
   const deleteFavWorker = async (indx) => {
     let res = await axios.delete(`${Api}/worker/fav?index=${indx}`, {
@@ -48,16 +59,6 @@ function WorkerProfile() {
       },
     });
     setWorkerList(res.data);
-  };
-
-  // :::::::::: delete account ::::::::::
-  const handleDeleteAccount = async () => {
-    let res = await axios.delete(`${Api}/deleteaccount`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    console.log(res);
   };
 
   // :::: delete fav img ::::: 🔴🔴
@@ -91,36 +92,22 @@ function WorkerProfile() {
     setWorkerList(res.data);
   };
 
- // :::::: delete from tools :::::: 
-  const  deleteTools = async (indx) => {
-      let res = await axios.delete(`${Api}/worker/tools?index=${indx}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      setWorkerList(res.data);
-    };
+  // :::::: delete from tools ::::::
+  const deleteTools = async (indx) => {
+    let res = await axios.delete(`${Api}/worker/tools?index=${indx}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    setWorkerList(res.data);
+  };
 
   /*
-    - post ,, delete,, update ("/worker/..." arrays in model)
+
 
 
     - delete account ("/deleteaccount")
-        // :::::::::: delete account :::::::::: 
-          const handleDeleteAccount = async () => {
-          let res = await axios.delete(`${Api}/deleteaccount`, {
-            headers: {
-              authorization: `Bearer ${token}`,
-                                      },
-               });
-            console.log(res);
-  };
-    <button onClick={handleDeleteAccount}>delete account</button>
-
-
-
     - updat account ("/updateaccount")
-       
     - handle the role for worker to open this page
     
     ::: information ::: display :::
@@ -134,7 +121,7 @@ function WorkerProfile() {
           loction:loction
             }
 
-            /* 
+            
       - :::: add to fav ${Api}/worker/fav will be in services page and view profile :::   
       - ::::::::::: delete favWorker ::::::: 🔴🔴 
       - ::::::::: render the fav worker :::::: 🟢🟡🟡
@@ -146,9 +133,7 @@ function WorkerProfile() {
           "loction":"loction",
           "id":1
             
-            */
 
-  /*
     - favImg
        - obj {
           img:img,
@@ -186,14 +171,8 @@ function WorkerProfile() {
           "loction":"loction",
           "id":1
 
-
-
-
     - chat
-    - store 
-    
-    
-
+    - store  =======================🧡❤💛
     - his work 
       - form inside this component to give feedback
       - title
@@ -430,14 +409,14 @@ function WorkerProfile() {
           workerList.hisWork.map((item, indx) => {
             return (
               <div key={indx}>
-                {item.imges && item.imges.map((el, indx) => {
-                  return (
-                    el.includes("images")?<img src={`${Api}/${el}`} alt={indx} />:
-                  <img src={el} alt={indx} />
-                  ) 
-                    })
-                  }
-                 
+                {item.imges &&
+                  item.imges.map((el, indx) => {
+                    return el.includes("images") ? (
+                      <img src={`${Api}/${el}`} alt={indx} />
+                    ) : (
+                      <img src={el} alt={indx} />
+                    );
+                  })}
 
                 <p>{item.date}</p>
                 <p>{item.loction}</p>
@@ -454,27 +433,23 @@ function WorkerProfile() {
           })}
       </div>
 
-
-
-
       {/* :::::::: render from tools ::::::  */}
-        <div>
+      <div>
         {workerList.tools &&
           workerList.tools.map((item, indx) => {
             return (
               <div key={indx}>
-                {item.imges && item.imges.map((el, indx) => {
-                  return (
-                    el.includes("images")?<img src={`${Api}/${el}`} alt={indx} />:
-                  <img src={el} alt={indx} />
-                  ) 
-                    })
-                  }
-               
+                {item.imges &&
+                  item.imges.map((el, indx) => {
+                    return el.includes("images") ? (
+                      <img src={`${Api}/${el}`} alt={indx} />
+                    ) : (
+                      <img src={el} alt={indx} />
+                    );
+                  })}
+
                 <p>{item.title}</p>
-                 <p>
-                  {item.description} 
-                </p>
+                <p>{item.description}</p>
                 <button
                   onClick={() => {
                     deleteTools(indx);
@@ -487,9 +462,6 @@ function WorkerProfile() {
           })}
       </div>
     </div>
-
-
-
   );
 }
 
