@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
+import {LoginContext} from "../../context/Auth"
 
-function ClientP() {
+
+function ClientProfile() {
   const [userList, setUserList] = useState({});
   const [userModelList, setUserModelList] = useState({});
+  const context= useContext(LoginContext);
+
+
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
   let [values, setValues] = useState({});
@@ -145,6 +150,24 @@ function ClientP() {
         console.log(res);
       });
   };
+  const showWorker=async(userId,id,item)=>{
+    const res=await axios.get(`${Api}/workerForClient/${id}`,{
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    await context.setList(item)
+    await context.setList2(res)
+    console.log("setList2(res)===>" ,res)
+    console.log("item",item)
+
+    
+    
+
+  }
+
+
+
   return (
     <div>
       {/*  :::::: render personal information ::::: */}
@@ -176,13 +199,20 @@ function ClientP() {
                   {item.firstname} {item.lastname}
                 </p>
                 <p>{item.workType}</p>
-                <p>{item.loction}</p>
+                <p>{item.location}</p>
                 <button
                   onClick={() => {
                     deleteFavWorker(indx);
                   }}
                 >
                   delete worker
+                </button>
+
+                <button
+                onClick={() => {
+                  showWorker(item.userId,item.id,item);
+                }}>
+                  Show Worker     
                 </button>
               </div>
             );
@@ -202,6 +232,7 @@ function ClientP() {
                   <img src={item.img} alt={item.id} />
                 )}
                 <p>{item.description}</p>
+                <p>{item.title}</p>
                 <button
                   onClick={() => {
                     deleteFavImg(indx);
@@ -298,4 +329,4 @@ function ClientP() {
   );
 }
 
-export default ClientP;
+export default ClientProfile;

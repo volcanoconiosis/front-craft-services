@@ -26,7 +26,7 @@ function SignIn() {
         <form onSubmit={handlerSubmit}>
             <input type="text"  name="name" onChange={handleInputUser} />
             <input type="password" name="password" onChange={handleInputPass}/>
-           <button type="submit" > login</button>
+           <button type="submit" > SignIn</button>
         </form>
         
 

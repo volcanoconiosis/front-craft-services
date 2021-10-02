@@ -360,6 +360,7 @@ function WorkerProfile() {
                   <img src={item.img} alt={item.id} />
                 )}
                 <p>{item.description}</p>
+                <p>{item.title}</p>
                 <button
                   onClick={() => {
                     deleteFavImg(indx);
