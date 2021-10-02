@@ -15,6 +15,7 @@ import SignUp from './components/Sign/SignUp'
 import Test from './components/test'
 import ViewProfile from './components/profiles/ViewProfile'
 import ClientP from './components/profiles/ClientP'
+import WorkerProfile from './components/profiles/WorkerProfile'
 function App() {
     return (
         <>
@@ -31,11 +32,12 @@ function App() {
             <Services/>
             <Test/>
             <ViewProfile/>
-            <hr/>
-            <hr/>
-            <hr/>
-            <hr/>
             <ClientP/>
+            <hr/>
+            <hr/>
+            <hr/>
+            <hr/>
+            <WorkerProfile/>
         </>
     )
 }
