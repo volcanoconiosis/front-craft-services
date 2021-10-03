@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { LoginContext } from "../../context/Auth";
 import cookie from "react-cookies";
 import axios from "axios";
-
+import Review from "../forms/Review";
 function ViewProfile(props) {
   /*
   :::functions::: 
@@ -101,6 +101,7 @@ function ViewProfile(props) {
 
         <h1>::::::::: End view profile Page :::::: 😍😎</h1>
       </div>
+      <Review/>
     </>
   );
 }

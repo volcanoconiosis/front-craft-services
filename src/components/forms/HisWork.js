@@ -11,7 +11,7 @@ import cookie from "react-cookies";
       - location
 
 */
-function HisWork() {
+function HisWork(props) {
   //  const role = cookie.load("user");
   const Api =  process.env.REACT_APP_URL;
   const [values, setValues] = useState({});
@@ -64,7 +64,8 @@ function HisWork() {
         authorization: `Bearer ${token}`,
       },
     });
-    console.log(res);
+    props.setWorkerList(res.data);
+    console.log("from his work",res);
     e.target.reset()
   };
   return (

@@ -7,7 +7,7 @@ function WorkerProfile() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
-  const Api =  process.env.REACT_APP_URL;
+  const Api = process.env.REACT_APP_URL;
   const context = useContext(LoginContext);
   /*
     :::functions::: 
@@ -114,222 +114,26 @@ function WorkerProfile() {
     console.log("setList2(res)===>", res);
     console.log("item", item);
   };
-  // :::::::::: handleBio
-  const [bio, setBio] = useState("");
-  const handleBio = (e) => {
-    setBio(e.target.value);
-  };
-  const handleBioSubmit = async (e) => {
-    e.preventDefault();
-    e.target.reset();
-    let reqBody = {
-      bio: bio,
-    };
-    let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("res after change bio", res);
-    setWorkerList(res.data);
-  };
+  // // :::::::::: handleBio
+  // const [bio, setBio] = useState("");
+  // const handleBio = (e) => {
+  //   setBio(e.target.value);
+  // };
+  // const handleBioSubmit = async (e) => {
+  //   e.preventDefault();
+  //   e.target.reset();
+  //   let reqBody = {
+  //     bio: bio,
+  //   };
+  //   let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
+  //     headers: {
+  //       authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   console.log("res after change bio", res);
+  //   setWorkerList(res.data);
+  // };
 
-  /*
-
-
-
-    - delete account ("/deleteaccount")
-    - updat account ("/updateaccount")
-    - handle the role for worker to open this page
-    
-    ::: information ::: display :::
-    - favWorker  obj for almost all  below arrays 😭
-       - obj { 
-          id:id,
-          firstname:firstname,
-          lastname:lastname,
-          profilePicture:profilePicture,
-          workType:workType,
-          loction:loction
-            }
-
-            
-      - :::: add to fav ${Api}/worker/fav will be in services page and view profile :::   
-      - ::::::::::: delete favWorker ::::::: 🔴🔴 
-      - ::::::::: render the fav worker :::::: 🟢🟡🟡
-      
-      "firstname":"firstname",
-          "lastname":"lastname",
-          "profilePicture":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTThnO8e3DASTH1Q6Kfqr-1qeNfUhr7vB4TjQ&usqp=CAU",
-          "workType":"workType",
-          "loction":"loction",
-          "id":1
-            
-
-    - favImg
-       - obj {
-          img:img,
-          description:description
-            }
-
-        - :::: delete fav img ::::: 🔴🔴
-        - :::: render fav img ::::: 
-              "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTThnO8e3DASTH1Q6Kfqr-1qeNfUhr7vB4TjQ&usqp=CAU",
-          "description":"description",
-          "id":number
-
-        - 
-
-    - recintly 
-       - obj {
-          id:id,
-          firstname:firstname,
-          lastname:lastname,
-          profilePicture:profilePicture,
-          workType:workType,
-          loction:loction
-            }
-
-
-            - :::::delete recintly :::::: 🔴🔴
-
-
-          - :::::: for render the recintly :::::: 🟢
-
-          "firstname":"firstname",
-          "lastname":"lastname",
-          "profilePicture":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTThnO8e3DASTH1Q6Kfqr-1qeNfUhr7vB4TjQ&usqp=CAU",
-          "workType":"workType",
-          "loction":"loction",
-          "id":1
-
-    - chat
-    - store  =======================🧡❤💛
-    - his work 
-      - form inside this component to give feedback
-      - title
-      - img 
-      - description 
-      - date 2/2/2022
-      - loction 
-      
-     - :::::: add to his work (post)  we make it in forms/HisWork :::::: 
-     - :::::: update to his work (put)   :::::: 
-
-          for updata handle its like the form inside forms/HisWork  but we need to 
-          change the method 
-          <form onSubmit={handleSubmit}>
-        
-        <input
-          type="file"
-          multiple
-          accept="image/*"
-          name="uploadedImages"
-          defaultValue={workerList.img}
-          onChange={handleImg}
-        />
-
-        <input
-          type="text"
-          placeholder="title"
-          name="title"
-          defaultValue={workerList.title}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="location"
-          name="location"
-          defaultValue={workerList.location}
-          onChange={handleChange}
-        />
-        <textarea
-          name="description"
-          rows="4"
-          cols="50"
-          onChange={handleChange}
-          defaultValue={workerList.description}
-          placeholder="description"
-        />
-        <input
-          type="datetime-local"
-          name="date"
-          defaultValue={workerList.date}
-          onChange={handleChange}
-        />
-        <button type="submit">upload</button>
-      </form>
-
-
-
-     - :::::: delete from his work :::::: 
-    
-    - :::::::: render from his Work :::::: 
-      
-
-
-
-
-    - sechedul work 
-    - offers
-      - form inside this component to give feedback  (cansle for know)
-    - tools 
-      - img 
-      - description 
-      - title 
-
-      - :::::: add to tools (post)  we make it in forms/Tools :::::: 
-     - :::::: update to his work (put)   :::::: 
-
-          for updata handle its like the form inside forms/Tools  but we need to 
-          change the method 
-          
-          <form onSubmit={handleSubmit...}>
-        <label for="file">Select your image:</label>
-        <input
-          type="file"
-          multiple
-          accept="image/*"
-          name="uploadedImages"
-          onChange={handleImg}
-          defaultValue={workerList.img}
-        />
-
-        <input
-          type="text"
-          placeholder="title"
-          name="title"
-          onChange={handleChange}
-          defaultValue={workerList.title}
-        />
-        <textarea
-          name="description"
-          rows="4"
-          cols="50"
-          onChange={handleChange}
-          placeholder="description"
-           defaultValue={workerList.description}
-        />
-        <button type="submit">upload</button>
-      </form>
-
-
-
-     - :::::: delete from tools :::::: 
-    - :::::::: render from tools :::::: 
-
-    - form inside this component to give feedback for review i mean 
-          we handle it the form inside the forms/Review 
-    - review 🔼🔼
-    - form inside this component to give feedback
-    - name 
-    - message 
-    - out of 5 
-    ::: links :::   dont forget Routes to transform between pages
-
-    
-    
-    */
   return (
     <div>
       <h1> render the fav worker from worker profile</h1>
