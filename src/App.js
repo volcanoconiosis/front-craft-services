@@ -1,10 +1,11 @@
 import React from 'react'
 import ContactUs from './components/contact-us/ContactUs'
 import HisWork from './components/forms/HisWork'
-import Review from './components/forms/Review'
+import Review from './components/forms/ReviewForm'
 import Tools from './components/forms/ToolsForm'
 import Ibrahem from './components/ibrahem'
 import Services from './components/services/Services'
+import ViewProfile from './components/profiles/ViewProfile'
 // import {
 //     BrowserRouter ,
 //     Switch,
@@ -15,10 +16,12 @@ import SignIn from './components/Sign/SignIn'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
+import WorkerProfile from './components/profiles/WorkerProfile'
 function App() {
     return (
         <>
         <Header/>
+        
         {/* <Home/> */}
             {/* 
             <div>
@@ -30,9 +33,12 @@ function App() {
             <HisWork/>
             <Review/>
             <Tools/>
-            <Services/>
+            
             <Test/> */}
             <SignIn/>
+            <Services/>
+            <ViewProfile/>
+            {/* <WorkerProfile/> */}
             <Ibrahem/>
             <Footer/>
             {/* <ContactUs/> */}

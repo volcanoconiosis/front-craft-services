@@ -12,33 +12,15 @@ function Services() {
   const token = cookie.load("token");
   const role = cookie.load("user");
 
-  const Api =  process.env.REACT_APP_URL;
-  /* 
-    :::functions::: 
-    - useEffect async 
-      - get all workers ( get,"/getAllWorkers") personal information ... workType
-      - get all data( get,"/getWorkersData")the arrays for worker we will loop ... 
-    
-      
-    ::: information ::: display :::
-    - slide for workers 
-    - show the works that the did it 
-    - option for filter with type of works that we have 
-    - card for showing the workers button add to fav 
-    - another filter for  
-      - loction   
-      - workType 
+  const Api ="https://craft-service.herokuapp.com"
 
-    ::: links :::   dont forget Routes to transform between pages
-     */
-
-  useEffect(() => {
-    axios.get(`${Api}/getAllWorkers`).then((res) => {
+  useEffect(async() => {
+   await axios.get(`${Api}/getAllWorkers`).then((res) => {
       setList(res.data);
       setFilterlist(res.data);
       console.log("dddddddddddddddddddddd", res.data);
     });
-    axios.get(`${Api}/getWorkersData`).then((res) => {
+   await axios.get(`${Api}/getWorkersData`).then((res) => {
       setList2(res.data);
       console.log("ssssssssssss", res.data);
     });

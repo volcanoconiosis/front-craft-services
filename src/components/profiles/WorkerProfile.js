@@ -7,15 +7,8 @@ function WorkerProfile() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
-  const Api = process.env.REACT_APP_URL;
+  const Api = "https://craft-service.herokuapp.com"
   const context = useContext(LoginContext);
-  /*
-    :::functions::: 
-    - useEffect async 
-      - get data endPoint( get,"/getCurrentUser")information personal about worker
-      - get data endPoint( get,"/worker")information model about client
-      
-     */
   useEffect(async () => {
     // get information personal
     await axios
@@ -115,24 +108,24 @@ function WorkerProfile() {
     console.log("item", item);
   };
   // // :::::::::: handleBio
-  // const [bio, setBio] = useState("");
-  // const handleBio = (e) => {
-  //   setBio(e.target.value);
-  // };
-  // const handleBioSubmit = async (e) => {
-  //   e.preventDefault();
-  //   e.target.reset();
-  //   let reqBody = {
-  //     bio: bio,
-  //   };
-  //   let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
-  //     headers: {
-  //       authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   console.log("res after change bio", res);
-  //   setWorkerList(res.data);
-  // };
+  const [bio, setBio] = useState("");
+  const handleBio = (e) => {
+    setBio(e.target.value);
+  };
+  const handleBioSubmit = async (e) => {
+    e.preventDefault();
+    e.target.reset();
+    let reqBody = {
+      bio: bio,
+    };
+    let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("res after change bio", res);
+    setWorkerList(res.data);
+  };
 
   return (
     <div>
@@ -296,6 +289,7 @@ function WorkerProfile() {
       </div>
 
       {/* :::::::: render from tools ::::::  */}
+      
       <div>
         <h1> ::::::: render the tools :::::: 🟢🟡🟡</h1>
         {workerList.tools &&
@@ -325,7 +319,31 @@ function WorkerProfile() {
           })}
         <h1> :::::::End render the tools :::::: 🟢🟡🟡</h1>
       </div>
+          {/* :::::: for render the reviews :::::: 🟢 */}
+      <div>
+      {/* name: values.name,
+      message: values.message,
+      date: values.date,
+      rate: values.rate, */}
+<h1>:::::: for render the reviews :::::: 🟢</h1>
+{workerList.reviews &&
+          workerList.reviews.map((item, indx) => {
+            return (
+              <div key={indx}>
+                
+
+                <p>{item.name}</p>
+                <p>{item.date}</p>
+                <p>{item.rate}</p>
+                <p>{item.message}</p>
+               
+              </div>
+            );
+          })}
+
+      </div>
     </div>
+
   );
 }
 

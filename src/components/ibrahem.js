@@ -10,6 +10,7 @@ import FavImg from "./profiles/worker/FavImg";
 import Recently from "./profiles/worker/Recently";
 import ManWorks from "./profiles/worker/ManWorks";
 import Tools from "./profiles/worker/Tools";
+import Reviews from "./profiles/worker/Reviews";
 
 function ibrahem() {
   const [iconPills, setIconPills] = useState("1");
@@ -141,6 +142,9 @@ function ibrahem() {
                 </Tab.Pane>
                 <Tab.Pane eventKey="T8">
                   <Tools />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T9">
+                  <Reviews/>
                 </Tab.Pane>
               </Tab.Content>
             </Col>
