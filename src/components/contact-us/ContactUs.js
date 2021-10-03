@@ -14,13 +14,14 @@ import "./contact.css";
 
 function ContactUs() {
   let [values, setValues] = useState({});
-  let Api =  process.env.REACT_APP_URL;
+  let Api =  "https://craft-service.herokuapp.com";
   function handleChange(e) {
     setValues((values) => ({ ...values, [e.target.name]: e.target.value }));
     console.log("from contact-us comp:", values);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.target.reset(); 
     console.log("from contacut ");
     const reqBody = {
       name: values.name,
@@ -29,35 +30,22 @@ function ContactUs() {
       email: values.email,
       message: values.message,
     };
-    await axios.post(`${Api}/support`, reqBody);
-    e.target.reset();
-  };
+    let res= await axios.post(`${Api}/support`, reqBody);
+    console.log("res---------",res)
+     };
 
   return (
    
    
    <div className="formContactUS">
-     
-
  
-
-
-      
-
-     
-        
-         
-            <form>
+            <form onSubmit={handleSubmit}>
             <p className="h5 text-center mb-4">Give Us Your FeedBack</p>
               <div className="grey-text">
                 <MDBInput
                   label="Your name"
                   icon="user"
-                  group
                   type="text"
-                  validate
-                  error="wrong"
-                  success="right"
                   name="name"
                   onChange={handleChange}
                 />
@@ -65,11 +53,7 @@ function ContactUs() {
                 <MDBInput
                   label="Your email"
                   icon="envelope"
-                  group
                   type="email"
-                  validate
-                  error="wrong"
-                  success="right"
                   name="email"
                   onChange={handleChange}
                 />
@@ -77,11 +61,7 @@ function ContactUs() {
                 <MDBInput
                   label="Subject"
                   icon="tag"
-                  group
                   type="text"
-                  validate
-                  error="wrong"
-                  success="right"
                   onChange={handleChange}
                   name="Subject"
                 />
@@ -94,7 +74,7 @@ function ContactUs() {
                   name="message"
                 />
                 <div className="text-center">
-                  <Button type="submit" onClick={handleSubmit}>
+                  <Button type="submit" >
                     send <MDBIcon far icon="paper-plane" className="ml-1" />
                   </Button>
                 </div>

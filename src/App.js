@@ -5,7 +5,6 @@ import Review from './components/forms/ReviewForm'
 import Tools from './components/forms/ToolsForm'
 import Ibrahem from './components/ibrahem'
 import Services from './components/services/Services'
-import ViewProfile from './components/profiles/ViewProfile'
 // import {
 //     BrowserRouter ,
 //     Switch,
@@ -19,6 +18,7 @@ import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
 import ViewWorkerProfile from './components/ViewWorkerProfile'
+import AdminProfile from './components/AdminProfile'
 function App() {
     return (
         <>
@@ -39,14 +39,16 @@ function App() {
             <Test/> */}
             <h1>sss</h1>
             <SignIn/>
-            <Services/>
-            <ViewProfile/>
+            {/* <Services/> */}
+            {/* <ViewProfile/> */}
             {/* <WorkerProfile/> */}
             {/* <Ibrahem/> */}
-            <ClientProfile/>
-            <ViewWorkerProfile/>
+            {/* <ClientProfile/> */}
+            {/* <ViewWorkerProfile/> */}
+            <AdminProfile/>
             <Footer/>
-            {/* <ContactUs/> */}
+            <ContactUs/>
+            
             
         </>
     )
