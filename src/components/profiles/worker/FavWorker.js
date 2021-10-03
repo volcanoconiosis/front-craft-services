@@ -7,11 +7,13 @@ function FavWorker() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
+  const role = cookie.load("user");
   const Api = "https://craft-service.herokuapp.com"
   const context = useContext(LoginContext);
 
   useEffect(async () => {
     // get information personal
+
     await axios
       .get(`${Api}/getCurrentUser`, {
         headers: {
@@ -24,7 +26,8 @@ function FavWorker() {
       });
 
     // get worker
-    await axios
+    if(role==="worker"){
+      await axios
       .get(`${Api}/worker`, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -34,16 +37,39 @@ function FavWorker() {
         setWorkerList(res.data[0]);
         console.log("setWorkerList=====>", res.data[0]);
       });
+    }else if(role==="user"){
+      await axios
+      .get(`${Api}/clientData`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setWorkerList(res.data[0]);
+        console.log("setWorkerList=====>", res.data[0]);
+      });
+    }
+   
   }, []);
 
   //  ::::::::::: delete favWorker ::::::: 🔴🔴
   const deleteFavWorker = async (indx) => {
-    let res = await axios.delete(`${Api}/worker/fav?index=${indx}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    setWorkerList(res.data);
+    if(role==="worker"){
+      let res = await axios.delete(`${Api}/worker/fav?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }else if (role==="user"){
+      let res = await axios.delete(`${Api}/client/favWorker?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }
+    
   };
 
   // :::::::: show worker ::::::

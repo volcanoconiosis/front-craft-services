@@ -17,6 +17,7 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
+import ClientProfile from './components/CleintProfile'
 function App() {
     return (
         <>
@@ -40,6 +41,7 @@ function App() {
             <ViewProfile/>
             {/* <WorkerProfile/> */}
             <Ibrahem/>
+            <ClientProfile/>
             <Footer/>
             {/* <ContactUs/> */}
             
