@@ -12,7 +12,6 @@ import Services from './components/services/Services'
 //     Link
 //   } from "react-router-dom";
 import SignIn from './components/Sign/SignIn'
-import SignUp from './components/Sign/SignUp'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
@@ -20,21 +19,23 @@ function App() {
     return (
         <>
         <Header/>
-        {/* <Home/> */}
-            {/* <SignIn/>
+        <Home/>
+            {/* 
             <div>
                 <p>kkkkkkkkk</p>
                 <SignUp/>
             </div>
-            <ContactUs/>
+            
 
             <HisWork/>
             <Review/>
             <Tools/>
             <Services/>
             <Test/> */}
-            <Ibrahem/>
+            {/* <Ibrahem/> */}
             <Footer/>
+            <ContactUs/>
+            <SignIn/>
         </>
     )
 }

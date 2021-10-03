@@ -75,7 +75,7 @@ function SignIn() {
                   />
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-user"></i>
+                  <i className="fas fa-user-edit"></i>
                   <input
                     type="text"
                     placeholder="Firstname"
@@ -84,7 +84,7 @@ function SignIn() {
                   />
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-user"></i>
+                  <i className="fas fa-user-edit"></i>
                   <input
                     type="text"
                     placeholder="Lastname"
@@ -111,7 +111,7 @@ function SignIn() {
                   />
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-lock"></i>
+                  <i className="fas fa-map-marker-alt"></i>
                   <input
                     type="text"
                     placeholder="Location"
@@ -120,7 +120,7 @@ function SignIn() {
                   />
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-lock"></i>
+                  <i className="fas fa-mobile-alt"></i>
                   <input
                     type="text"
                     placeholder="phone"
@@ -129,7 +129,7 @@ function SignIn() {
                   />
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-lock"></i>
+                  <i className="fas fa-calendar-check"></i>
                   <select
                     type="text"
                     placeholder="Role"
@@ -155,7 +155,7 @@ function SignIn() {
                   </select>
                 </div>
                 <div className="input-field">
-                  <i className="fas fa-lock"></i>
+                  <i className="fas fa-wrench"></i>
                   <select
                     type="text"
                     placeholder="workType"
