@@ -12,7 +12,7 @@ import Services from './components/services/Services'
 //   } from "react-router-dom";
 import SignIn from './components/Sign/SignIn'
 import SignUp from './components/Sign/SignUp'
-import Test from './components/test'
+import Test from './components/ChangePPicture'
 import AboutUs from './components/about-us/AboutUs'
 import ClientProfile from './components/profiles/ClientProfile'
 import ViewProfile from './components/profiles/ViewProfile'
@@ -21,14 +21,14 @@ import WorkerProfile from './components/profiles/WorkerProfile'
 function App() {
     return (
         <>
-        <SignUp/>
+        {/* <SignUp/> */}
         <SignIn/>
         <Test/>
         <HisWork/>
         <Services/>
         <ClientProfile/>
         <ViewProfile/>
-        <WorkerProfile/>
+        {/* <WorkerProfile/> */}
 
             
         </>
