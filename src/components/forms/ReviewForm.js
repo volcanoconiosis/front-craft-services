@@ -10,10 +10,11 @@ function ReviewForm() {
 
   const handleChange = async (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+   let id =context.list.id
     let reqBody = {
       name: values.name,
       message: values.message,
@@ -21,14 +22,18 @@ function ReviewForm() {
       rate: values.rate,
     };
 
-    let res = await axios.post(`${Api}/worker/reviews`, reqBody, {
+   await axios.post(`${Api}/worker/reviews/${id}`, reqBody, {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    });
-    console.log(res.data);
-    context.setList2(res.data)
-    e.target.reset()
+    }).then(respon=>{
+      console.log(respon.data);
+      context.setList2(respon.data)
+      e.target.reset()
+    })
+    
+    
+    
   };
   return (
     <div>

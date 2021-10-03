@@ -18,6 +18,7 @@ import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
+import ViewWorkerProfile from './components/ViewWorkerProfile'
 function App() {
     return (
         <>
@@ -36,12 +37,14 @@ function App() {
             <Tools/>
             
             <Test/> */}
+            <h1>sss</h1>
             <SignIn/>
             <Services/>
             <ViewProfile/>
             {/* <WorkerProfile/> */}
-            <Ibrahem/>
+            {/* <Ibrahem/> */}
             <ClientProfile/>
+            <ViewWorkerProfile/>
             <Footer/>
             {/* <ContactUs/> */}
             
