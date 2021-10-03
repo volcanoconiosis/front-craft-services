@@ -9,7 +9,7 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdbreact";
-
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import "./contact.css";
 
 function ContactUs() {
