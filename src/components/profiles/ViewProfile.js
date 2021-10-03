@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { LoginContext } from "../../context/Auth";
 import cookie from "react-cookies";
 import axios from "axios";
-import Review from "../forms/Review";
+import ReviewForm from "../forms/ReviewForm";
 function ViewProfile(props) {
   /*
   :::functions::: 
@@ -51,7 +51,8 @@ function ViewProfile(props) {
   return (
     <>
       <div>
-        {" "}
+
+        
         <h1>:::::::: view profile Page :::::: 😍😎</h1>
         <p>{context.list.username}</p>
         <p>{context.list.id}</p>
@@ -64,9 +65,30 @@ function ViewProfile(props) {
         {context.list.profilePicture &&
         context.list.profilePicture.includes("upload") ? (
           <img src={`${Api}/${context.list.profilePicture}`} />
-        ) : (
-          <img src={context.list.profilePicture} />
-        )}
+          ) : (
+            <img src={context.list.profilePicture} />
+            )}
+      </div>
+      <div>
+        <h3>render the review </h3>.
+            <ReviewForm/>
+            {context.list2.reviews &&
+          context.list2.reviews.map((item, indx) => {
+            return (
+              <div key={indx}>
+                
+
+                <p>{item.name}</p>
+                <p>{item.date}</p>
+                <p>{item.rate}</p>
+                <p>{item.message}</p>
+               
+              </div>
+            );
+          })}
+
+
+      
       </div>
       <div>
         {context.list2.hisWork &&
@@ -98,10 +120,10 @@ function ViewProfile(props) {
               </>
             );
           })}
-
+ 
         <h1>::::::::: End view profile Page :::::: 😍😎</h1>
       </div>
-      <Review/>
+     
     </>
   );
 }

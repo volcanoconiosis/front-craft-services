@@ -5,7 +5,7 @@ import cookie from "react-cookies";
 import jwt from "jsonwebtoken";
 
 export const LoginContext = React.createContext();
-const API = process.env.REACT_APP_URL;
+const API = "https://craft-service.herokuapp.com"
 
 export default function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
