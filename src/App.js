@@ -2,7 +2,7 @@ import React from 'react'
 import ContactUs from './components/contact-us/ContactUs'
 import HisWork from './components/forms/HisWork'
 import Review from './components/forms/Review'
-import Tools from './components/forms/Tools'
+import Tools from './components/forms/ToolsForm'
 import Ibrahem from './components/ibrahem'
 import Services from './components/services/Services'
 // import {
@@ -19,7 +19,7 @@ function App() {
     return (
         <>
         <Header/>
-        <Home/>
+        {/* <Home/> */}
             {/* 
             <div>
                 <p>kkkkkkkkk</p>
@@ -32,10 +32,11 @@ function App() {
             <Tools/>
             <Services/>
             <Test/> */}
-            {/* <Ibrahem/> */}
-            <Footer/>
-            <ContactUs/>
             <SignIn/>
+            <Ibrahem/>
+            <Footer/>
+            {/* <ContactUs/> */}
+            
         </>
     )
 }

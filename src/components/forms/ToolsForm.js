@@ -7,8 +7,8 @@ import cookie from "react-cookies";
       - description 
       - title 
 */
-function Tools() {
-    const Api =  process.env.REACT_APP_URL;
+function ToolsForm(props) {
+  const Api = process.env.REACT_APP_URL;
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
 
@@ -20,7 +20,7 @@ function Tools() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     const token = cookie.load("token");
     const body = new FormData();
     for (const file of Object.entries(imges)) {
@@ -56,8 +56,9 @@ function Tools() {
         authorization: `Bearer ${token}`,
       },
     });
+    props.setWorkerList(res.data);
     console.log(res);
-    e.target.reset()
+    e.target.reset();
   };
   return (
     <div>
@@ -91,4 +92,4 @@ function Tools() {
   );
 }
 
-export default Tools
+export default ToolsForm;

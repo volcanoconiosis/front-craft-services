@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Tab ,Nav} from "react-bootstrap";
+import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import "./ibrahem.css";
-
-
+import PersonalInfo from "./profiles/worker/PersonalInfo";
 // import images
 import personalImg from "./ryan.jpg";
 import { LoremIpsum } from "react-lorem-ipsum";
+import FavWorker from "./profiles/worker/FavWorker";
+import FavImg from "./profiles/worker/FavImg";
+import Recently from "./profiles/worker/Recently";
+import ManWorks from "./profiles/worker/ManWorks";
+import Tools from "./profiles/worker/Tools";
+
 function ibrahem() {
   const [iconPills, setIconPills] = useState("1");
   return (
@@ -97,15 +102,11 @@ function ibrahem() {
                 <Nav.Item>
                   <Nav.Link eventKey="T4">recently</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="T5">schedule Work</Nav.Link>
-                </Nav.Item>
+
                 <Nav.Item>
                   <Nav.Link eventKey="T6">his Work</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="T7">offers</Nav.Link>
-                </Nav.Item>
+
                 <Nav.Item>
                   <Nav.Link eventKey="T8">tools</Nav.Link>
                 </Nav.Item>
@@ -113,18 +114,33 @@ function ibrahem() {
                   <Nav.Link eventKey="T9">reviews</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T10">His work</Nav.Link>
+                  <Nav.Link eventKey="T5">schedule Work</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="T7">offers</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col  sm={1}></Col>
+            <Col sm={1}></Col>
             <Col sm={9} className="profile-contant-right">
               <Tab.Content>
                 <Tab.Pane eventKey="T1">
-                  ddd
+                  <PersonalInfo />
                 </Tab.Pane>
                 <Tab.Pane eventKey="T2">
-                  ssss
+                  <FavWorker />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T3">
+                  <FavImg />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T4">
+                  <Recently />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T6">
+                  <ManWorks />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T8">
+                  <Tools />
                 </Tab.Pane>
               </Tab.Content>
             </Col>
