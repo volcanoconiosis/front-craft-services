@@ -7,6 +7,7 @@ function Recently() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
+  const role = cookie.load("user");
   const Api ="https://craft-service.herokuapp.com"
   const context = useContext(LoginContext);
 
@@ -24,7 +25,8 @@ function Recently() {
       });
 
     // get worker
-    await axios
+    if(role==="worker"){
+      await axios
       .get(`${Api}/worker`, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -34,18 +36,41 @@ function Recently() {
         setWorkerList(res.data[0]);
         console.log("setWorkerList=====>", res.data[0]);
       });
+    }else if (role==="user"){
+      await axios
+      .get(`${Api}/clientData`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setWorkerList(res.data[0]);
+        console.log("setWorkerList=====>", res.data[0]);
+      });
+    }
+    
   }, []);
 
   //:::::delete recintly :::::: 🔴🔴
 
   const deleteRecently = async (indx) => {
-    let res = await axios.delete(`${Api}/worker/recently?index=${indx}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    setWorkerList(res.data);
-  };
+    if(role==="worker"){
+      let res = await axios.delete(`${Api}/worker/recently?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }else if(role==="user"){
+      let res = await axios.delete(`${Api}/client/recently?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }
+    }
+   
 
   const showWorker = async (userId, id, item) => {
     const res = await axios.get(`${Api}/workerForClient/${id}`, {

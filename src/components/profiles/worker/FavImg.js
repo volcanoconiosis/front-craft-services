@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 
@@ -6,6 +6,7 @@ function FavImg() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
+  const role = cookie.load("user");
   const Api = "https://craft-service.herokuapp.com"
   useEffect(async () => {
     // get information personal
@@ -21,7 +22,8 @@ function FavImg() {
       });
 
     // get worker
-    await axios
+    if(role==="worker"){
+      await axios
       .get(`${Api}/worker`, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -31,16 +33,39 @@ function FavImg() {
         setWorkerList(res.data[0]);
         console.log("setWorkerList=====>", res.data[0]);
       });
+    }else if(role==="user"){
+      await axios
+      .get(`${Api}/clientData`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setWorkerList(res.data[0]);
+        console.log("setWorkerList=====>", res.data[0]);
+      });
+    }
+    
   }, []);
 
   // :::: delete fav img ::::: 🔴🔴
   const deleteFavImg = async (indx) => {
-    let res = await axios.delete(`${Api}/worker/favimg?index=${indx}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    setWorkerList(res.data);
+    if(role==="worker"){
+      let res = await axios.delete(`${Api}/worker/favimg?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }else if(role==="user"){
+      let res = await axios.delete(`${Api}/client/favoriteImg?index=${indx}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setWorkerList(res.data);
+    }
+   
   };
 
   return (
