@@ -1,0 +1,37 @@
+
+.profile-top-section{
+    background-image: url("./bg11.jpg");
+    height: 25rem;
+    display: grid;
+}
+
+.profile-top-section .container .row:nth-child(1){
+    margin-top: 6rem;
+}
+
+.profile-top-img,.profile-top-name,.profile-top-jop,.profile-top-about{
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+}
+.profile-top-img img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+}
+
+
+.profile-contant-section{
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+.profile-contant-left{
+    border: 2px solid black;
+    padding: 1rem;
+}
+.profile-contant-right{
+    border: 2px solid black;
+    padding: 1rem;
+}

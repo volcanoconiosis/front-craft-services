@@ -3,6 +3,7 @@ import ContactUs from './components/contact-us/ContactUs'
 import HisWork from './components/forms/HisWork'
 import Review from './components/forms/Review'
 import Tools from './components/forms/Tools'
+import Ibrahem from './components/ibrahem'
 import Services from './components/services/Services'
 // import {
 //     BrowserRouter ,
@@ -13,10 +14,15 @@ import Services from './components/services/Services'
 import SignIn from './components/Sign/SignIn'
 import SignUp from './components/Sign/SignUp'
 import Test from './components/test'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
+import Home from './components/home/Home'
 function App() {
     return (
         <>
-            <SignIn/>
+        <Header/>
+        {/* <Home/> */}
+            {/* <SignIn/>
             <div>
                 <p>kkkkkkkkk</p>
                 <SignUp/>
@@ -27,7 +33,9 @@ function App() {
             <Review/>
             <Tools/>
             <Services/>
-            <Test/>
+            <Test/> */}
+            <Ibrahem/>
+            <Footer/>
         </>
     )
 }
