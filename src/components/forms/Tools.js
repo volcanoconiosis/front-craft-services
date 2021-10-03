@@ -8,7 +8,7 @@ import cookie from "react-cookies";
       - title 
 */
 function Tools() {
-    const Api = "https://craft-service.herokuapp.com";
+    const Api =  process.env.REACT_APP_URL;
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
 
@@ -20,7 +20,7 @@ function Tools() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+   
     const token = cookie.load("token");
     const body = new FormData();
     for (const file of Object.entries(imges)) {
@@ -57,6 +57,7 @@ function Tools() {
       },
     });
     console.log(res);
+    e.target.reset()
   };
   return (
     <div>

@@ -9,7 +9,7 @@ import cookie from "react-cookies";
       - date
 */
 function Review() {
-  const Api = "https://craft-service.herokuapp.com";
+  const Api = process.env.REACT_APP_URL;
   const token = cookie.load("token");
   const [values, setValues] = useState({});
 
@@ -18,6 +18,7 @@ function Review() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     let reqBody = {
       name: values.name,
       message: values.message,
@@ -31,6 +32,7 @@ function Review() {
       },
     });
     console.log(res);
+    e.target.reset()
   };
   return (
     <div>

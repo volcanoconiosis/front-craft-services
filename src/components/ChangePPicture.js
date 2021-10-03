@@ -3,7 +3,7 @@ import { useState } from "react";
 import cookie from "react-cookies";
 
 function Test() {
-  const Api = "https://craft-service.herokuapp.com";
+  const Api =  process.env.REACT_APP_URL;
   const [imges, setImg] = useState({});
   const token = cookie.load("token");
   const role = cookie.load("user");

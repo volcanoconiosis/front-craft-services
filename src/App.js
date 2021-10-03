@@ -13,7 +13,6 @@ import Services from './components/services/Services'
 //   } from "react-router-dom";
 import SignIn from './components/Sign/SignIn'
 import SignUp from './components/Sign/SignUp'
-import Test from './components/test'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
