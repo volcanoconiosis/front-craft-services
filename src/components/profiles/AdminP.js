@@ -7,7 +7,7 @@ function AdminProfile() {
   const [adminList, setAdminList] = useState({});
   const [allUsers, setAllUsers] = useState([]);
   const token = cookie.load("token");
-  const Api = "https://craft-service.herokuapp.com";
+  const Api =  process.env.REACT_APP_URL;
 
   useEffect(async () => {
     // get information personal

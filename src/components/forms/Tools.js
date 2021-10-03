@@ -8,7 +8,7 @@ import cookie from "react-cookies";
       - title 
 */
 function Tools() {
-    const Api = "https://craft-service.herokuapp.com";
+    const Api =  process.env.REACT_APP_URL;
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
 

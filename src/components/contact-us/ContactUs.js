@@ -14,7 +14,7 @@ import "./contact.css";
 
 function ContactUs() {
   let [values, setValues] = useState({});
-  let Api = "https://craft-service.herokuapp.com";
+  let Api =  process.env.REACT_APP_URL;
   function handleChange(e) {
     setValues((values) => ({ ...values, [e.target.name]: e.target.value }));
     console.log("from contact-us comp:", values);

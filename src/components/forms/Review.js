@@ -9,7 +9,7 @@ import cookie from "react-cookies";
       - date
 */
 function Review() {
-  const Api = "https://craft-service.herokuapp.com";
+  const Api = process.env.REACT_APP_URL;
   const token = cookie.load("token");
   const [values, setValues] = useState({});
 

@@ -1,17 +1,17 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
-import {LoginContext} from "../../context/Auth"
-
+import { LoginContext } from "../../context/Auth";
 
 function ClientProfile() {
   const [userList, setUserList] = useState({});
   const [userModelList, setUserModelList] = useState({});
-  const context= useContext(LoginContext);
-
+  const context = useContext(LoginContext);
 
   const token = cookie.load("token");
-  const Api = "https://craft-service.herokuapp.com";
+  const Api = process.env.REACT_APP_URL;
+ 
+  
   let [values, setValues] = useState({});
   /*
     :::functions::: 
@@ -150,27 +150,22 @@ function ClientProfile() {
         console.log(res);
       });
   };
-  const showWorker=async(userId,id,item)=>{
-    const res=await axios.get(`${Api}/workerForClient/${id}`,{
+  const showWorker = async ( id, item) => {
+    const res = await axios.get(`${Api}/workerForClient/${id}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    })
-    await context.setList(item)
-    await context.setList2(res)
-    console.log("setList2(res)===>" ,res)
-    console.log("item",item)
-
-    
-    
-
-  }
-
-
+    });
+    await context.setList(item);
+    await context.setList2(res.data);
+    console.log("setList2(res)===>", res);
+    console.log("item list 1", item);
+  };
 
   return (
     <div>
       {/*  :::::: render personal information ::::: */}
+      <h1>:::::: render personal information :::::</h1>
       <p>{userList.username}</p>
       <p>{userList.id}</p>
 
@@ -183,8 +178,11 @@ function ClientProfile() {
       ) : (
         <img src={userModelList.profilePicture} alt={userModelList.id} />
       )}
+
+<h1>::::::End render personal information :::::</h1>
       {/* ::::::: for render the favWorker ::::: */}
       <div>
+      <h1>:::::: render favWorker :::::</h1>
         {userModelList.favoriteWorker &&
           userModelList.favoriteWorker.map((item, indx) => {
             return (
@@ -209,30 +207,37 @@ function ClientProfile() {
                 </button>
 
                 <button
-                onClick={() => {
-                  showWorker(item.userId,item.id,item);
-                }}>
-                  Show Worker     
+                  onClick={() => {
+                    showWorker( item.id, item);
+                  }}
+                >
+                  Show Worker
                 </button>
               </div>
             );
           })}
+          <h1>::::::End render favWorker :::::</h1>
       </div>
       <hr />
 
       {/* :::::: for render the favoriteImg :::::: 🟢 */}
       <div>
+      <h1>:::::: render favoriteImg 🟢:::::</h1>
         {userModelList.favoriteImg &&
           userModelList.favoriteImg.map((item, indx) => {
             return (
               <div key={indx}>
-                {item.img && item.img.includes("upload") ? (
-                  <img src={`${Api}/${item.img}`} alt={item.id} />
-                ) : (
-                  <img src={item.img} alt={item.id} />
-                )}
-                <p>{item.description}</p>
+                {item.imges &&
+                  item.imges.map((el, indx) => {
+                    return el.includes("images") ? (
+                      <img src={`${Api}/${el}`} alt={indx} />
+                    ) : (
+                      <img src={el} alt={indx} />
+                    );
+                  })}
+
                 <p>{item.title}</p>
+                <p>{item.loction}</p>
                 <button
                   onClick={() => {
                     deleteFavImg(indx);
@@ -243,11 +248,13 @@ function ClientProfile() {
               </div>
             );
           })}
+          <h1>::::::End render favoriteImg 🟢:::::</h1>
       </div>
 
       <hr />
       {/* for render the recently */}
       <div>
+      <h1>:::::: render recently 🟢:::::</h1>
         {userModelList.recently &&
           userModelList.recently.map((item, indx) => {
             return (
@@ -273,12 +280,17 @@ function ClientProfile() {
               </div>
             );
           })}
+          <h1>:::::: End render recently 🟢:::::</h1>
       </div>
 
+      <h1>::::::  delete  account 🟢:::::</h1>
       <p>from client</p>
       <button onClick={handleDeleteAccount}>delete account</button>
 
+      <h1>:::::: End delete  account 🟢:::::</h1>
+
       {/* form for update account  */}
+      <h1>:::::: update  account 🟢:::::</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -325,6 +337,7 @@ function ClientProfile() {
 
         <button type="submit"> update</button>
       </form>
+      <h1>::::::end update  account 🟢:::::</h1>
     </div>
   );
 }
