@@ -2,62 +2,58 @@ import React, { useContext, useState,useRef, useEffect } from 'react'
 import { LoginContext } from '../../context/Auth'
 import io from 'socket.io-client'
 import cookie from 'react-cookies'
-
-function Chats(props) {
-    const context = useContext(LoginContext);
+function Resever(props) {
     
+    const context = useContext(LoginContext);
 
     const [ message, setMessage ] = useState('')
     const [ chat, setChat ] = useState([])
-   
 	const socketRef = useRef()
-    const userID=cookie.load('userID')
-    let workerID= Number(context.socketid);
-    let clintID=Number(userID);
-    localStorage.setItem('clientID',clintID)
+  
+    
+   
+    let workerID=Number(cookie.load('userID'));
+    let clintID=Number(localStorage.getItem('clientID'));
+    console.log('clintID----->>>',context);
 
-    console.log('fat7e-->',workerID);
     useEffect(
 
         () => {
-          
-    
-            // console.log('useEffect is worek');
+           
+            
 			socketRef.current = io.connect("https://craft-service.herokuapp.com/messanger")
-            socketRef.current.emit('sendClientID',clintID,workerID) 
-            socketRef.current.emit('get_all_2');
-			socketRef.current.on('chore_2', msg=> {
+            socketRef.current.emit('sendWorkerID',workerID,clintID)
+             socketRef.current.emit('get_all');
+			 socketRef.current.on('chore', msg=> {
                 if (!chat.includes(msg.payload)) {
                     setChat([...chat, msg.payload])
                     
-                // console.log(chat);
-                // console.log('msg-->', msg);
-                // console.log('222222');
+                console.log(chat);
+                console.log('msg-->', msg);
+                console.log('222222');
                 }
-                // console.log('otside if ');
+                
+               
             })
-            console.log('user------>>>>',clintID);
+			
+            
 			return () => socketRef.current.disconnect()
 			
 		},
-        
-		[ chat,[]]
+		[ chat ,[]]
     )
 
     const  onTextChange=(e)=>{
         setMessage(e.target.value)
     }
 
-    const onMessageSubmit = async (e) => {
+    const onMessageSubmit = async(e) => {
         e.preventDefault()
-        console.log('worker-id-->',context.socketid);
-        console.log('message-->',message);
-        let msgdata=[message,clintID,workerID] 
-		await socketRef.current.emit("new_chore", msgdata )
-        await setChat([ ...chat, message ])
-        console.log('chat-->',chat);
-        console.log('msg-->',message);
-		context.setUserid(clintID)
+        let msgdata=[message,workerID,clintID] 
+        await socketRef.current.emit("responsMsg",msgdata)
+		await setChat([ ...chat, message ])
+		
+		
 	
 	}
 
@@ -92,4 +88,4 @@ function Chats(props) {
     )
 }
 
-export default Chats
+export default Resever

@@ -92,6 +92,9 @@ function PersonalClient() {
 
 <h1>::::::End render personal information :::::</h1>
             
+<h1>:::::: delete account 🟢:::::</h1>
+      <p>from client</p>
+      <button onClick={handleDeleteAccount}>delete account</button>
 
             {/* form for update account  */}
       <h1>:::::: update  account 🟢:::::</h1>
