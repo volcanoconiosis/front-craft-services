@@ -2,13 +2,15 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import { LoginContext } from "../../../context/Auth";
+import "./wrokerStyle/favWorker.css";
+import { Button, Container, Row } from "react-bootstrap";
 
 function FavWorker() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
   const role = cookie.load("user");
-  const Api = "https://craft-service.herokuapp.com"
+  const Api = "https://craft-service.herokuapp.com";
   const context = useContext(LoginContext);
 
   useEffect(async () => {
@@ -26,42 +28,41 @@ function FavWorker() {
       });
 
     // get worker
-    if(role==="worker"){
+    if (role === "worker") {
       await axios
-      .get(`${Api}/worker`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setWorkerList(res.data[0]);
-        console.log("setWorkerList=====>", res.data[0]);
-      });
-    }else if(role==="user"){
+        .get(`${Api}/worker`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setWorkerList(res.data[0]);
+          console.log("setWorkerList=====>", res.data[0]);
+        });
+    } else if (role === "user") {
       await axios
-      .get(`${Api}/clientData`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setWorkerList(res.data[0]);
-        console.log("setWorkerList=====>", res.data[0]);
-      });
+        .get(`${Api}/clientData`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setWorkerList(res.data[0]);
+          console.log("setWorkerList=====>", res.data[0]);
+        });
     }
-   
   }, []);
 
   //  ::::::::::: delete favWorker ::::::: 🔴🔴
   const deleteFavWorker = async (indx) => {
-    if(role==="worker"){
+    if (role === "worker") {
       let res = await axios.delete(`${Api}/worker/fav?index=${indx}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
       });
       setWorkerList(res.data);
-    }else if (role==="user"){
+    } else if (role === "user") {
       let res = await axios.delete(`${Api}/client/favWorker?index=${indx}`, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -69,7 +70,6 @@ function FavWorker() {
       });
       setWorkerList(res.data);
     }
-    
   };
 
   // :::::::: show worker ::::::
@@ -87,42 +87,61 @@ function FavWorker() {
 
   return (
     <>
-      <div>
-        <h1> ::::::: render the fav worker :::::: 🟢🟡🟡</h1>
-        {workerList.favoriteWorker &&
-          workerList.favoriteWorker.map((item, indx) => {
-            return (
-              <div key={indx}>
-                {item.profilePicture &&
-                item.profilePicture.includes("upload") ? (
-                  <img src={`${Api}/${item.profilePicture}`} alt={item.id} />
-                ) : (
-                  <img src={item.profilePicture} alt={item.id} />
-                )}
-                <p>
-                  name: {item.firstname} {item.lastname}
-                </p>
-                <p>workType : {item.workType}</p>
-                <p> loction: {item.loction}</p>
-                <button
-                  onClick={() => {
-                    deleteFavWorker(indx);
-                  }}
-                >
-                  delete worker
-                </button>
-                <button
-                  onClick={() => {
-                    showWorker(item.userId, item.id, item);
-                  }}
-                >
-                  Show Worker
-                </button>
-              </div>
-            );
-          })}
-        <h1> ::::::: End render the fav worker :::::: 🟢🟡🟡</h1>
-      </div>
+      <section className="fav-worker-section">
+        <Container>
+          <Row>
+            {workerList.favoriteWorker &&
+              workerList.favoriteWorker.map((item, indx) => {
+                return (
+                  <div className="fav-worker-card" key={indx}>
+                    <div className="profile--card">
+                      {item.profilePicture &&
+                      item.profilePicture.includes("upload") ? (
+                        <img
+                          src={`${Api}/${item.profilePicture}`}
+                          alt={item.id}
+                        />
+                      ) : (
+                        <img src={item.profilePicture} alt={item.id} />
+                      )}
+
+                      <div className="profile--info">
+                        <h1 className="profile--h1">
+                          {item.firstname} {item.lastname}
+                        </h1>
+                        <div className="profile--h6s">
+                          <h6>{item.workType}</h6>
+                          <h6>{item.loction}</h6>
+                        </div>
+                        <div className="profile--btns">
+                          <Button
+                            variant="warning"
+                            className="btn-sm"
+                            onClick={() => {
+                              showWorker(item.userId, item.id, item);
+                            }}
+                          >
+                            view profile
+                          </Button>
+
+                          <Button
+                            variant="danger"
+                            className="btn-sm"
+                            onClick={() => {
+                              deleteFavWorker(indx);
+                            }}
+                          >
+                            delete
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </Row>
+        </Container>
+      </section>
     </>
   );
 }

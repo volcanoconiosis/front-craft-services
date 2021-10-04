@@ -1,0 +1,51 @@
+
+.personal-info-top,
+.personal-info-middle {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.329);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.personal-section .personal-info-img img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.text {
+  box-shadow: 0 0 15rem rgba(0, 0, 0, 0.363) inset;
+  color: wheat;
+}
+.text:focus {
+  box-shadow: none;
+}
+
+.personal-change-imgbtn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  outline: none;
+  border: none;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    8deg,
+    rgba(255, 255, 255, 0.09287464985994398) 0%,
+    rgba(115, 212, 255, 1) 0%,
+    rgba(44, 2, 255, 1) 62%
+  );
+  color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.623);
+  transition: .5s;
+}
+.personal-change-imgbtn:hover{
+    transform: scale(1.1);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      8deg,
+      rgba(255, 255, 255, 0.09287464985994398) 0%,
+      rgba(115, 212, 255, 1) 0%,
+      rgb(74, 39, 246) 92%
+    );
+}

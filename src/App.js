@@ -18,6 +18,7 @@ import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
+import AboutUs from "./components/about-us/AboutUs"
 function App() {
     return (
         <>
@@ -44,7 +45,7 @@ function App() {
             <ClientProfile/>
             <Footer/>
             {/* <ContactUs/> */}
-            
+            {/* <AboutUs/> */}
         </>
     )
 }
