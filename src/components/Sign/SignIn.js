@@ -49,6 +49,7 @@ function SignIn() {
                     placeholder="Username"
                     name="name"
                     onChange={handleInputUser}
+                    required
                   />
                 </div>
                 <div className="input-field">
@@ -58,6 +59,7 @@ function SignIn() {
                     placeholder="Password"
                     name="password"
                     onChange={handleInputPass}
+                    required
                   />
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
@@ -74,6 +76,7 @@ function SignIn() {
                     placeholder="Username"
                     name="username"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 
@@ -84,6 +87,7 @@ function SignIn() {
                     placeholder="Firstname"
                     name="firstName"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 
@@ -94,6 +98,7 @@ function SignIn() {
                     placeholder="Email"
                     name="email"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 <div className="input-field" >
@@ -104,6 +109,7 @@ function SignIn() {
                     name="role"
                     className="select-signin"
                     onChange={handleChangeSignUp}
+                    required
                   >
                     <option
                       placeholder="Role"
@@ -131,12 +137,22 @@ function SignIn() {
                     name="workType"
                     className="select-signin"
                     onChange={handleChangeSignUp}
+                    
                   >
-                    <option value="moserje" className="select-signin">
-                      moserje
+                    <option value="Carpenter" className="select-signin">
+                    Carpenter
                     </option>
-                    <option value="bleet" className="select-signin">
-                      bleet
+                    <option value="Plumber" className="select-signin">
+                    Plumber
+                    </option>
+                    <option value="Electrician" className="select-signin">
+                    Electrician
+                    </option>
+                    <option value="Tile-worker" className="select-signin">
+                    Tile-worker
+                    </option>
+                    <option value="Blacksmith" className="select-signin">
+                    Blacksmith
                     </option>
                   </select>
                 </div>
@@ -150,6 +166,7 @@ function SignIn() {
                     placeholder="Password"
                     name="password"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 <div className="input-field">
@@ -159,6 +176,7 @@ function SignIn() {
                     placeholder="Lastname"
                     name="lastName"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 <div className="input-field">
@@ -168,6 +186,7 @@ function SignIn() {
                     placeholder="phone"
                     name="phone"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>    
                
@@ -178,6 +197,7 @@ function SignIn() {
                     placeholder="Location"
                     name="location"
                     onChange={handleChangeSignUp}
+                    required
                   />
                 </div>
                 
@@ -194,10 +214,10 @@ function SignIn() {
             <div className="panel left-panel">
               <div className="content">
                 <h3>New here ?</h3>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Debitis, ex ratione. Aliquid!
+                <p style={{fontSize:"20px"}}>
+                 Sign Up Now To Becoume On Of Us 
                 </p>
+                
                 <button
                   className="btn transparent"
                   id="sign-up-btn"
@@ -217,9 +237,8 @@ function SignIn() {
             <div className="panel right-panel">
               <div className="content">
                 <h3>One of us ?</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum laboriosam ad deleniti.
+                <p style={{fontSize:"20px"}}>
+                 Sign In To Access Data  
                 </p>
                 <button
                   className="btn transparent"
