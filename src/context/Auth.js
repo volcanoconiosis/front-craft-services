@@ -3,7 +3,6 @@ import superagent from "superagent";
 import base64 from "base-64";
 import cookie from "react-cookies";
 import jwt from "jsonwebtoken";
-
 export const LoginContext = React.createContext();
 const API = "https://craft-service.herokuapp.com";
 export default function LoginProvider(props) {
@@ -11,6 +10,9 @@ export default function LoginProvider(props) {
   const [user, setUser] = useState({});
   const [list, setList]=useState({});
   const [list2, setList2]=useState({});
+  const[socketid,setSocketid]=useState('')
+  const[userID,setUserid]=useState('')
+  
 
   const login = async (username, password) => {
     try {
@@ -22,6 +24,7 @@ export default function LoginProvider(props) {
         );
       console.log(response.body);
       cookie.save("user", response.body.user.role);
+      cookie.save('userID', response.body.user.id)
    
       validateMyToken(response.body.token);
     } catch (err) {
@@ -46,6 +49,8 @@ export default function LoginProvider(props) {
       const response = await superagent.post(`${API}/signup`, obj);
       console.log(response.body);
       validateMyToken(response.body.token);
+      cookie.save("user", response.body.user.role);
+      cookie.save('userID', response.body.user.id)
     } catch (err) {
       console.log(err);
     }
@@ -93,7 +98,11 @@ export default function LoginProvider(props) {
     setList:setList,
     setList2:setList2,
     list2:list2,
-    list:list
+    list:list,
+    socketid:socketid,
+    setSocketid:setSocketid,
+    userID:userID,
+    setUserid:setUserid
   };
 
   return (

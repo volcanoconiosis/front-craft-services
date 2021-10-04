@@ -66,6 +66,7 @@ function Services() {
     console.log('oo-->',oo);
     console.log('list22-->',context.list2);
     console.log('list-->',context.list);
+     context.setSocketid(oo.userId)
   }
 
   return (

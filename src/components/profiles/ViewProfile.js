@@ -20,6 +20,11 @@ function ViewProfile(props) {
   //   handelclick = (e) => {
   //     //  setShow(false);
   //   }
+ 
+  const handelclick= async(id)=>{
+    // await context.setSocketid(id)
+    console.log(id);
+  }
   return (
     
     <div>
@@ -37,6 +42,7 @@ function ViewProfile(props) {
 
           : <img src={context.list2.profilePicture} />
       }
+      <button onClick={()=>{handelclick(context.list.id)}}>start conversation</button>
     </div>
   )
 }

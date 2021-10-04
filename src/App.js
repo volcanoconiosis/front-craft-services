@@ -18,31 +18,35 @@ import ViewProfile from './components/profiles/ViewProfile'
 import ClientP from './components/profiles/ClientP'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import AdminProfile from './components/profiles/AdminP'
+import Chats from './components/chats/Chats'
+import Resever from './components/chats/Resever'
 function App() {
     return (
         <>
-            {/* <SignIn/>
+            <SignIn/>
             <div>
                 <p>kkkkkkkkk</p>
                 <SignUp/>
             </div>
-            <ContactUs/> */}
-            <AboutUs/>
+            {/* <ContactUs/> */}
+            {/* <AboutUs/> */}
 
             {/* <HisWork/>
             <Review/>
-            <Tools/>
+            <Tools/> */}
             <Services/>
-            <Test/> */}
-            <Test/>
+            {/* <Test/> */}
+            {/* <Test/> */}
             <ViewProfile/>
             <ClientP/>
-            <WorkerProfile/>
+            {/* <WorkerProfile/> */}
             <hr/>
             <hr/>
             <hr/>
             <hr/>
-            <AdminProfile/>
+            {/* <AdminProfile/> */}
+            <Chats/>
+            {/* <Resever/> */}
         </>
     )
 }
