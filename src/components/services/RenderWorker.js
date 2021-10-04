@@ -27,6 +27,7 @@ function RenderWorker(props) {
         items.profilePicture = oo.profilePicture;
         await context.setList(items);
         await context.setList2(oo);
+        context.setSocketid(oo.userId)
       };
     
       console.log("list22-->", context.list2);

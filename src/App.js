@@ -18,6 +18,9 @@ import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
 import AboutUs from "./components/about-us/AboutUs"
+import ViewWorkerProfile from './components/ViewWorkerProfile'
+import Testchat from './components/chats/Testchat'
+import Resever from './components/chats/Resever'
 function App() {
     return (
         <>
@@ -38,7 +41,7 @@ function App() {
             
             <Test/> */}
             {/* <h1>sss</h1> */}
-            {/* <SignIn/> */}
+            <SignIn/>
             <Services/>
             {/* <TestGal/> */}
             {/* <ViewProfile/> */}
@@ -47,6 +50,9 @@ function App() {
             {/* <ClientProfile/> */}
             {/* <ViewWorkerProfile/> */}
             {/* <AdminProfile/> */}
+            {/* <Resever/> */}
+            {/* <Testchat/> */}
+            <ViewWorkerProfile/>
             <Footer/>
             {/* <ContactUs/> */}
             {/* <AboutUs/> */}
