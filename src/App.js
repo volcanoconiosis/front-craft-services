@@ -23,6 +23,7 @@ import Chats from './components/chats/Chats'
 import Resever from './components/chats/Resever'
 
 
+import AboutUs from "./components/about-us/AboutUs"
 function App() {
     return (
         <>
@@ -59,8 +60,7 @@ function App() {
             {/* <AdminProfile/> */}
             <Footer/>
             {/* <ContactUs/> */}
-            
-            
+            {/* <AboutUs/> */}
         </>
     )
 }
