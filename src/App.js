@@ -24,6 +24,9 @@ import Resever from './components/chats/Resever'
 
 
 import AboutUs from "./components/about-us/AboutUs"
+import ViewWorkerProfile from './components/ViewWorkerProfile'
+import Testchat from './components/chats/Testchat'
+import Resever from './components/chats/Resever'
 function App() {
     return (
         <>
@@ -58,6 +61,9 @@ function App() {
             {/* <ClientProfile/> */}
             {/* <ViewWorkerProfile/> */}
             {/* <AdminProfile/> */}
+            {/* <Resever/> */}
+            {/* <Testchat/> */}
+            <ViewWorkerProfile/>
             <Footer/>
             {/* <ContactUs/> */}
             {/* <AboutUs/> */}
