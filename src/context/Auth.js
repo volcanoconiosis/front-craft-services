@@ -4,7 +4,8 @@ import base64 from "base-64";
 import cookie from "react-cookies";
 import jwt from "jsonwebtoken";
 export const LoginContext = React.createContext();
-const API = "https://craft-service.herokuapp.com";
+const API = "https://craft-service.herokuapp.com"
+
 export default function LoginProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
@@ -42,7 +43,7 @@ export default function LoginProvider(props) {
         phone:items.phone,
         firstName:items.firstName,
         lastName:items.lastName,
-        store:items.store,
+        store:"",
         workType:items.workType
 
       };

@@ -1,0 +1,11 @@
+ }
+  const handelclick= async(item,oo)=>{
+    await context.setList(item)
+    await context.setList2(oo)
+    console.log('oo-->',oo);
+    console.log('list22-->',context.list2);
+    console.log('list-->',context.list);
+     context.setSocketid(oo.userId)
+  }
+
+  ===============================================================================

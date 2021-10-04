@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Titillium+Web:wght@200&family=Yaldevi:wght@300&display=swap");
+
+:root {
+  --Ephesis: "Ephesis", cursive;
+  --Titillium: "Titillium Web", sans-serif;
+  --Yaldevi: "Yaldevi", sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+
+.home section {
+  background-color: rgba(0, 255, 255, 0);
+  margin: 4rem 2rem;
+}
+.home-title {
+  font-family: var(--Yaldevi);
+  font-weight: 900;
+  font-size: 3rem;
+}
+.home--sub-title {
+  font-family: var(--Titillium);
+  font-weight: 800;
+  text-align: center;
+}
+.home--para {
+  font-family: var(--Titillium);
+  font-weight: 800;
+  text-align: justify;
+}
+
+.home-center-text {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.home-section-title {
+  text-align: center;
+  font-family: var(--Yaldevi);
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.home-needs-section .card {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.452);
+  text-align: center;
+  height: 20rem;
+}
+
+.home-needs-section .card-img-top {
+  margin-left: 6rem;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+}
+
+.home-carousel {
+  position: absolute;
+  left: -5rem;
+  z-index: 2;
+  width: 30rem;
+  margin-top: 0rem;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 10px;
+  border-image-outset: 0.5rem;
+  border-image-source: linear-gradient(to left, #46454583, #fafafa);
+  filter: drop-shadow(20px -30px 0.2rem #00000011);
+}
+
+.home-carousel-r {
+  position: absolute;
+  right: -5rem;
+  z-index: 2;
+  width: 30rem;
+  margin-top: 0rem;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 10px;
+  border-image-outset: 0.5rem;
+  border-image-source: linear-gradient(to left, #46454583, #fafafa);
+  filter: drop-shadow(-20px 30px 0.2rem #00000011);
+}
+.home-carousel .carousel-control-next,
+.home-carousel .carousel-control-next,
+.home-carousel-r .carousel-control-next,
+.home-carousel-r .carousel-control-next {
+  display: none;
+}
+
+.home-solutions-list {
+  height: 35rem;
+}
+.home-solutions-list .row{
+  margin-top: 1rem;
+  background-blend-mode: screen;
+}
+.home-solutions-list .home-solutions-icon {
+  border-radius: 50%;
+  float: right;
+  width: 6rem;
+  height: 6rem;
+  background-color: rgba(17, 17, 17, 0.109);
+  text-align: center;
+  font-size: 3.3rem;
+}
+.home-solutions-list .home-solutions-icon:hover {
+  animation: rotate-out-center 1s both;
+  filter: drop-shadow(0px 0px 12px #fbff00);
+  transition: 1s;
+}
+
+.list-2 {
+  margin-left: -25rem;
+}
+.home-solutions-section .mt10rem {
+  margin-top: 10rem;
+}
+
+.home-craft-section .home-tools-icons {
+  margin-bottom: 5rem;
+  margin-left: 1rem;
+}
+
+.home-craft-section .home-tools-icons img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.home-craft-section .home-worker-viwe img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin: 2rem;
+}
+
+.home-craft-section .home-worker-button button {
+  margin-right: 2rem;
+}
+
+.bounce-top {
+  animation: bounce-top 10s both infinite;
+  filter: drop-shadow(30px 10px 4px #a3a3a378);
+}
+
+@keyframes bounce-top {
+  0%,
+  100% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+    filter: drop-shadow(30px 10px 4px #a3a3a32c);
+  }
+  24% {
+    opacity: 1;
+    filter: drop-shadow(25px 10px 4px #a3a3a3);
+  }
+  40% {
+    transform: translateY(-24px);
+    animation-timing-function: ease-in;
+    filter: drop-shadow(30px 10px 4px #a3a3a3);
+  }
+  65% {
+    transform: translateY(-12px);
+    animation-timing-function: ease-in;
+    filter: drop-shadow(25px 10px 4px #a3a3a32f);
+  }
+}
+
+.home-needs-card .home-needs-card-header {
+  background: rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+}
+.home-needs-card-header .home-needs-icon {
+  font-size: 5rem;
+  width: 9rem;
+  height: 9rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.178);
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0.794) 35%,
+    rgba(243, 243, 243, 0.409) 100%
+  );
+  filter: drop-shadow(-1px -1px 4px #00000044);
+}
+
+.home-needs-card-header .home-needs-icon:hover {
+  transition: 1s;
+  animation: rotate-out-center 1s both;
+}
+
+@keyframes rotate-out-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.home-icon-item {
+  background-color: rgb(255, 255, 255);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2.3rem;
+  transition: 0.5s;
+}
+.home-icon-item:hover {
+  transform: scale(1.2);
+  filter: saturate(50%);
+  border: 0.1rem double rgb(255, 255, 255);
+  background-color: rgba(255, 255, 254, 0.274);
+}
+
+/* ======================= workers card ================= */
+
+.feature-card {
+  background-image: url(https://i.imgur.com/xOxliOw.jpg);
+}
+.feature-card {
+  width: 6rem;
+  height: 6rem;
+  margin: 50px auto;
+  background-position: center top;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 7px #dfdfdf;
+  border-radius: 50%;
+  transition: 2s;
+}
+.feature-card:hover {
+  width: 20rem;
+  height: 20rem;
+}
+.feature-card-deatails {
+  position: absolute;
+  bottom: -228rem;
+  left: 0;
+  width: 100%;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.774);
+  transition: 0.3s ease-in-out;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+}
+
+.feature-card-tilte {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  bottom: -5rem;
+  width: 100%;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  padding: 20px;
+  background: #fff;
+}
+
+.feature-card-tilte h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #373737;
+}
+
+.feature-card:hover .feature-card-tilte {
+  bottom: -67rem;
+}
+
+.feature-card-deatails i {
+  font-size: 35px;
+  color: #1d365c;
+}
+
+.feature-card-deatails h4 {
+  font-size: 20px;
+  color: #1d365c;
+  margin: 15px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.feature-card:hover .feature-card-deatails {
+  bottom: 0;
+}
+
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

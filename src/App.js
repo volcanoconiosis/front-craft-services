@@ -1,8 +1,9 @@
 import React from 'react'
 import ContactUs from './components/contact-us/ContactUs'
 import HisWork from './components/forms/HisWork'
-import Review from './components/forms/Review'
-import Tools from './components/forms/Tools'
+import Review from './components/forms/ReviewForm'
+import Tools from './components/forms/ToolsForm'
+import Ibrahem from './components/ibrahem'
 import Services from './components/services/Services'
 // import {
 //     BrowserRouter ,
@@ -11,42 +12,44 @@ import Services from './components/services/Services'
 //     Link
 //   } from "react-router-dom";
 import SignIn from './components/Sign/SignIn'
-import SignUp from './components/Sign/SignUp'
-import Test from './components/test'
-import AboutUs from './components/about-us/AboutUs'
-import ViewProfile from './components/profiles/ViewProfile'
-import ClientP from './components/profiles/ClientP'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
+import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
-import AdminProfile from './components/profiles/AdminP'
-import Chats from './components/chats/Chats'
-import Resever from './components/chats/Resever'
+import ClientProfile from './components/CleintProfile'
+import ViewWorkerProfile from './components/ViewWorkerProfile'
+import AdminProfile from './components/AdminProfile'
 function App() {
     return (
         <>
-            <SignIn/>
+        <Header/>
+        
+        {/* <Home/> */}
+            {/* 
             <div>
                 <p>kkkkkkkkk</p>
                 <SignUp/>
             </div>
-            {/* <ContactUs/> */}
-            {/* <AboutUs/> */}
+            
 
-            {/* <HisWork/>
+            <HisWork/>
             <Review/>
-            <Tools/> */}
-            <Services/>
-            {/* <Test/> */}
-            {/* <Test/> */}
-            <ViewProfile/>
-            <ClientP/>
+            <Tools/>
+            
+            <Test/> */}
+            <h1>sss</h1>
+            <SignIn/>
+            {/* <Services/> */}
+            {/* <ViewProfile/> */}
             {/* <WorkerProfile/> */}
-            <hr/>
-            <hr/>
-            <hr/>
-            <hr/>
-            {/* <AdminProfile/> */}
-            <Chats/>
-            {/* <Resever/> */}
+            {/* <Ibrahem/> */}
+            {/* <ClientProfile/> */}
+            {/* <ViewWorkerProfile/> */}
+            <AdminProfile/>
+            <Footer/>
+            <ContactUs/>
+            
+            
         </>
     )
 }

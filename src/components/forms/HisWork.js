@@ -11,9 +11,9 @@ import cookie from "react-cookies";
       - location
 
 */
-function HisWork() {
+function HisWork(props) {
   //  const role = cookie.load("user");
-  const Api = "https://craft-service.herokuapp.com";
+  const Api = "https://craft-service.herokuapp.com"
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});
   const token = cookie.load("token");
@@ -64,7 +64,8 @@ function HisWork() {
         authorization: `Bearer ${token}`,
       },
     });
-    console.log(res);
+    props.setWorkerList(res.data);
+    console.log("from his work",res);
     e.target.reset()
   };
   return (

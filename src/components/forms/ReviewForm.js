@@ -1,24 +1,20 @@
-import {useState} from "react";
+import {useState,useContext} from "react";
 import axios from "axios";
 import cookie from "react-cookies";
-/*
-- form inside this component to give feedback
-      - name 
-      - message 
-      - out of 5 <input type="range" id="vol" name="vol" min="0" max="5">
-      - date
-*/
-function Review() {
-  const Api = "https://craft-service.herokuapp.com";
+import { LoginContext } from "../../context/Auth";
+function ReviewForm() {
+  const Api = "https://craft-service.herokuapp.com"
   const token = cookie.load("token");
   const [values, setValues] = useState({});
+  const context = useContext(LoginContext);
 
   const handleChange = async (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+   let id =context.list.id
     let reqBody = {
       name: values.name,
       message: values.message,
@@ -26,13 +22,18 @@ function Review() {
       rate: values.rate,
     };
 
-    let res = await axios.post(`${Api}/worker/reviews`, reqBody, {
+   await axios.post(`${Api}/worker/reviews/${id}`, reqBody, {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    });
-    console.log(res);
-    e.target.reset()
+    }).then(respon=>{
+      console.log(respon.data);
+      context.setList2(respon.data)
+      e.target.reset()
+    })
+    
+    
+    
   };
   return (
     <div>
@@ -71,4 +72,4 @@ function Review() {
   );
 }
 
-export default Review;
+export default ReviewForm;
