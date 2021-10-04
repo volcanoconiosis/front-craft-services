@@ -17,10 +17,7 @@ import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
-import ViewWorkerProfile from './components/ViewWorkerProfile'
-import AdminProfile from './components/AdminProfile'
-
-
+import AboutUs from "./components/about-us/AboutUs"
 function App() {
     return (
         <>
@@ -52,8 +49,7 @@ function App() {
             {/* <AdminProfile/> */}
             <Footer/>
             {/* <ContactUs/> */}
-            
-            
+            {/* <AboutUs/> */}
         </>
     )
 }

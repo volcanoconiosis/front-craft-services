@@ -2,13 +2,17 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import HisWork from "../../forms/HisWork";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 
 function ManWorks() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
-  const Api ="https://craft-service.herokuapp.com"
+  const Api = "https://craft-service.herokuapp.com";
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(async () => {
     // get information personal
     await axios
@@ -46,9 +50,36 @@ function ManWorks() {
   };
   return (
     <>
-      <HisWork setUserList={setUserList} setWorkerList={setWorkerList} />
+      <section className="his-worke-section">
+        <Container>
+          <Row>
+            <Col>
+              <Button variant="primary" onClick={handleShow}>
+                Add One +
+              </Button>
+            </Col>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add new work</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+              <HisWork setUserList={setUserList} setWorkerList={setWorkerList} />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </Row>
+          <Row></Row>
+        </Container>
+      </section>
+      
       <div>
-        <h1> ::::::: render the hisWork :::::: 🟢🟡🟡</h1>
         {workerList.hisWork &&
           workerList.hisWork.map((item, indx) => {
             return (

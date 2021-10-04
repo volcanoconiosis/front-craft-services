@@ -85,42 +85,57 @@ function Recently() {
   };
   return (
     <>
-      <div>
-        <h1> ::::::: render the recintly :::::: 🟢🟡🟡</h1>
+      <section className="recently-section">
         {workerList.recently &&
           workerList.recently.map((item, indx) => {
             return (
-              <div key={indx}>
-                {item.profilePicture &&
-                item.profilePicture.includes("upload") ? (
-                  <img src={`${Api}/${item.profilePicture}`} alt={item.id} />
-                ) : (
-                  <img src={item.profilePicture} alt={item.id} />
-                )}
-                <p>
-                  {item.firstname} {item.lastname}
-                </p>
-                <p>{item.workType}</p>
-                <p>{item.loction}</p>
-                <button
-                  onClick={() => {
-                    deleteRecently(indx);
-                  }}
-                >
-                  delete recently
-                </button>
-                <button
-                  onClick={() => {
-                    showWorker(item.userId, item.id, item);
-                  }}
-                >
-                  Show Worker
-                </button>
-              </div>
+              <div className="fav-worker-card" key={indx}>
+                    <div className="profile--card">
+                      {item.profilePicture &&
+                      item.profilePicture.includes("upload") ? (
+                        <img
+                          src={`${Api}/${item.profilePicture}`}
+                          alt={item.id}
+                        />
+                      ) : (
+                        <img src={item.profilePicture} alt={item.id} />
+                      )}
+
+                      <div className="profile--info">
+                        <h1 className="profile--h1">
+                          {item.firstname} {item.lastname}
+                        </h1>
+                        <div className="profile--h6s">
+                          <h6>{item.workType}</h6>
+                          <h6>{item.loction}</h6>
+                        </div>
+                        <div className="profile--btns">
+                          <Button
+                            variant="warning"
+                            className="btn-sm"
+                            onClick={() => {
+                              showWorker(item.userId, item.id, item);
+                            }}
+                          >
+                            view profile
+                          </Button>
+
+                          <Button
+                            variant="danger"
+                            className="btn-sm"
+                            onClick={() => {
+                              deleteFavWorker(indx);
+                            }}
+                          >
+                            delete
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             );
           })}
-        <h1> ::::::: End render the recintly :::::: 🟢🟡🟡</h1>
-      </div>
+      </section>
     </>
   );
 }
