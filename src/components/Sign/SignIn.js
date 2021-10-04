@@ -63,8 +63,10 @@ function SignIn() {
                 <input type="submit" value="Login" className="btn solid" />
             
               </form>
+              
+              
               <form className="sign-up-form" onSubmit={handlerSubmitSignUp}>
-                <h2 className="title">Sign up</h2>
+                <section style={{margin:"15px 15px 0 0"}}>
                 <div className="input-field">
                   <i className="fas fa-user"></i>
                   <input
@@ -74,6 +76,7 @@ function SignIn() {
                     onChange={handleChangeSignUp}
                   />
                 </div>
+                
                 <div className="input-field">
                   <i className="fas fa-user-edit"></i>
                   <input
@@ -83,15 +86,7 @@ function SignIn() {
                     onChange={handleChangeSignUp}
                   />
                 </div>
-                <div className="input-field">
-                  <i className="fas fa-user-edit"></i>
-                  <input
-                    type="text"
-                    placeholder="Lastname"
-                    name="lastName"
-                    onChange={handleChangeSignUp}
-                  />
-                </div>
+                
                 <div className="input-field">
                   <i className="fas fa-envelope"></i>
                   <input
@@ -101,34 +96,7 @@ function SignIn() {
                     onChange={handleChangeSignUp}
                   />
                 </div>
-                <div className="input-field">
-                  <i className="fas fa-lock"></i>
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChangeSignUp}
-                  />
-                </div>
-                <div className="input-field">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <input
-                    type="text"
-                    placeholder="Location"
-                    name="location"
-                    onChange={handleChangeSignUp}
-                  />
-                </div>
-                <div className="input-field">
-                  <i className="fas fa-mobile-alt"></i>
-                  <input
-                    type="text"
-                    placeholder="phone"
-                    name="phone"
-                    onChange={handleChangeSignUp}
-                  />
-                </div>
-                <div className="input-field">
+                <div className="input-field" >
                   <i className="fas fa-calendar-check"></i>
                   <select
                     type="text"
@@ -154,6 +122,7 @@ function SignIn() {
                     </option>
                   </select>
                 </div>
+
                 <div className="input-field">
                   <i className="fas fa-wrench"></i>
                   <select
@@ -171,7 +140,51 @@ function SignIn() {
                     </option>
                   </select>
                 </div>
+                </section>
+                <section style={{margin:"15px 15px 0 0"}}>
+
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChangeSignUp}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-user-edit"></i>
+                  <input
+                    type="text"
+                    placeholder="Lastname"
+                    name="lastName"
+                    onChange={handleChangeSignUp}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-mobile-alt"></i>
+                  <input
+                    type="text"
+                    placeholder="phone"
+                    name="phone"
+                    onChange={handleChangeSignUp}
+                  />
+                </div>    
+               
+                <div className="input-field" style={{marginBottom:"30px"}}>
+                  <i className="fas fa-map-marker-alt"></i>
+                  <input
+                    type="text"
+                    placeholder="Location"
+                    name="location"
+                    onChange={handleChangeSignUp}
+                  />
+                </div>
+                
+               
+                
                 <input type="submit" className="btn" value="Sign up" />
+                </section>
             
               </form>
             </div>

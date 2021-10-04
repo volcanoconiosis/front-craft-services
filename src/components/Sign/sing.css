@@ -59,9 +59,13 @@
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+
 }
 
 .SignIn-SignUp form.sign-up-form {
+  width:750px;
+  display: grid;
+  grid-template-columns: auto auto;
   opacity: 0;
   z-index: 1;
 }
@@ -80,7 +84,7 @@
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
-  margin: 10px 0;
+  margin:20px;
   height: 55px;
   border-radius: 55px;
   display: grid;
@@ -161,7 +165,7 @@
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 10px 0 10px 30px ;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -254,7 +258,7 @@
 
 .SignIn-SignUp .container.sign-up-mode:before {
   transform: translate(100%, -50%);
-  right: 52%;
+  right: 47%;
 }
 
 .SignIn-SignUp .container.sign-up-mode .left-panel .image,
@@ -263,7 +267,7 @@
 }
 
 .SignIn-SignUp .container.sign-up-mode .signin-signup {
-  left: 25%;
+  left: 22%;
 }
 
 .SignIn-SignUp .container.sign-up-mode form.sign-up-form {
@@ -289,6 +293,7 @@
   pointer-events: all;
 }
 
+
 @media (max-width: 870px) {
   .SignIn-SignUp .container {
     min-height: 800px;
@@ -303,7 +308,7 @@
 
   .SignIn-SignUp .signin-signup,
   .SignIn-SignUp .container.sign-up-mode .signin-signup {
-    left: 50%;
+    left: 47%;
   }
 
    .SignIn-SignUp .panels-container {
@@ -409,7 +414,7 @@
 
   .SignIn-SignUp .container:before {
     bottom: 72%;
-    left: 50%;
+    left: 47%;
   }
 
   .SignIn-SignUp .container.sign-up-mode:before {
