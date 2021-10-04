@@ -19,10 +19,13 @@ import WorkerProfile from './components/profiles/WorkerProfile'
 import ClientProfile from './components/CleintProfile'
 import ViewWorkerProfile from './components/ViewWorkerProfile'
 import AdminProfile from './components/AdminProfile'
+
+
 function App() {
     return (
         <>
         <Header/>
+      
         
         {/* <Home/> */}
             {/* 
@@ -37,17 +40,18 @@ function App() {
             <Tools/>
             
             <Test/> */}
-            <h1>sss</h1>
-            <SignIn/>
-            {/* <Services/> */}
+            {/* <h1>sss</h1> */}
+            {/* <SignIn/> */}
+            <Services/>
+            {/* <TestGal/> */}
             {/* <ViewProfile/> */}
             {/* <WorkerProfile/> */}
             {/* <Ibrahem/> */}
             {/* <ClientProfile/> */}
             {/* <ViewWorkerProfile/> */}
-            <AdminProfile/>
+            {/* <AdminProfile/> */}
             <Footer/>
-            <ContactUs/>
+            {/* <ContactUs/> */}
             
             
         </>
