@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import "./ibrahem.css";
+import "./profiles/worker/ibrahem.css";
 
 // import images
-import personalImg from "./ryan.jpg";
+import personalImg from "./profiles/worker/ryan.jpg";
 import PersonalInformation from "./profiles/workerProfile/PersonalInformation";
 import WorkerWork from "./profiles/workerProfile/WorkerWork";
 import WorkerTools from "./profiles/workerProfile/WorkerTools";

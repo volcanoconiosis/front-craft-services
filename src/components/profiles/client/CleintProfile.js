@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import "./ibrahem.css";
-import PersonalInfo from "./profiles/worker/PersonalInfo";
+import "../worker/ibrahem.css";
 // import images
-import personalImg from "./ryan.jpg";
-import { LoremIpsum } from "react-lorem-ipsum";
-import FavWorker from "./profiles/worker/FavWorker";
-import FavImg from "./profiles/worker/FavImg";
-import Recently from "./profiles/worker/Recently";
-import ManWorks from "./profiles/worker/ManWorks";
-import Tools from "./profiles/worker/Tools";
-import Reviews from "./profiles/worker/Reviews";
+import personalImg from "../worker/ryan.jpg";
+import FavWorker from "../worker/FavWorker";
+import FavImg from "../worker/FavImg";
+import Recently from "../worker/Recently";
+import PersonalInfo from "../worker/PersonalInfo";
 
-function ibrahem() {
-  const [iconPills, setIconPills] = useState("1");
+function ClientProfile() {
   return (
     <>
       {/* ========== top section ============== */}
@@ -32,7 +27,7 @@ function ibrahem() {
             <Col></Col>
             <Col>
               <div className="profile-top-name">
-                <h1>Ibrahem Alomari</h1>
+                <h1>Ahmad Nofal </h1>
               </div>
             </Col>
             <Col></Col>
@@ -41,7 +36,7 @@ function ibrahem() {
             <Col></Col>
             <Col>
               <div className="profile-top-jop">
-                <h3>Mosarjy</h3>
+                <h3>Client</h3>
               </div>
             </Col>
             <Col></Col>
@@ -103,30 +98,13 @@ function ibrahem() {
                 <Nav.Item>
                   <Nav.Link eventKey="T4">recently</Nav.Link>
                 </Nav.Item>
-
-                <Nav.Item>
-                  <Nav.Link eventKey="T6">his Work</Nav.Link>
-                </Nav.Item>
-
-                <Nav.Item>
-                  <Nav.Link eventKey="T8">tools</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="T9">reviews</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="T5">schedule Work</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="T7">offers</Nav.Link>
-                </Nav.Item>
               </Nav>
             </Col>
             <Col sm={1}></Col>
             <Col sm={9} className="profile-contant-right">
               <Tab.Content>
                 <Tab.Pane eventKey="T1">
-                  <PersonalInfo />
+                  <PersonalInfo/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="T2">
                   <FavWorker />
@@ -137,15 +115,7 @@ function ibrahem() {
                 <Tab.Pane eventKey="T4">
                   <Recently />
                 </Tab.Pane>
-                <Tab.Pane eventKey="T6">
-                  <ManWorks />
-                </Tab.Pane>
-                <Tab.Pane eventKey="T8">
-                  <Tools />
-                </Tab.Pane>
-                <Tab.Pane eventKey="T9">
-                  <Reviews/>
-                </Tab.Pane>
+               
               </Tab.Content>
             </Col>
           </Row>
@@ -155,4 +125,4 @@ function ibrahem() {
   );
 }
 
-export default ibrahem;
+export default ClientProfile;

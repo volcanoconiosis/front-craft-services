@@ -24,6 +24,7 @@ export default function LoginProvider(props) {
           `Basic ${base64.encode(`${username}:${password}`)}`
         );
       console.log(response.body);
+      setList(response.body.user);
       cookie.save("user", response.body.user.role);
       cookie.save('userID', response.body.user.id)
    
@@ -32,6 +33,8 @@ export default function LoginProvider(props) {
       console.log(err);
     }
   };
+
+
   const signUp = async (items) => {
     try {
       let obj = {
