@@ -1,0 +1,45 @@
+.tools-worker-section .card {
+  width: 100% !important;
+  display: inline-block !important;
+}
+
+.tools-worker-section .card .card-img {
+  width: 18rem;
+  height: 18rem;
+}
+.tools-worker-section .card-body{
+  height: 15rem;
+  width: 20rem;
+  overflow-y: scroll;
+}
+.card-img-contianer{
+  height: 15rem;
+  overflow-y: scroll;
+}
+.his-work-btn button{
+  height: 10rem;
+  margin-top: 2.5rem;
+  margin-left: 5rem;
+}
+
+
+.tools-worker-section  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+.tools-worker-section  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(189, 189, 189); 
+  border-radius: 10px;
+}
+ 
+
+.tools-worker-section  ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.24); 
+  border-radius: 10px;
+}
+
+
+.tools-worker-section ::-webkit-scrollbar-thumb:hover {
+  background: #750202; 
+}

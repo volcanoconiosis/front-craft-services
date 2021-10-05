@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import "./ibrahem.css";
+import "../ibrahem.css";
 // import images
-import personalImg from "./ryan.jpg";
-import FavWorker from "./profiles/worker/FavWorker";
-import PersonalClient from "./profiles/client/PersonalClient";
-import FavImg from "./profiles/worker/FavImg";
-import Recently from "./profiles/worker/Recently";
+import personalImg from "../ryan.jpg";
+import FavWorker from "./worker/FavWorker";
+import PersonalClient from "./client/PersonalClient";
+import FavImg from "./worker/FavImg";
+import Recently from "./worker/Recently";
+import PersonalInfo from "./worker/PersonalInfo";
 
 function ClientProfile() {
   const [iconPills, setIconPills] = useState("1");
@@ -105,7 +106,7 @@ function ClientProfile() {
             <Col sm={9} className="profile-contant-right">
               <Tab.Content>
                 <Tab.Pane eventKey="T1">
-                  <PersonalClient/>
+                  <PersonalInfo/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="T2">
                   <FavWorker />
