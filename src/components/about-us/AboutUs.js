@@ -13,6 +13,7 @@ function AboutUs() {
 
   return (
     <>
+    
       <div className="headershow">
         <img className="imgheader" src="https://www.durgasteelgroup.com/uploaded/blog/ps16034431084106.jpg" alt='' />
         <h1 > About Us </h1>
@@ -26,6 +27,7 @@ function AboutUs() {
           <FontAwesomeIcon icon={faInstagram} className="icon3" size="2x" />
           <FontAwesomeIcon icon={faTwitter} className="icon3" size="2x" />
         </h2>
+        <ContactUs/>
         <br />
         <br />
         <br />

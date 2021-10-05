@@ -1,21 +1,21 @@
-import { useContext } from "react";
-import { LoginContext } from "../../../context/Auth";
 import { Row, Col, Form, FloatingLabel } from "react-bootstrap";
+import cookie from "react-cookies";
 function PersonalInformation() {
   const Api = "https://craft-service.herokuapp.com";
-  const context = useContext(LoginContext);
+
+  const list = cookie.load("list");
+
   return (
     <>
       <form>
         <Row className="mb-3" style={{ justifyContent: "center" }}>
-          {context.list.profilePicture &&
-          context.list.profilePicture.includes("upload") ? (
+          {list.profilePicture && list.profilePicture.includes("upload") ? (
             <img
-              src={`${Api}/${context.list.profilePicture}`}
+              src={`${Api}/${list.profilePicture}`}
               style={{ width: "11.1rem", height: "10rem", borderRadius: "50%" }}
             />
           ) : (
-            <img src={context.list.profilePicture} />
+            <img src={list.profilePicture} />
           )}
         </Row>
         <hr />
@@ -25,7 +25,7 @@ function PersonalInformation() {
             <Form.Control
               type="text"
               name="firstName"
-              defaultValue={context.list.firstName}
+              defaultValue={list.firstName}
               disabled={true}
             />
           </Col>
@@ -34,7 +34,7 @@ function PersonalInformation() {
             <Form.Control
               type="text"
               name="lastName"
-              defaultValue={context.list.lastName}
+              defaultValue={list.lastName}
               disabled={true}
             />
           </Col>
@@ -45,7 +45,7 @@ function PersonalInformation() {
             <Form.Control
               type="text"
               name="phone"
-              defaultValue={context.list.phone}
+              defaultValue={list.phone}
               disabled={true}
             />
           </Col>
@@ -54,7 +54,7 @@ function PersonalInformation() {
             <Form.Control
               type="email"
               name="email"
-              defaultValue={context.list.email}
+              defaultValue={list.email}
               disabled={true}
             />
           </Col>
@@ -65,7 +65,7 @@ function PersonalInformation() {
             <Form.Control
               type="text"
               name="location"
-              defaultValue={context.list.location}
+              defaultValue={list.location}
               disabled={true}
             />
           </Col>
@@ -82,13 +82,12 @@ function PersonalInformation() {
               as="textarea"
               placeholder="Leave a comment here"
               style={{ height: "100px" }}
-              defaultValue={context.list.bio}
+              defaultValue={list.bio}
               disabled
             />
           </FloatingLabel>
         </Row>
       </form>
-
     </>
   );
 }

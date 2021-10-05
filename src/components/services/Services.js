@@ -5,9 +5,8 @@ import "./SelectForm.css";
 import RenderWorker from "./RenderWorker";
 import { Row, Col, Container } from "react-bootstrap";
 import { MdDoubleArrow } from "react-icons/md";
-{
-  /* <Nav.Link href="/aboutus">About</Nav.Link> */
-}
+import ContactUs from "../contact-us/ContactUs";
+
 function Services() {
   const [list, setList] = useState([]);
   const [list2, setList2] = useState([]);
@@ -45,6 +44,7 @@ function Services() {
 
   return (
     <div>
+      <ContactUs/>
       <div className="services-div">
         <a style={{ color: "white" }} id="uniqueid">
           {" "}

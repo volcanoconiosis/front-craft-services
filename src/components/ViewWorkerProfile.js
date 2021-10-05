@@ -3,6 +3,8 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import "./profiles/worker/ibrahem.css";
 
 // import images
+import Chat from "./chats/Chats"
+import cookie from "react-cookies"
 import personalImg from "./profiles/worker/ryan.jpg";
 import PersonalInformation from "./profiles/workerProfile/PersonalInformation";
 import WorkerWork from "./profiles/workerProfile/WorkerWork";
@@ -10,9 +12,14 @@ import WorkerTools from "./profiles/workerProfile/WorkerTools";
 import WorkerReview from "./profiles/workerProfile/WorkerReview";
 import WorkerOffers from "./profiles/workerProfile/WorkerOffers";
 import WorkerSec from "./profiles/workerProfile/WorkerSec";
+import axios from "axios";
 
 function ViewWorkerProfile() {
-  const [iconPills, setIconPills] = useState("1");
+  // /client/recently
+ 
+  const role=cookie.load("user")
+
+
   return (
     <>
       {/* ========== top section ============== */}
@@ -102,6 +109,10 @@ function ViewWorkerProfile() {
                 <Nav.Item>
                   <Nav.Link eventKey="T4">Reviews</Nav.Link>
                 </Nav.Item>
+                {role==="user"?<Nav.Item>
+                  <Nav.Link eventKey="T7" >Contact</Nav.Link>
+                </Nav.Item>:""}
+                
                 <Nav.Item>
                   <Nav.Link eventKey="T5">Offers</Nav.Link>
                 </Nav.Item>
@@ -125,6 +136,13 @@ function ViewWorkerProfile() {
                 <Tab.Pane eventKey="T4">
                   <WorkerReview/>
                 </Tab.Pane>
+                {role==="user"?
+                <>
+                <Tab.Pane eventKey="T7">
+                  <Chat/>
+                </Tab.Pane>
+                </>:""}
+                
                 <Tab.Pane eventKey="T5">
                   <WorkerOffers/>
                 </Tab.Pane>

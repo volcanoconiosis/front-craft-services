@@ -8,10 +8,28 @@ function ProfileProvider(props) {
   const role = cookie.load("user");
   const context = useContext(LoginContext);
   const [userData, setUserData] = useState({});
+  const [list2, setList2] = useState({});
+  const [list3, setList3] = useState([]);
+
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
+useEffect(async()=>{
 
+  await axios.get(`${Api}/getAllWorkers`).then((res) => {
+    setList2(res.data);
+    
+  });
+
+  await axios.get(`${Api}/getWorkersData`).then((res) => {
+    setList3(res.data);
+    
+  });
+  
+},[])
   useEffect(async () => {
+
+   
+
     if (role === "worker") {
       await axios
         .get(`${Api}/worker`, {
@@ -38,7 +56,9 @@ function ProfileProvider(props) {
   },[]);
   let state = {
     list: context.list,
-    userData:userData
+    userData:userData,
+    list2:list2,
+    list3:list3
   };
 
   console.log("from new context", state.userData);

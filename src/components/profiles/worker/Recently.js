@@ -2,14 +2,15 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import { LoginContext } from "../../../context/Auth";
-
+import {Button} from "react-bootstrap"
+import Swal from "sweetalert2";
 function Recently() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
   const role = cookie.load("user");
   const Api ="https://craft-service.herokuapp.com"
-  const context = useContext(LoginContext);
+  // const context = useContext(LoginContext);
 
   useEffect(async () => {
     // get information personal
@@ -51,25 +52,101 @@ function Recently() {
     
   }, []);
 
-  //:::::delete recintly :::::: 🔴🔴
-
+   //:::::delete recintly :::::: 🔴🔴
   const deleteRecently = async (indx) => {
-    if(role==="worker"){
-      let res = await axios.delete(`${Api}/worker/recently?index=${indx}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
+    if (role === "worker") {
+    
+
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
         },
-      });
-      setWorkerList(res.data);
-    }else if(role==="user"){
-      let res = await axios.delete(`${Api}/client/recently?index=${indx}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          let res = await axios.delete(`${Api}/worker/recently?index=${indx}`, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          });
+          setWorkerList(res.data);
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
+    } else if (role === "user") {
+      
+
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
         },
-      });
-      setWorkerList(res.data);
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          let res = await axios.delete(`${Api}/client/recently?index=${indx}`, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          });
+          setWorkerList(res.data);
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
     }
-    }
+  };
+
+ 
+
+  
    
 
   const showWorker = async (userId, id, item) => {
@@ -78,10 +155,25 @@ function Recently() {
         authorization: `Bearer ${token}`,
       },
     });
-    await context.setList(item);
-    await context.setList2(res.data);
-    console.log("setList2(res)===>", res);
-    console.log("item", item);
+    console.log("ressssssssssssssss",res);
+    const response = await axios.get(`${Api}/getWorkersData`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("ressssssssppppppppp",response);
+
+    
+    
+    
+    let oop = response.data.find((o) => o.userId === item.id);
+    let items = res.data;
+      items.profilePicture = oop.profilePicture;
+    cookie.save("list",items)
+    cookie.save("list2",oop)
+    cookie.save("socketid",oop.userId)
+    window.location.href="/viewprofile"
+    
   };
   return (
     <>
@@ -124,7 +216,7 @@ function Recently() {
                             variant="danger"
                             className="btn-sm"
                             onClick={() => {
-                              deleteFavWorker(indx);
+                              deleteRecently(indx);
                             }}
                           >
                             delete
