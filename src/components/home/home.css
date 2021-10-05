@@ -8,7 +8,12 @@
 body {
   overflow-x: hidden;
 }
-
+.home__typed-dynamic{
+  color:rgba(0, 109, 251, 0.575);
+  text-shadow: 0 0 8px rgba(82, 82, 82, 0.466);
+  margin-left: 1rem;
+  
+}
 .home section {
   background-color: rgba(0, 255, 255, 0);
   margin: 4rem 2rem;
@@ -16,7 +21,8 @@ body {
 .home-title {
   font-family: var(--Yaldevi);
   font-weight: 900;
-  font-size: 3rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
 }
 .home--sub-title {
   font-family: var(--Titillium);
@@ -27,6 +33,7 @@ body {
   font-family: var(--Titillium);
   font-weight: 800;
   text-align: justify;
+  text-transform: capitalize;
 }
 
 .home-center-text {

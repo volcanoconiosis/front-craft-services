@@ -30,8 +30,8 @@ function App() {
             </Route>
             <Route path="/profile">
               <WorkerProfile />
-              <AdminProfile/>
-              <ClientProfile/>
+              {/* <AdminProfile/> */}
+              {/* <ClientProfile/> */}
             </Route>
             <Route path="/aboutus">
               <AboutUs/>
@@ -41,6 +41,7 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
+
 
         <Footer />
       </ProfileProvider>

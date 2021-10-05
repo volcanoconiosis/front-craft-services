@@ -15,7 +15,7 @@ import {
 import Swal from "sweetalert2";
 
 function PersonalInfo() {
-  const role = cookie.load("user")
+  const role = cookie.load("user");
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const [bio, setBio] = useState("");
@@ -41,30 +41,29 @@ function PersonalInfo() {
         console.log(res.data);
       });
 
-   if(role==="worker"){
-    await axios
-    .get(`${Api}/worker`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      setWorkerList(res.data[0]);
-      console.log("setWorkerList=====>", res.data[0]);
-    });
-   }else if(role==="user"){
-    await axios
-    .get(`${Api}/clientData`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      setWorkerList(res.data[0]);
-      console.log("setWorkerList=====>", res.data[0]);
-    });
-   }
-    
+    if (role === "worker") {
+      await axios
+        .get(`${Api}/worker`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setWorkerList(res.data[0]);
+          console.log("setWorkerList=====>", res.data[0]);
+        });
+    } else if (role === "user") {
+      await axios
+        .get(`${Api}/clientData`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setWorkerList(res.data[0]);
+          console.log("setWorkerList=====>", res.data[0]);
+        });
+    }
   }, []);
 
   function handleChange(e) {
@@ -78,7 +77,7 @@ function PersonalInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.target.reset();
+    
 
     const reqBody = {
       username: values.username,
@@ -100,17 +99,17 @@ function PersonalInfo() {
         },
       })
       .then((res) => {
-        setWorkerList(res.data)
+        setWorkerList(res.data);
       });
     setEdite(true);
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your Profile has been Updated',
+      position: "center",
+      icon: "success",
+      title: "Your Profile has been Updated",
       showConfirmButton: false,
-      timer: 1500
-    })
-
+      timer: 1500,
+    });
+    e.target.reset();
   };
 
   const handleBio = (e) => {
@@ -127,31 +126,28 @@ function PersonalInfo() {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    })
+    });
     setWorkerList(res.data);
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your Bio has been Changed',
+      position: "center",
+      icon: "success",
+      title: "Your Bio has been Changed",
       showConfirmButton: false,
-      timer: 1500
-    })
-    
+      timer: 1500,
+    });
   };
 
   // ============================== change Img =================================
   const [imges, setImg] = useState({});
-  
+
   const handleImg = async (e) => {
-
     setImg(e.target.files);
-
   };
   console.log("imges;;;;;;;;;;;;;;;;;;;", typeof imges);
 
   const handleSubmitImg = async (e) => {
     e.preventDefault();
-    e.target.reset()
+
     const body = new FormData();
     for (const file of Object.entries(imges)) {
       file.forEach((el) => {
@@ -182,19 +178,16 @@ function PersonalInfo() {
           authorization: `Bearer ${token}`,
         },
       });
-      setShow(false)
-      setWorkerList(res.data)
+      setShow(false);
+      setWorkerList(res.data);
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Your Image has been Changed',
+        position: "center",
+        icon: "success",
+        title: "Your Image has been Changed",
         showConfirmButton: false,
-        timer: 1500
-      })
-     
-    
-      
-      
+        timer: 1500,
+      });
+
       console.log(res);
     } else if (role === "worker") {
       let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
@@ -203,21 +196,17 @@ function PersonalInfo() {
         },
       });
 
-      setWorkerList(res.data)
-      setShow(false)
+      setWorkerList(res.data);
+      setShow(false);
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Your Image has been Changed',
+        position: "center",
+        icon: "success",
+        title: "Your Image has been Changed",
         showConfirmButton: false,
-        timer: 1500
-      })
-      
-    
+        timer: 1500,
+      });
     }
-    
-
-    
+    e.target.reset();
   };
 
   return (
@@ -239,8 +228,7 @@ function PersonalInfo() {
                 )}
               </div>
             </Col>
-            <Col xs={4}>
-              
+            <Col >
               <button
                 variant="primary"
                 className="personal-change-imgbtn"
@@ -381,35 +369,35 @@ function PersonalInfo() {
             </Row>
           )}
         </div>
-{ role==="worker" &&
-<div className="personal-info-middle">
-          <form onSubmit={handleBioSubmit}>
-            <FloatingLabel
-              controlId="floatingTextarea"
-              label="Bio"
-              className="mb-3"
-            >
-              <Form.Control
-                as="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: "100px" }}
-                onChange={handleBio}
-                defaultValue={workerList.bio}
-                className="text"
-              />
-            </FloatingLabel>
-            <Row>
-              <Col md={5}></Col>
-              <Col md={5}>
-                <Button type="submit" variant="success">
-                  Save
-                </Button>
-              </Col>
-              <Col md={2}></Col>
-            </Row>
-          </form>
-        </div>}
-        
+        {role === "worker" && (
+          <div className="personal-info-middle">
+            <form onSubmit={handleBioSubmit}>
+              <FloatingLabel
+                controlId="floatingTextarea"
+                label="Bio"
+                className="mb-3"
+              >
+                <Form.Control
+                  as="textarea"
+                  placeholder="Leave a comment here"
+                  style={{ height: "100px" }}
+                  onChange={handleBio}
+                  defaultValue={workerList.bio}
+                  className="text"
+                />
+              </FloatingLabel>
+              <Row>
+                <Col md={5}></Col>
+                <Col md={5}>
+                  <Button type="submit" variant="success">
+                    Save
+                  </Button>
+                </Col>
+                <Col md={2}></Col>
+              </Row>
+            </form>
+          </div>
+        )}
       </section>
     </>
   );

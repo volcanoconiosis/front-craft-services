@@ -1,0 +1,11 @@
+.admin-section {
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+}
+
+.admin-information-section .row:nth-child(1) {
+  justify-content: center;
+  text-align: center;
+}
+
+.chart-section{}

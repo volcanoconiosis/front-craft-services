@@ -1,37 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Titillium+Web:wght@200&family=Yaldevi:wght@300&display=swap");
 
-.profile-top-section{
-    background-image: url("./bg11.jpg");
-    height: 25rem;
-    display: grid;
+:root {
+  --Ephesis: "Ephesis", cursive;
+  --Titillium: "Titillium Web", sans-serif;
+  --Yaldevi: "Yaldevi", sans-serif;
+}
+.profile-top-section {
+  height: 23rem;
+  display: grid;
+  font-family: var(--Yaldevi);
+  font-weight: bolder;
+}
+.profile-svg {
+  position: absolute;
+  left: 0;
+  top: -5rem;
+  height: 35rem;
+  z-index: -1;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.548));
 }
 
-.profile-top-section .container .row:nth-child(1){
-    margin-top: 6rem;
+.profile-top-section .container .row:nth-child(1) {
+  margin-top: 6rem;
+}
+.profile-top-identity {
+  position: absolute;
+  top: 9rem;
 }
 
-.profile-top-img,.profile-top-name,.profile-top-jop,.profile-top-about{
-    display: flex;
-    justify-content: center;
-    text-align: justify;
+.profile-top-img,
+.profile-top-name,
+.profile-top-jop,
+.profile-top-about {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
 }
-.profile-top-img img{
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
-}
-
-
-.profile-contant-section{
-    border: 2px solid black;
-    padding: 1rem;
+.profile-top-img img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
 }
 
-.profile-contant-left{
-    border: 2px solid black;
-    padding: 1rem;
+.profile-contant-section {
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.39);
+  border-radius: 20px;
+  background-image: linear-gradient(
+    to right bottom,
+    #d4e1ee38,
+    #dfe6f12c,
+    #e9ecf4,
+    #f2f2f6a1,
+    #f9f9f94f
+  );
 }
-.profile-contant-right{
-    border: 2px solid black;
-    padding: 1rem;
+
+.profile-contant-left {
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.39);
+  border-radius: 20px;
+}
+.profile-contant-right {
+  border-radius: 20px;
+  padding: 1rem;
+}
+.profile-contant-left .nav-item {
+  box-shadow: 0 0 4px rgb(151, 157, 245) inset;
+  margin: 3px;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.profile-contant-left .nav-item a {
+  color: rgb(5, 1, 1);
+  text-shadow: 0 0 2px black;
+}
+.profile-contant-left .nav-item:hover {
+  border-radius: 5px;
+  transform: scale(1.1);
 }
