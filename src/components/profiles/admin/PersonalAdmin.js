@@ -5,6 +5,7 @@ import cookie from "react-cookies";
 function PersonalAdmin() {
     const [userList, setUserList] = useState({});
     const [adminList, setAdminList] = useState({});
+    const [values, setValues] = useState([]);
     const token = cookie.load("token");
     const Api = "https://craft-service.herokuapp.com";
     useEffect(async () => {

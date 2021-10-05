@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import "../ibrahem.css";
+import "./ibrahem.css";
+import PersonalInfo from "./PersonalInfo";
 // import images
-import personalImg from "../ryan.jpg";
-import FavWorker from "./worker/FavWorker";
-import PersonalClient from "./client/PersonalClient";
-import FavImg from "./worker/FavImg";
-import Recently from "./worker/Recently";
-import PersonalInfo from "./worker/PersonalInfo";
+import personalImg from "./ryan.jpg";
+import FavWorker from "./FavWorker";
+import FavImg from "./FavImg";
+import Recently from "./Recently";
+import ManWorks from "./ManWorks";
+import Tools from "./Tools";
+import Reviews from "./Reviews";
 
-function ClientProfile() {
+function WorkerPage() {
   const [iconPills, setIconPills] = useState("1");
   return (
     <>
@@ -29,7 +31,7 @@ function ClientProfile() {
             <Col></Col>
             <Col>
               <div className="profile-top-name">
-                <h1>Ahmad Nofal </h1>
+                <h1>Ibrahem Alomari</h1>
               </div>
             </Col>
             <Col></Col>
@@ -38,7 +40,7 @@ function ClientProfile() {
             <Col></Col>
             <Col>
               <div className="profile-top-jop">
-                <h3>Client</h3>
+                <h3>Mosarjy</h3>
               </div>
             </Col>
             <Col></Col>
@@ -100,13 +102,30 @@ function ClientProfile() {
                 <Nav.Item>
                   <Nav.Link eventKey="T4">recently</Nav.Link>
                 </Nav.Item>
+
+                <Nav.Item>
+                  <Nav.Link eventKey="T6">his Work</Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item>
+                  <Nav.Link eventKey="T8">tools</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="T9">reviews</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="T5">schedule Work</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="T7">offers</Nav.Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col sm={1}></Col>
             <Col sm={9} className="profile-contant-right">
               <Tab.Content>
                 <Tab.Pane eventKey="T1">
-                  <PersonalInfo/>
+                  <PersonalInfo />
                 </Tab.Pane>
                 <Tab.Pane eventKey="T2">
                   <FavWorker />
@@ -117,7 +136,15 @@ function ClientProfile() {
                 <Tab.Pane eventKey="T4">
                   <Recently />
                 </Tab.Pane>
-               
+                <Tab.Pane eventKey="T6">
+                  <ManWorks />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T8">
+                  <Tools />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T9">
+                  <Reviews />
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
@@ -127,4 +154,4 @@ function ClientProfile() {
   );
 }
 
-export default ClientProfile;
+export default WorkerPage;

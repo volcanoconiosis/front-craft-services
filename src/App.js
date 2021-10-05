@@ -1,55 +1,49 @@
 import React from "react";
-import ContactUs from "./components/contact-us/ContactUs";
-import HisWork from "./components/forms/HisWork";
-import Review from "./components/forms/ReviewForm";
-import Tools from "./components/forms/ToolsForm";
-import Ibrahem from "./components/ibrahem";
-import Services from "./components/services/Services";
-// import {
-//     BrowserRouter ,
-//     Switch,
-//     Route,
-//     Link
-//   } from "react-router-dom";
+
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import SignIn from "./components/Sign/SignIn";
+import ProfileProvider from "./context/ProfileContext";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
-import WorkerProfile from "./components/profiles/WorkerProfile";
-import ClientProfile from "./components/profiles/CleintProfile";
+import Services from "./components/services/Services";
+import WorkerProfile from "./components/profiles/worker/WorkerPage"; 
+import AdminProfile from "./components/profiles/admin/AdminProfile";
+import ClientProfile from "./components/profiles/client/CleintProfile";
 import AboutUs from "./components/about-us/AboutUs";
 import ViewWorkerProfile from "./components/ViewWorkerProfile"
 function App() {
   return (
     <>
-      <Header />
+      <ProfileProvider>
+        <Header />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/sign">
+              <SignIn />
+            </Route>
+            <Route path="/services">
+              <Services />
+            </Route>
+            <Route path="/profile">
+              <WorkerProfile />
+              <AdminProfile/>
+              <ClientProfile/>
+            </Route>
+            <Route path="/aboutus">
+              <AboutUs/>
+            </Route>
+            <Route path="/viewprofile">
+              <ViewWorkerProfile/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
 
-      {/* <Home/> */}
-      {/* 
-            <div>
-                <p>kkkkkkkkk</p>
-                <SignUp/>
-            </div>
-            
-
-            <HisWork/>
-            <Review/>
-            <Tools/>
-            
-            <Test/> */}
-      {/* <h1>sss</h1> */}
-      <SignIn/>
-      <Services />
-      {/* <TestGal/> */}
-      {/* <ViewProfile/> */}
-      {/* <WorkerProfile/> */}
-      <Ibrahem />
-      <ClientProfile/>
-      <ViewWorkerProfile />
-      {/* <AdminProfile/> */}
-      <Footer />
-      {/* <ContactUs/> */}
-      {/* <AboutUs/> */}
+        <Footer />
+      </ProfileProvider>
     </>
   );
 }

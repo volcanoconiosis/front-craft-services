@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import "./ibrahem.css";
+import "../worker/ibrahem.css";
 // import images
-import personalImg from "./ryan.jpg";
-import PersonalAdmin from "./profiles/admin/PersonalAdmin";
-import TheClients from "./profiles/admin/TheClients";
-import TheWokers from "./profiles/admin/TheWokers";
-import TheContact from "./profiles/admin/TheContact";
+import personalImg from "../worker/ryan.jpg";
+import PersonalAdmin from "./PersonalAdmin";
+import TheClients from "./TheClients";
+import TheWokers from "./TheWokers";
+import TheContact from "./TheContact";
 
 function AdminProfile() {
-  const [iconPills, setIconPills] = useState("1");
   return (
     <>
       {/* ========== top section ============== */}
