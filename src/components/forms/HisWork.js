@@ -3,17 +3,7 @@ import { useState } from "react";
 import cookie from "react-cookies";
 import { Form,Button } from "react-bootstrap";
 
-/*
-- form inside this component to give feedback
-      - title
-      - img  
-      - description 
-      - date 2/2/2022
-      - location
-
-*/
 function HisWork(props) {
-  //  const role = cookie.load("user");
   const Api = "https://craft-service.herokuapp.com"
   const [values, setValues] = useState({});
   const [imges, setImg] = useState({});

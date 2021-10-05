@@ -65,10 +65,11 @@ function Services() {
            <select name="workType"  onChange={handleChange}>
               <option selected disabled>Choose the Work Type </option>
               <option value="all" name="all">All workers</option>
-              <option value="moserje" name="moserje">Moserje</option>
-              <option value="khrabje" name="khrabje">Khrabje</option>
-              <option value="bleet" name="bleet">Bleet</option>
-              <option value="dheen" name="dheen">Dheen</option>
+              <option value="Carpenter" name="Carpenter">Carpenter</option>
+              <option value="Electrician" name="Electrician">Electrician</option>
+              <option value="Tile-worker" name="Tile-worker">Tile-worker</option>
+              <option value="Plumber" name="Plumber">Plumber</option>
+              <option value="Blacksmith" name="Blacksmith">Blacksmith</option>
            </select>
         </div>
         </div>
