@@ -1,15 +1,16 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import cookie from "react-cookies";
 import { LoginContext } from "../../context/Auth";
 import { Form, Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
+import cookie from "react-cookies"
 function ReviewForm() {
   const Api = "https://craft-service.herokuapp.com";
   const token = cookie.load("token");
   const [values, setValues] = useState({});
   const context = useContext(LoginContext);
   const [show, setShow] = useState(false);
+  const list=cookie.load("list")
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,7 +20,7 @@ function ReviewForm() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let id = context.list.id;
+    let id = list.id;
     let reqBody = {
       name: values.name,
       message: values.message,
@@ -36,7 +37,9 @@ function ReviewForm() {
       .then((respon) => {
         console.log(respon.data);
         context.setList2(respon.data);
+        cookie.save("list2",respon.data)
         e.target.reset();
+        
       });
       Swal.fire({
         title: 'Thank You',
@@ -54,6 +57,7 @@ function ReviewForm() {
         timer: 1200
       })
       setShow(false)
+    
   };
   return (
     <div>

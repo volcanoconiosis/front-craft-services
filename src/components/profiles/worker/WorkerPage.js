@@ -10,7 +10,7 @@ import Recently from "./Recently";
 import ManWorks from "./ManWorks";
 import Tools from "./Tools";
 import Reviews from "./Reviews";
-
+import Resever from "../../chats/Resever"
 function WorkerPage() {
   const [iconPills, setIconPills] = useState("1");
   return (
@@ -114,6 +114,9 @@ function WorkerPage() {
                   <Nav.Link eventKey="T9">reviews</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
+                  <Nav.Link eventKey="T10">inbox</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
                   <Nav.Link eventKey="T5">schedule Work</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -144,6 +147,9 @@ function WorkerPage() {
                 </Tab.Pane>
                 <Tab.Pane eventKey="T9">
                   <Reviews />
+                </Tab.Pane>
+                <Tab.Pane eventKey="T10">
+                  <Resever/>
                 </Tab.Pane>
               </Tab.Content>
             </Col>

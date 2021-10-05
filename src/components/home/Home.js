@@ -3,6 +3,8 @@ import { Card, Carousel, Col, Container, Row, Button } from "react-bootstrap";
 import "./home.css";
 import toolsPic from "./tools.png";
 import mapPic from "./map.png";
+import axios from "axios";
+import ContactUs from "../contact-us/ContactUs";
 import {
   FcSearch,
   FcEngineering,
@@ -22,20 +24,28 @@ import {
 } from "react-icons/fc";
 
 function Home() {
-  /* 
-
-     ::: main :::
-    - talk about the site 
-    - why to use it 
-    - show the fetures 
-    - how its work 
-    - how can you use it 
+  // =========Start for Render 6 Workers in Home Page =============
+  const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
 
 
-    ::: functions ::: 
-    - useEffect async 
-      - get all workers ("/getAllWorkers") personal information ... workType
-    */
+  const Api = "https://craft-service.herokuapp.com";
+
+  useEffect(async () => {
+    await axios.get(`${Api}/getAllWorkers`).then((res) => {
+      setList(res.data);
+      console.log("ssssssssssss", res.data);
+    });
+    await axios.get(`${Api}/getWorkersData`).then((res) => {
+      setList2(res.data);
+      console.log("ssssssssssss", res.data);
+    });
+  }, []);
+ 
+ 
+  
+
+  // =========End for Render 6 Workers in Home Page =============
 
   useEffect(() => {
     let canvas = document.querySelector("canvas");
@@ -102,8 +112,10 @@ function Home() {
 
     animate();
   });
+  
   return (
     <div>
+      <ContactUs/>
       <div className="home">
       <canvas></canvas>
         {/* // =========== top section =========== */}
@@ -472,110 +484,205 @@ function Home() {
             <Row>
               <div class="home-worker-viwe">
                 <Row>
+                  
+                  {
+                    list.length>0&&
+                    list2.length>0&&
+                    list.slice(0,3).map((item,indx)=>{
+                      let oo = list2.find((o) => o.userId === item.id);
+                      return(<>
+                      {oo.profilePicture.includes("upload") ? (
+                        <>
+                        <Col>
+                  <div
+                  class="feature-card"
+                  style={{ backgroundImage: `url(${Api}/${oo.profilePicture})` }}
+                >
+                  <div class="feature-card-tilte"></div>
+                  <div class="feature-card-deatails">
+                    <i class="fa fa-bank"></i>
+                    <h4>{item.firstName} {item.listName}</h4>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
+                    >
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        workType :
+                      </span>{" "}
+                      {item.workType}
+                    </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
+                    >
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        location :
+                      </span>
+                      {item.location}
+                    </p>
+                  </div>
+                </div>
+                </Col>
+                <Col></Col>
+                </>
+                ) : (
+                  <>
                   <Col>
-                    <div
+                  <div
                       class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                      style={{ backgroundImage: `url(${oo.profilePicture})` }}
                     >
                       <div class="feature-card-tilte"></div>
                       <div class="feature-card-deatails">
                         <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col></Col>
-                  <Col>
-                    <div
-                      class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                        <h4>{item.firstName} {item.listName}</h4>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
                     >
-                      <div class="feature-card-tilte"></div>
-                      <div class="feature-card-deatails">
-                        <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col></Col>
-                  <Col>
-                    <div
-                      class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        workType :
+                      </span>{" "}
+                      {item.workType}
+                    </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
                     >
-                      <div class="feature-card-tilte"></div>
-                      <div class="feature-card-deatails">
-                        <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        location :
+                      </span>
+                      {item.location}
+                    </p>
                       </div>
                     </div>
-                  </Col>
-                  <Col></Col>
+                    </Col>
+                    <Col></Col>
+                    </>
+                )}
+                      
+                      </>)
+                    })
+                  }
+                    
+                  
+                 
                 </Row>
                 <Row>
+                {
+                    list.length>0&&
+                    list2.length>0&&
+                    list.slice(3,6).map((item,indx)=>{
+                      let oo = list2.find((o) => o.userId === item.id);
+                      return(<>
+                      {oo.profilePicture.includes("upload") ? (
+                        <>
+                        <Col></Col>
+                        <Col>
+                  <div
+                  class="feature-card"
+                  style={{ backgroundImage: `url(${Api}/${oo.profilePicture})` }}
+                >
+                  <div class="feature-card-tilte"></div>
+                  <div class="feature-card-deatails">
+                    <i class="fa fa-bank"></i>
+                    <h4>{item.firstName} {item.listName}</h4>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
+                    >
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        workType :
+                      </span>{" "}
+                      {item.workType}
+                    </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
+                    >
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        location :
+                      </span>
+                      {item.location}
+                    </p>
+                    
+                  </div>
+                </div>
+                </Col>
+                
+                </>
+                ) : (
+                  <>
                   <Col></Col>
                   <Col>
-                    <div
+                  <div
                       class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                      style={{ backgroundImage: `url(${oo.profilePicture})` }}
                     >
                       <div class="feature-card-tilte"></div>
                       <div class="feature-card-deatails">
                         <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col></Col>
-                  <Col>
-                    <div
-                      class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                        <h4>{item.firstName} {item.listName}</h4>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
                     >
-                      <div class="feature-card-tilte"></div>
-                      <div class="feature-card-deatails">
-                        <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col></Col>
-                  <Col>
-                    <div
-                      class="feature-card"
-                      style={{ backgroundImage: `url(${toolsPic})` }}
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        workType :
+                      </span>{" "}
+                      {item.workType}
+                    </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontWeight: "600",
+                        textTransform: "capitalize",
+                        fontSize: "18px",
+                      }}
                     >
-                      <div class="feature-card-tilte"></div>
-                      <div class="feature-card-deatails">
-                        <i class="fa fa-bank"></i>
-                        <h4>worker one</h4>
-                        <p>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut odit aut fugit
-                        </p>
+                      <span style={{ color: "black", fontWeight: "600" }}>
+                        location :
+                      </span>
+                      {item.location}
+                    </p>
                       </div>
                     </div>
-                  </Col>
+                    </Col>
+                    
+                    </>
+                )}
+                      
+                      </>)
+                    })
+                  }
                 </Row>
               </div>
             </Row>

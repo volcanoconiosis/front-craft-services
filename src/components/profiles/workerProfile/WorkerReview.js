@@ -1,9 +1,11 @@
 import ReviewForm from "../../forms/ReviewForm";
-import React, { useContext } from "react";
 import { Table } from "react-bootstrap";
+import cookie from "react-cookies"
+import { useContext } from "react";
 import { LoginContext } from "../../../context/Auth";
 function WorkerReview() {
-  const context = useContext(LoginContext);
+ const context=useContext(LoginContext)
+  const list2=cookie.load("list2")
   let totalRate = 0;
   return (
     <>
@@ -21,8 +23,8 @@ function WorkerReview() {
               </tr>
             </thead>
             <tbody>
-              {context.list2.reviews &&
-                context.list2.reviews.map((item, indx) => {
+              {list2.reviews &&
+               list2.reviews.map((item, indx) => {
                   if (typeof item.rate !== "undefined") {
                     totalRate += Number(item.rate);
                   }

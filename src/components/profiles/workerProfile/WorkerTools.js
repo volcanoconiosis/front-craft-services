@@ -1,24 +1,25 @@
-import React, { useContext } from "react";
-import { LoginContext } from "../../../context/Auth";
+
+
+import cookie from "react-cookies"
 import {
-  Button,
+  
   Card,
   Col,
   Container,
   ListGroup,
   ListGroupItem,
-  Modal,
+  
   Row,
 } from "react-bootstrap";
 function WorkerTools() {
   const Api = "https://craft-service.herokuapp.com";
-  const context = useContext(LoginContext);
+  const list2=cookie.load("list2")
 
   return (
     <>
       <Container>
-        {context.list2.tools &&
-          context.list2.tools.map((item, indx) => {
+        {list2.tools &&
+          list2.tools.map((item, indx) => {
             return (
               <>
                 <Row className="mt-5 his-worke-card-container">

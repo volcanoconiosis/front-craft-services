@@ -25,15 +25,16 @@ function SignIn() {
     // handle login function
     await context.login(userName, password);
     e.target.reset();
-    // window.location.href="/"
+    window.location.href="/"
   };
   const handlerSubmitSignUp = async (e) => {
     e.preventDefault();
-    e.target.reset();
+    
     // handle login function
     await context.signUp(values);
+    e.target.reset();
     Swal.fire({
-      title: 'Thank You',
+      title: 'Thank You For Join Us',
       width: 600,
       height:400,
       padding: '3em',
@@ -48,14 +49,14 @@ function SignIn() {
       timer: 1200
     })
 
-    // window.location.href="/"
+    window.location.href="/sign"
   };
   return (
     <>
-      <div className="SignIn-SignUp">
-        <div className={className}>
-          <div className="forms-container">
-            <div className="signin-signup">
+      <div className="SignIn-SignUp" style={{width:"100%"}}>
+        <div className={className} style={{width:"100%"}}>
+          <div className="forms-container" style={{width:"100%"}}>
+            <div className="signin-signup" >
               <form className="sign-in-form" onSubmit={handlerSubmit}>
                 <h2 className="title">Sign in</h2>
                 <div className="input-field">
@@ -226,7 +227,7 @@ function SignIn() {
             </div>
           </div>
 
-          <div className="panels-container">
+          <div className="panels-container" >
             <div className="panel left-panel">
               <div className="content">
                 <h3>New here ?</h3>
@@ -250,8 +251,8 @@ function SignIn() {
                 alt=""
               />
             </div>
-            <div className="panel right-panel">
-              <div className="content">
+            <div className="panel right-panel" >
+              <div className="content"  >
                 <h3>One of us ?</h3>
                 <p style={{fontSize:"20px"}}>
                  Sign In To Access Data  

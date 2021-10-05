@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import SignIn from "./components/Sign/SignIn";
@@ -12,7 +12,12 @@ import AdminProfile from "./components/profiles/admin/AdminProfile";
 import ClientProfile from "./components/profiles/client/CleintProfile";
 import AboutUs from "./components/about-us/AboutUs";
 import ViewWorkerProfile from "./components/ViewWorkerProfile"
+import cookie from "react-cookies"
+import { ProfileContext } from "./context/ProfileContext";
 function App() {
+  const token=cookie.load("token")
+  const role=cookie.load("user")
+  const context=useContext(ProfileContext)
   return (
     <>
       <ProfileProvider>
@@ -22,21 +27,26 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/sign">
-              <SignIn />
-            </Route>
             <Route path="/services">
               <Services />
-            </Route>
-            <Route path="/profile">
-              <WorkerProfile />
-              <AdminProfile/>
-              <ClientProfile/>
             </Route>
             <Route path="/aboutus">
               <AboutUs/>
             </Route>
-            <Route path="/viewprofile">
+            <Route path="/sign">
+              <SignIn />
+            </Route>
+            {token?(<Route path="/profile">
+            {role==="worker"?<WorkerProfile />:""}
+            {role==="user"?<ClientProfile/>:""}
+            {role==="admin"?<AdminProfile/>:""}
+              
+              
+              
+            </Route>):("you need to have an account ")}
+            
+            {/* the view profile handled in the same component */}
+            <Route path="/viewprofile"> 
               <ViewWorkerProfile/>
             </Route>
           </Switch>

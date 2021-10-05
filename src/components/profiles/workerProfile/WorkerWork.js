@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { LoginContext } from "../../../context/Auth";
+
 import cookie from "react-cookies";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -10,12 +9,11 @@ import {
   Container,
   ListGroup,
   ListGroupItem,
-  Modal,
   Row,
 } from "react-bootstrap";
 function WorkerWork() {
   const Api = "https://craft-service.herokuapp.com";
-  const context = useContext(LoginContext);
+  const list2=cookie.load("list2");
   const role = cookie.load("user");
   const token = cookie.load("token");
   // ============== to add to favImg =================
@@ -53,8 +51,8 @@ function WorkerWork() {
 
   return (
     <>
-      {context.list2.hisWork &&
-        context.list2.hisWork.map((item, indx) => {
+      {list2.hisWork &&
+        list2.hisWork.map((item, indx) => {
           return (
             <Container>
               <Row className="mt-5 his-worke-card-container">
