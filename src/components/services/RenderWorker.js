@@ -17,26 +17,27 @@ function RenderWorker(props) {
   const pagesVisited = pageNumber * usersPerPage;
 
   const handelclick = async (item, oo) => {
-    if(token){
+    if (token) {
+      window.location.href="/viewprofile"
       let items = item;
       items.profilePicture = oo.profilePicture;
-      await context.setList(items);
-      await context.setList2(oo);
-      context.setSocketid(oo.userId);
-    }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'you need to be logedIn',
-        footer: '<a href="/">Click Her To Sign-Up Of You Dont Have An Account</a>'//add route signUp
-      })
-
-    }
+      cookie.save("list",items)
+      cookie.save("list2",oo)
+      cookie.save("socketid",oo.userId)
     
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "you need to be logedIn",
+        footer:
+          <a href="/sign">Click Her To Sign-Up Of You Dont Have An Account</a>, 
+      });
+    }
   };
 
   const handelAddToFav = async (item, oo) => {
-    if(token){
+    if (token) {
       const reqBody = {
         id: item.id,
         userId: oo.userId,
@@ -47,44 +48,82 @@ function RenderWorker(props) {
         lastname: item.lastName,
         profilePicture: oo.profilePicture,
       };
+      // worker
       if (role === "user") {
-        let res = await axios.post(`${Api}/client/favWorker`, reqBody, {
+        let respose = await axios.get(`${Api}/clientData`, {
           headers: {
             authorization: `Bearer ${token}`,
           },
         });
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'your item has been save',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        
-      } else if (role === "worker") {
-        let res = await axios.post(`${Api}/worker/fav`, reqBody, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'your item has been save',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
 
-    }else{
+        let array = respose.data[0].favoriteWorker.map((item) =>
+          item.userId === reqBody.id ? true : false
+        );
+        if (array.includes(true)) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your Worker Already Exist 😅",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          await axios.post(`${Api}/client/favWorker`, reqBody, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          });
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "your item has been save",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      } else if (role === "worker") {
+        let respose = await axios.get(`${Api}/worker`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        let array = respose.data[0].favoriteWorker.map((item) =>
+          item.userId === reqBody.id ? true : false
+        );
+
+        if (array.includes(true)) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your Worker Already Exist 😅",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          await axios.post(`${Api}/worker/fav`, reqBody, {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          });
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "your item has been save",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      }
+    } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'you need to be logedIn',
-        footer: '<a href="/">Click Her To Sign-Up Of You Dont Have An Account</a>'//add route signUp
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "you need to be logedIn",
+        footer:
+          <a href="/sign">Click Her To Sign-Up Of You Dont Have An Account</a>, 
+      });
     }
-    
   };
   const displayUser =
     props.list.length > 0 &&

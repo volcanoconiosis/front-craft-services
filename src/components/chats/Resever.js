@@ -16,7 +16,7 @@ function Resever(props) {
 
     let workerID = Number(cookie.load('userID'));
     let clintID = Number(localStorage.getItem('clientID'));
-    console.log('clintID----->>>', context);
+    // console.log('clintID----->>>', context);
 
     useEffect(
 
@@ -54,7 +54,7 @@ function Resever(props) {
         let msgdata = [message, workerID, clintID]
         await socketRef.current.emit("responsMsg", msgdata)
         await setChat([...chat, message])
-
+        e.target.reset()
 
 
     }
@@ -68,7 +68,7 @@ function Resever(props) {
 
                     {chat.map((message, index) => (
                         <div key={index} >
-                            <div className="user-photo"> </div>
+                            <div className="user-photo" > </div>
                             <p className="chat-message">
                                 {message}
                             </p>
@@ -82,7 +82,7 @@ function Resever(props) {
                 <Container>
                     <Row className='mt-4'>
                         <Col xs={10}><textarea name="name" onChange={onTextChange}></textarea></Col>
-                        <Col xs={2}><Button>Send</Button></Col>
+                        <Col xs={2}><Button type="submit">Send</Button></Col>
                     </Row>
                 </Container>
 

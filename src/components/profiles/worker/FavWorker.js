@@ -153,10 +153,25 @@ function FavWorker() {
         authorization: `Bearer ${token}`,
       },
     });
-    await context.setList(item);
-    await context.setList2(res.data);
-    console.log("setList2(res)===>", res);
-    console.log("item", item);
+    console.log("ressssssssssssssss",res);
+    const response = await axios.get(`${Api}/getWorkersData`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("ressssssssppppppppp",response);
+  
+    
+    
+    
+    let oop = response.data.find((o) => o.userId === item.id);
+    let items = res.data;
+      items.profilePicture = oop.profilePicture;
+    cookie.save("list",items)
+    cookie.save("list2",oop)
+    cookie.save("socketid",oop.userId)
+    window.location.href="/viewprofile"
+   
   };
 
   return (
