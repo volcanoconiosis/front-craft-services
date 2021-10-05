@@ -1,0 +1,45 @@
+.his-worke-card-container .card {
+  width: 100% !important;
+  display: inline-block !important;
+}
+
+.his-worke-card-container .card .card-img {
+  width: 18rem;
+  height: 18rem;
+}
+.his-worke-card-container .card-body{
+  height: 15rem;
+  width: 20rem;
+  overflow-y: scroll;
+}
+.card-img-contianer{
+  height: 15rem;
+  overflow-y: scroll;
+}
+.his-work-btn button{
+  height: 10rem;
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+}
+
+
+.his-worke-card-container  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+.his-worke-card-container  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(189, 189, 189); 
+  border-radius: 10px;
+}
+ 
+
+.his-worke-card-container  ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.24); 
+  border-radius: 10px;
+}
+
+
+.his-worke-card-container ::-webkit-scrollbar-thumb:hover {
+  background: #750202; 
+}

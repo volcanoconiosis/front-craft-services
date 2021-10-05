@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import cookie from "react-cookies";
+import { Form,Button } from "react-bootstrap";
 /*
 - form inside this component to give feedback
       - img 
@@ -62,10 +63,8 @@ function ToolsForm(props) {
   };
   return (
     <div>
-      <h2>form for tools </h2>
       <form onSubmit={handleSubmit}>
-        <label for="file">Select your image:</label>
-        <input
+        <Form.Control
           type="file"
           multiple
           accept="image/*"
@@ -73,20 +72,22 @@ function ToolsForm(props) {
           onChange={handleImg}
         />
 
-        <input
+        <Form.Control
           type="text"
           placeholder="title"
           name="title"
           onChange={handleChange}
+          className="mt-3"
         />
-        <textarea
+        <Form.Control as="textarea"
           name="description"
           rows="4"
           cols="50"
           onChange={handleChange}
           placeholder="description"
+          className="mt-3"
         />
-        <button type="submit">upload</button>
+        <Button type="submit" className="mt-3"  style={{float:"right"}}>upload</Button>
       </form>
     </div>
   );
