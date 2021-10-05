@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { LoginContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import axios from "axios";
+import Swal from "sweetalert2";
 import {
   Button,
   Card,
@@ -41,6 +42,13 @@ function WorkerWork() {
       });
       console.log("resW===", res);
     }
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'your item has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   return (

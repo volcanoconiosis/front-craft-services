@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
+
 import "./wrokerStyle/personalWorker.css";
 import {
   Container,
@@ -11,13 +12,14 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 function PersonalInfo() {
+  const role = cookie.load("user")
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const [bio, setBio] = useState("");
   const [edite, setEdite] = useState(true);
-  const [btnColor, setBtnColor] = useState("warning");
   const [values, setValues] = useState({});
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
@@ -39,17 +41,30 @@ function PersonalInfo() {
         console.log(res.data);
       });
 
-    // get worker
+   if(role==="worker"){
     await axios
-      .get(`${Api}/worker`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setWorkerList(res.data[0]);
-        console.log("setWorkerList=====>", res.data[0]);
-      });
+    .get(`${Api}/worker`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      setWorkerList(res.data[0]);
+      console.log("setWorkerList=====>", res.data[0]);
+    });
+   }else if(role==="user"){
+    await axios
+    .get(`${Api}/clientData`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      setWorkerList(res.data[0]);
+      console.log("setWorkerList=====>", res.data[0]);
+    });
+   }
+    
   }, []);
 
   function handleChange(e) {
@@ -85,14 +100,21 @@ function PersonalInfo() {
         },
       })
       .then((res) => {
-        console.log(res);
+        setWorkerList(res.data)
       });
     setEdite(true);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your Profile has been Updated',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
   };
 
   const handleBio = (e) => {
     setBio(e.target.value);
-    console.log(bio);
   };
 
   const handleBioSubmit = async (e) => {
@@ -105,21 +127,31 @@ function PersonalInfo() {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    });
-    console.log("res after change bio", res);
+    })
     setWorkerList(res.data);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your Bio has been Changed',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    
   };
 
   // ============================== change Img =================================
   const [imges, setImg] = useState({});
-  const role = "worker";
+  
   const handleImg = async (e) => {
+
     setImg(e.target.files);
+
   };
   console.log("imges;;;;;;;;;;;;;;;;;;;", typeof imges);
 
   const handleSubmitImg = async (e) => {
     e.preventDefault();
+    e.target.reset()
     const body = new FormData();
     for (const file of Object.entries(imges)) {
       file.forEach((el) => {
@@ -150,6 +182,19 @@ function PersonalInfo() {
           authorization: `Bearer ${token}`,
         },
       });
+      setShow(false)
+      setWorkerList(res.data)
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your Image has been Changed',
+        showConfirmButton: false,
+        timer: 1500
+      })
+     
+    
+      
+      
       console.log(res);
     } else if (role === "worker") {
       let res = await axios.put(`${Api}/worker/updateany`, reqBody, {
@@ -157,8 +202,22 @@ function PersonalInfo() {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log(res);
+
+      setWorkerList(res.data)
+      setShow(false)
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your Image has been Changed',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
+    
     }
+    
+
+    
   };
 
   return (
@@ -322,8 +381,8 @@ function PersonalInfo() {
             </Row>
           )}
         </div>
-
-        <div className="personal-info-middle">
+{ role==="worker" &&
+<div className="personal-info-middle">
           <form onSubmit={handleBioSubmit}>
             <FloatingLabel
               controlId="floatingTextarea"
@@ -349,7 +408,8 @@ function PersonalInfo() {
               <Col md={2}></Col>
             </Row>
           </form>
-        </div>
+        </div>}
+        
       </section>
     </>
   );

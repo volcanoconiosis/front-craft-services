@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import HisWork from "../../forms/HisWork";
+import Swal from "sweetalert2";
 import {
   Button,
   Card,
@@ -50,12 +51,48 @@ function ManWorks() {
 
   // :::::: delete from his work ::::::
   const deleteHisWork = async (indx) => {
-    let res = await axios.delete(`${Api}/worker/hiswork?index=${indx}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
+    
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
-    });
-    setWorkerList(res.data);
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        let res = await axios.delete(`${Api}/worker/hiswork?index=${indx}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        setWorkerList(res.data);
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
   };
   return (
     <>
@@ -77,6 +114,7 @@ function ManWorks() {
                 <HisWork
                   setUserList={setUserList}
                   setWorkerList={setWorkerList}
+                  setShow={setShow}
                 />
               </Modal.Body>
             </Modal>
@@ -87,8 +125,8 @@ function ManWorks() {
               return (
                 <Row className="mt-5 his-worke-card-container">
                   <Card key={indx} style={{ width: "15rem" }}>
-                    <Row>
-                      <Col>
+                    <Row >
+                      <Col xs={5}>
                         <div className="card-img-contianer">
                           {item.imges &&
                             item.imges.map((el, indx) => {
@@ -100,7 +138,7 @@ function ManWorks() {
                             })}
                         </div>
                       </Col>
-                      <Col>
+                      <Col xs={5}>
                         <Card.Body>
                           <ListGroup>
                             <ListGroupItem>
@@ -118,14 +156,14 @@ function ManWorks() {
                           </ListGroup>
                         </Card.Body>
                       </Col>
-                      <Col className="his-work-btn">
+                      <Col className="his-work-btn" xs={2}>
                         <Button
                           variant="danger"
                           onClick={() => {
                             deleteHisWork(indx);
                           }}
                         >
-                          deleteHisWork
+                          delete
                         </Button>
                       </Col>
                     </Row>

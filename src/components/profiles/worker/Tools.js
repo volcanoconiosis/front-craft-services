@@ -75,7 +75,8 @@ function Tools(props) {
                 <Modal.Title>Add new work</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <ToolsForm setWorkerList={setWorkerList} />
+                <ToolsForm setWorkerList={setWorkerList} 
+                setShow={setShow}/>
               </Modal.Body>
             </Modal>
           </Row>
@@ -86,7 +87,7 @@ function Tools(props) {
                 <Row className="mt-5 his-worke-card-container">
                   <Card key={indx} style={{ width: "15rem" }}>
                     <Row>
-                      <Col>
+                      <Col xs={5}>
                         <div className="card-img-contianer">
                           {item.imges &&
                             item.imges.map((el, indx) => {
@@ -98,7 +99,7 @@ function Tools(props) {
                             })}
                         </div>
                       </Col>
-                      <Col>
+                      <Col xs={5}>
                         <Card.Body>
                           <ListGroup>
                             <ListGroupItem>
@@ -112,7 +113,7 @@ function Tools(props) {
                           </ListGroup>
                         </Card.Body>
                       </Col>
-                      <Col className="his-work-btn">
+                      <Col className="his-work-btn" xs={2}>
                         <Button
                           variant="danger"
                           onClick={() => {

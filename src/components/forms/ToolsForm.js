@@ -2,12 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import cookie from "react-cookies";
 import { Form,Button } from "react-bootstrap";
-/*
-- form inside this component to give feedback
-      - img 
-      - description 
-      - title 
-*/
+import Swal from "sweetalert2";
 function ToolsForm(props) {
   const Api ="https://craft-service.herokuapp.com"
   const [values, setValues] = useState({});
@@ -60,6 +55,14 @@ function ToolsForm(props) {
     props.setWorkerList(res.data);
     console.log(res);
     e.target.reset();
+    props.setShow(false)
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'your item has been Upload',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   return (
     <div>
