@@ -2,14 +2,26 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import ToolsForm from "../../forms/ToolsForm";
-
+import "./wrokerStyle/tools.css"
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Modal,
+  Row,
+} from "react-bootstrap";
 function Tools(props) {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
   const token = cookie.load("token");
-  const Api ="https://craft-service.herokuapp.com"
+  const Api = "https://craft-service.herokuapp.com";
+  const [show, setShow] = useState(false);
 
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(async () => {
     // get information personal
     await axios
@@ -48,36 +60,75 @@ function Tools(props) {
 
   return (
     <>
-    <ToolsForm setWorkerList={setWorkerList}/>
-      <div>
-        <h1> ::::::: render the tools :::::: 🟢🟡🟡</h1>
-        {workerList.tools &&
-          workerList.tools.map((item, indx) => {
-            return (
-              <div key={indx}>
-                {item.imges &&
-                  item.imges.map((el, indx) => {
-                    return el.includes("images") ? (
-                      <img src={`${Api}/${el}`} alt={indx} />
-                    ) : (
-                      <img src={el} alt={indx} />
-                    );
-                  })}
+      <section className="tools-worker-section">
+        <Container>
+          <Row>
+            <Col xs={4}></Col>
+            <Col xs={4} style={{ textAlign: "center" }}>
+              <Button variant="primary" onClick={handleShow}>
+                Add One +
+              </Button>
+            </Col>
+            <Col xs={4}></Col>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add new work</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <ToolsForm setWorkerList={setWorkerList} />
+              </Modal.Body>
+            </Modal>
+          </Row>
 
-                <p>{item.title}</p>
-                <p>{item.description}</p>
-                <button
-                  onClick={() => {
-                    deleteTools(indx);
-                  }}
-                >
-                  deleteTools
-                </button>
-              </div>
-            );
-          })}
-        <h1> :::::::End render the tools :::::: 🟢🟡🟡</h1>
-      </div>
+          {workerList.tools &&
+            workerList.tools.map((item, indx) => {
+              return (
+                <Row className="mt-5 his-worke-card-container">
+                  <Card key={indx} style={{ width: "15rem" }}>
+                    <Row>
+                      <Col>
+                        <div className="card-img-contianer">
+                          {item.imges &&
+                            item.imges.map((el, indx) => {
+                              return el.includes("images") ? (
+                                <Card.Img src={`${Api}/${el}`} alt={indx} />
+                              ) : (
+                                <Card.Img src={el} alt={indx} />
+                              );
+                            })}
+                        </div>
+                      </Col>
+                      <Col>
+                        <Card.Body>
+                          <ListGroup>
+                            <ListGroupItem>
+                              <strong>Title: </strong>
+                              {item.title}
+                            </ListGroupItem>
+                            <ListGroupItem>
+                              <strong>Description: </strong>
+                              {item.description}
+                            </ListGroupItem>
+                          </ListGroup>
+                        </Card.Body>
+                      </Col>
+                      <Col className="his-work-btn">
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            deleteTools(indx);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Card>
+                </Row>
+              );
+            })}
+        </Container>
+      </section>
     </>
   );
 }

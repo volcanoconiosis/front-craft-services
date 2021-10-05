@@ -2,8 +2,17 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import HisWork from "../../forms/HisWork";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Modal,
+  Row,
+} from "react-bootstrap";
+import "./wrokerStyle/manWorker.css";
 function ManWorks() {
   const [userList, setUserList] = useState({});
   const [workerList, setWorkerList] = useState({});
@@ -53,61 +62,79 @@ function ManWorks() {
       <section className="his-worke-section">
         <Container>
           <Row>
-            <Col>
+          <Col xs={4}></Col>
+            <Col xs={4} style={{textAlign:"center"}}>
               <Button variant="primary" onClick={handleShow}>
                 Add One +
               </Button>
             </Col>
+            <Col xs={4}></Col>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Add new work</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-              <HisWork setUserList={setUserList} setWorkerList={setWorkerList} />
+                <HisWork
+                  setUserList={setUserList}
+                  setWorkerList={setWorkerList}
+                />
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
-                </Button>
-              </Modal.Footer>
             </Modal>
           </Row>
-          <Row></Row>
+
+          {workerList.hisWork &&
+            workerList.hisWork.map((item, indx) => {
+              return (
+                <Row className="mt-5 his-worke-card-container">
+                  <Card key={indx} style={{ width: "15rem" }}>
+                    <Row>
+                      <Col>
+                        <div className="card-img-contianer">
+                          {item.imges &&
+                            item.imges.map((el, indx) => {
+                              return el.includes("images") ? (
+                                <Card.Img src={`${Api}/${el}`} alt={indx} />
+                              ) : (
+                                <Card.Img src={el} alt={indx} />
+                              );
+                            })}
+                        </div>
+                      </Col>
+                      <Col>
+                        <Card.Body>
+                          <ListGroup>
+                            <ListGroupItem>
+                              <strong>Date: </strong>
+                              {item.date}
+                            </ListGroupItem>
+                            <ListGroupItem>
+                              <strong>Location:</strong>
+                              {item.location}
+                            </ListGroupItem>
+                            <ListGroupItem>
+                              <strong>Description:</strong>
+                              {item.description}
+                            </ListGroupItem>
+                          </ListGroup>
+                        </Card.Body>
+                      </Col>
+                      <Col className="his-work-btn">
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            deleteHisWork(indx);
+                          }}
+                        >
+                          deleteHisWork
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Card>
+                </Row>
+              );
+            })}
         </Container>
       </section>
-      
-      <div>
-        {workerList.hisWork &&
-          workerList.hisWork.map((item, indx) => {
-            return (
-              <div key={indx}>
-                {item.imges &&
-                  item.imges.map((el, indx) => {
-                    return el.includes("images") ? (
-                      <img src={`${Api}/${el}`} alt={indx} />
-                    ) : (
-                      <img src={el} alt={indx} />
-                    );
-                  })}
-
-                <p>{item.date}</p>
-                <p>{item.loction}</p>
-                <p>{item.description}</p>
-                <button
-                  onClick={() => {
-                    deleteHisWork(indx);
-                  }}
-                >
-                  deleteHisWork
-                </button>
-              </div>
-            );
-          })}
-        <h1> ::::::: End render the hisWork :::::: 🟢🟡🟡</h1>
-      </div>
     </>
   );
 }

@@ -2,7 +2,16 @@ import React, { useContext } from "react";
 import { LoginContext } from "../../../context/Auth";
 import cookie from "react-cookies";
 import axios from "axios";
-
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Modal,
+  Row,
+} from "react-bootstrap";
 function WorkerWork() {
   const Api = "https://craft-service.herokuapp.com";
   const context = useContext(LoginContext);
@@ -36,34 +45,56 @@ function WorkerWork() {
 
   return (
     <>
-      <h1>rendaring .....</h1>
       {context.list2.hisWork &&
         context.list2.hisWork.map((item, indx) => {
           return (
-            <>
-              <div key={indx}>
-                {item.imges &&
-                  item.imges.map((el, indx) => {
-                    return el.includes("images") ? (
-                      <img src={`${Api}/${el}`} alt={indx} />
-                    ) : (
-                      <img src={el} alt={indx} />
-                    );
-                  })}
-
-                <p>{item.title}</p>
-                <p>{item.date}</p>
-                <p>{item.loction}</p>
-                <p>{item.description}</p>
-                <button
-                  onClick={() => {
-                    addFavImg(item);
-                  }}
-                >
-                  Add Favorte Images
-                </button>
-              </div>
-            </>
+            <Container>
+              <Row className="mt-5 his-worke-card-container">
+                <Card key={indx} style={{ width: "15rem" }}>
+                  <Row>
+                    <Col>
+                      <div className="card-img-contianer">
+                        {item.imges &&
+                          item.imges.map((el, indx) => {
+                            return el.includes("images") ? (
+                              <Card.Img src={`${Api}/${el}`} alt={indx} />
+                            ) : (
+                              <Card.Img src={el} alt={indx} />
+                            );
+                          })}
+                      </div>
+                    </Col>
+                    <Col>
+                      <Card.Body>
+                        <ListGroup>
+                          <ListGroupItem>
+                            <strong>Date: </strong>
+                            {item.date}
+                          </ListGroupItem>
+                          <ListGroupItem>
+                            <strong>Location:</strong>
+                            {item.location}
+                          </ListGroupItem>
+                          <ListGroupItem>
+                            <strong>Description:</strong>
+                            {item.description}
+                          </ListGroupItem>
+                        </ListGroup>
+                      </Card.Body>
+                    </Col>
+                    <Col className="his-work-btn">
+                      <Button
+                        onClick={() => {
+                          addFavImg(item);
+                        }}
+                      >
+                        Add Favorte Images
+                      </Button>
+                    </Col>
+                  </Row>
+                </Card>
+              </Row>
+            </Container>
           );
         })}
     </>

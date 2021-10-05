@@ -181,7 +181,12 @@ function PersonalInfo() {
               </div>
             </Col>
             <Col xs={4}>
-              <button variant="primary" className="personal-change-imgbtn" onClick={handleShow}>
+              
+              <button
+                variant="primary"
+                className="personal-change-imgbtn"
+                onClick={handleShow}
+              >
                 Change
               </button>
               {/* ================ modal ============== */}
