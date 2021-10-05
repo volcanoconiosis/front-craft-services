@@ -3,6 +3,7 @@ import axios from "axios";
 import cookie from "react-cookies";
 import { LoginContext } from "../../context/Auth";
 import { Form, Button, Modal } from "react-bootstrap";
+import Swal from "sweetalert2";
 function ReviewForm() {
   const Api = "https://craft-service.herokuapp.com";
   const token = cookie.load("token");
@@ -37,6 +38,22 @@ function ReviewForm() {
         context.setList2(respon.data);
         e.target.reset();
       });
+      Swal.fire({
+        title: 'Thank You',
+        width: 600,
+        height:400,
+        padding: '3em',
+        background: '#fff url(/images/trees.png)',
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/images/nyan-cat.gif")
+          left top
+          no-repeat
+        `,
+        showConfirmButton: false,
+        timer: 1200
+      })
+      setShow(false)
   };
   return (
     <div>

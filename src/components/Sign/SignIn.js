@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { LoginContext } from "../../context/Auth";
 import "./sing.css";
 import img from "./img3-removebg-preview.png";
+import Swal from "sweetalert2";
 function SignIn() {
   let context = useContext(LoginContext);
   let [userName, setUserName] = useState("");
@@ -31,6 +32,21 @@ function SignIn() {
     e.target.reset();
     // handle login function
     await context.signUp(values);
+    Swal.fire({
+      title: 'Thank You',
+      width: 600,
+      height:400,
+      padding: '3em',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `,
+      showConfirmButton: false,
+      timer: 1200
+    })
 
     // window.location.href="/"
   };

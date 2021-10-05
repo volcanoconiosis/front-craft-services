@@ -5,7 +5,7 @@ import axios from "axios";
 import { LoginContext } from "../../context/Auth";
 import cookie from "react-cookies";
 import Button from "react-bootstrap/Button";
-
+import Swal from "sweetalert2";
 function RenderWorker(props) {
   const context = useContext(LoginContext);
   const token = cookie.load("token");
@@ -17,39 +17,74 @@ function RenderWorker(props) {
   const pagesVisited = pageNumber * usersPerPage;
 
   const handelclick = async (item, oo) => {
-    let items = item;
-    items.profilePicture = oo.profilePicture;
-    await context.setList(items);
-    await context.setList2(oo);
-    context.setSocketid(oo.userId);
+    if(token){
+      let items = item;
+      items.profilePicture = oo.profilePicture;
+      await context.setList(items);
+      await context.setList2(oo);
+      context.setSocketid(oo.userId);
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'you need to be logedIn',
+        footer: '<a href="/">Click Her To Sign-Up Of You Dont Have An Account</a>'//add route signUp
+      })
+
+    }
+    
   };
 
   const handelAddToFav = async (item, oo) => {
-    const reqBody = {
-      id: item.id,
-      userId: oo.userId,
-      username: item.username,
-      firstname: item.firstName,
-      workType: item.workType,
-      location: item.location,
-      lastname: item.lastName,
-      profilePicture: oo.profilePicture,
-    };
-    if (role === "user") {
-      let res = await axios.post(`${Api}/client/favWorker`, reqBody, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("resC===", res);
-    } else if (role === "worker") {
-      let res = await axios.post(`${Api}/worker/fav`, reqBody, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("resW===", res);
+    if(token){
+      const reqBody = {
+        id: item.id,
+        userId: oo.userId,
+        username: item.username,
+        firstname: item.firstName,
+        workType: item.workType,
+        location: item.location,
+        lastname: item.lastName,
+        profilePicture: oo.profilePicture,
+      };
+      if (role === "user") {
+        let res = await axios.post(`${Api}/client/favWorker`, reqBody, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'your item has been save',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
+      } else if (role === "worker") {
+        let res = await axios.post(`${Api}/worker/fav`, reqBody, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'your item has been save',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'you need to be logedIn',
+        footer: '<a href="/">Click Her To Sign-Up Of You Dont Have An Account</a>'//add route signUp
+      })
     }
+    
   };
   const displayUser =
     props.list.length > 0 &&

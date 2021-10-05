@@ -16,11 +16,11 @@
   height: 15rem;
   overflow-y: scroll;
 }
-.his-work-btn button{
+/* .his-work-btn button{
   height: 10rem;
   margin-top: 2.5rem;
   margin-left: 5rem;
-}
+} */
 
 
 .tools-worker-section  ::-webkit-scrollbar {

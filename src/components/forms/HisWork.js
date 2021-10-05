@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import cookie from "react-cookies";
 import { Form,Button } from "react-bootstrap";
-
+import Swal from "sweetalert2";
 function HisWork(props) {
   const Api = "https://craft-service.herokuapp.com"
   const [values, setValues] = useState({});
@@ -58,6 +58,14 @@ function HisWork(props) {
     props.setWorkerList(res.data);
     console.log("from his work",res);
     e.target.reset()
+    props.setShow(false)
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'your item has been Upload',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   return (
     <div>
