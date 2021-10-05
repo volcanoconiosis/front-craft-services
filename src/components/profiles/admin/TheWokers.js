@@ -1,30 +1,28 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
-
+import { Table, Button } from "react-bootstrap";
 
 function TheWokers() {
   const [allUsers, setAllUsers] = useState([]);
   const token = cookie.load("token");
-  const Api =  "https://craft-service.herokuapp.com";
+  const Api = "https://craft-service.herokuapp.com";
 
-  
-  useEffect(async()=>{
+  useEffect(async () => {
     // get users form admin
-     await axios
-    .get(`${Api}/users`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then(async(res) => {
-     await setAllUsers(res.data)
-    });
-      },[])
+    await axios
+      .get(`${Api}/users`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (res) => {
+        await setAllUsers(res.data);
+      });
+  }, []);
 
-
-      // ::::::: handleDeleteUser:::::: 
-  const handleDeleteUser =async(id)=>{
+  // ::::::: handleDeleteUser::::::
+  const handleDeleteUser = async (id) => {
     // /deleteuser/:id
 
     let res = await axios.delete(`${Api}/deleteuser/${id}`, {
@@ -33,31 +31,56 @@ function TheWokers() {
       },
     });
     setAllUsers(res.data);
-  }
+  };
 
-
-
-    return (
-        <div>
-      {allUsers.length>0&&
-      allUsers.map((item,indx)=>{
-        return item.role==="worker"? (
-          <>
-          <p>{item.username}</p>
-          <p>{item.firstName}</p>
-          <p>{item.lastName}</p>
-          <p>{item.role}</p>
-          <p>{item.id}</p>
-          <p>{item.email}</p>
-          <p>{item.location}</p>
-          <button onClick={()=>{handleDeleteUser(item.id)}}>delete user </button>
-          
-          </>
-        ):""
-
-      })}
-      </div>
-    )
+  return (
+    <div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allUsers.length > 0 &&
+            allUsers.map((item, indx) => {
+              return item.role === "worker" ? (
+                <>
+                  <tr>
+                    <td>{item.id}</td>
+                    <td>{item.username}</td>
+                    <td>{item.firstName}</td>
+                    <td>{item.lastName}</td>
+                    <td>{item.role}</td>
+                    <td>{item.email}</td>
+                    <td>{item.location}</td>
+                    <td>
+                      {" "}
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          handleDeleteUser(item.id);
+                        }}
+                      >
+                        delete user{" "}
+                      </Button>
+                    </td>
+                  </tr>
+                </>
+              ) : (
+                ""
+              );
+            })}
+        </tbody>
+      </Table>
+    </div>
+  );
 }
 
-export default TheWokers
+export default TheWokers;

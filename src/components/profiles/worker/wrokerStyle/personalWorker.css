@@ -28,24 +28,15 @@
   font-size: 0.7rem;
   outline: none;
   border: none;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    8deg,
-    rgba(255, 255, 255, 0.09287464985994398) 0%,
-    rgba(115, 212, 255, 1) 0%,
-    rgba(44, 2, 255, 1) 62%
-  );
+  background-color: rgba(53, 53, 53, 0.5);
   color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.623);
   transition: .5s;
+  margin-left: -4.9rem;
+  opacity: 0;
 }
 .personal-change-imgbtn:hover{
     transform: scale(1.1);
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      8deg,
-      rgba(255, 255, 255, 0.09287464985994398) 0%,
-      rgba(115, 212, 255, 1) 0%,
-      rgb(74, 39, 246) 92%
-    );
+
+    opacity: 1;
 }

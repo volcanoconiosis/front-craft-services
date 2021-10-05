@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import cookie from "react-cookies";
+import { Col, Form, Row ,Button} from 'react-bootstrap';
+import PersonalInfo from '../worker/PersonalInfo';
 
 function PersonalAdmin() {
     const [userList, setUserList] = useState({});
@@ -84,76 +86,8 @@ function PersonalAdmin() {
 
     return (
         <>
-            <button onClick={handleDeleteAccount}>delete account</button>
-
-            {/* form for update account  */}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    onChange={handleChange}
-                    defaultValue={userList.username}
-                />
-                <input
-                    type="text"
-                    name="firstName"
-                    onChange={handleChange}
-                    defaultValue={userList.firstName}
-                />
-                <input
-                    type="text"
-                    name="lastName"
-                    onChange={handleChange}
-                    defaultValue={userList.lastName}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                    defaultValue={userList.password}
-                />
-                <input
-                    type="text"
-                    name="phone"
-                    onChange={handleChange}
-                    defaultValue={userList.phone}
-                />
-                <input
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                    defaultValue={userList.email}
-                />
-                <input
-                    type="text"
-                    name="location"
-                    onChange={handleChange}
-                    defaultValue={userList.location}
-                />
-
-                <button type="submit"> update</button>
-            </form>
-
-
-
-
-
-
-            <div>
-                <p>{userList.username}</p>
-                <p>{userList.id}</p>
-
-                {adminList.profilePicture &&
-                    adminList.profilePicture.includes("upload") ? (
-                    <img
-                        src={`${Api}/${adminList.profilePicture}`}
-                        alt={adminList.id}
-                    />
-                ) : (
-                    <img src={adminList.profilePicture} alt={adminList.id} />
-                )}
-
-            </div>
+           <PersonalInfo/>
+            <Button variant="danger" onClick={handleDeleteAccount}>delete account</Button>
         </>
     )
 }

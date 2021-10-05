@@ -22,6 +22,7 @@ import {
   FcServices,
   FcSupport,
 } from "react-icons/fc";
+import Typed from "react-typed";
 
 function Home() {
   // =========Start for Render 6 Workers in Home Page =============
@@ -123,9 +124,19 @@ function Home() {
           <Container>
             <Row>
               <Col>
-                <h1 className="home-title home-center-text">
-                  Maintaining your property just got easier
-                </h1>
+                <h2 className="home-title home-center-text">
+                  Maintaining your property just got
+                  <Typed
+                  strings={[
+                    "Easier",
+                    "Faster",
+                    "Better",
+                  ]}
+                  loop={true}
+                  typeSpeed={200}
+                  className="home__typed-dynamic"
+                />
+                </h2>
                 <p className="home--para">
                   Maintaining your property just got easier Wherever our
                   services are available, with the most skilled industrialists
@@ -134,7 +145,7 @@ function Home() {
                   construction, water flow, furniture ... etc., you will find it
                   here and with many other options,{" "}
                   <a href="">
-                    <Button variant="primary">register now</Button>
+                    register now
                   </a>{" "}
                   and start working.
                 </p>
@@ -196,7 +207,7 @@ function Home() {
               <Col>
                 <Card className="home-needs-card">
                   <Card.Header className="home-needs-card-header">
-                    <div className="home-needs-icon icon3">
+                    <div className="home-needs-icon icon3" style={{margin:"-1rem 5rem 1rem 0rem"}}>
                       <FcPortraitMode />
                     </div>
                   </Card.Header>

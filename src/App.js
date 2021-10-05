@@ -52,6 +52,7 @@ function App() {
           </Switch>
         </BrowserRouter>
 
+
         <Footer />
       </ProfileProvider>
     </>
