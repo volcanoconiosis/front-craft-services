@@ -1,22 +1,21 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import { LoginContext } from '../../context/Auth'
 import io from 'socket.io-client'
 import cookie from 'react-cookies'
 import '../chats/chat.css'
 import {Container,Col,Row,Button}from 'react-bootstrap'
+import {ProfileContext} from "../../context/ProfileContext"
 function Resever(props) {
 
-    const context = useContext(LoginContext);
+    const context = useContext(ProfileContext);
 
     const [message, setMessage] = useState('')
     const [chat, setChat] = useState([])
     const socketRef = useRef()
-
+    const msClient=cookie.load("chatCookieClient")
 
 
     let workerID = Number(cookie.load('userID'));
-    let clintID = Number(localStorage.getItem('clientID'));
-    // console.log('clintID----->>>', context);
+    let clintID = Number(localStorage.getItem('clientID'))
 
     useEffect(
 
@@ -51,9 +50,14 @@ function Resever(props) {
 
     const onMessageSubmit = async (e) => {
         e.preventDefault()
-        let msgdata = [message, workerID, clintID]
-        await socketRef.current.emit("responsMsg", msgdata)
-        await setChat([...chat, message])
+
+        await context.setChatWorker(message)
+        cookie.save("chatCookieWorker",message)
+
+
+        // let msgdata = [message, workerID, clintID]
+        // await socketRef.current.emit("responsMsg", msgdata)
+        // await setChat([...chat, message])
         e.target.reset()
 
 
@@ -66,7 +70,7 @@ function Resever(props) {
             <div className="chatlogs">
                 <div className="chat">
 
-                    {chat.map((message, index) => (
+                    {/* {chat.map((message, index) => (
                          <div key={index} >
                                 
                          {index%2==0? 
@@ -83,7 +87,19 @@ function Resever(props) {
                         
                      </div>
                     ))
-                    }
+                    } */}
+                    
+
+<>
+                     <div className="user-photo"> </div>
+                                <p className="chat-message">
+                                    {msClient}
+                                </p>
+                                <div className="user-photo2"> </div>
+                                <p className="chat-message2">
+                                {context.chatWorker}
+                                </p>
+                                </>
 
                 </div>
             </div>

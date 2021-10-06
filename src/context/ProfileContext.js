@@ -10,6 +10,8 @@ function ProfileProvider(props) {
   const [userData, setUserData] = useState({});
   const [list2, setList2] = useState({});
   const [list3, setList3] = useState([]);
+  const [chatContext, setCahtContext] = useState("")
+  const [chatWorker, setChatWorker] = useState("")
 
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
@@ -59,7 +61,11 @@ useEffect(async()=>{
     userData:userData,
     list2:list2,
     list3:list3,
-    setUserData:setUserData
+    setUserData:setUserData,
+    setCahtContext:setCahtContext,
+    chatContext:chatContext,
+    setChatWorker:setChatWorker,
+    chatWorker:chatWorker
   };
 
   console.log("from new context", state.userData);

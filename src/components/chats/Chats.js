@@ -1,15 +1,16 @@
-import React, {  useState, useRef, useEffect } from 'react'
+import React, {  useState, useRef, useEffect,useContext } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import io from 'socket.io-client'
 import cookie from 'react-cookies'
 import '../chats/chat.css'
 import {Container,Col,Row,Button}from 'react-bootstrap'
+import {ProfileContext} from "../../context/ProfileContext"
 
 function Chat(props) {
     
 
-
+    const context=useContext(ProfileContext)
     const [message, setMessage] = useState('')
     const [chat, setChat] = useState([])
     const socketid=cookie.load("socketid")
@@ -25,6 +26,8 @@ function Chat(props) {
   const list=cookie.load("list")
   const list2=cookie.load("list2")
   const token=cookie.load("token")
+  const msWorker=cookie.load("chatCookieWorker")
+  const msClient=cookie.load("chatCookieClient")
   const reqBody={
     id: list.id,
         userId: list2.userId,
@@ -70,15 +73,15 @@ function Chat(props) {
 
     const onMessageSubmit = async (e) => {
         e.preventDefault()
-        console.log('worker-id-->', socketid);
-        console.log('message-->', message);
-        let msgdata = [message, clintID, workerID]
-        await socketRef.current.emit("new_chore", msgdata)
-        await setChat([...chat, message])
-        console.log('chat-->', chat);
-        console.log('clintID-->', clintID);
-        console.log('workerID-->', workerID);
-        console.log('msg-->', message);
+
+
+       await context.setCahtContext(message)
+       cookie.save("chatCookieClient",message)
+
+        // let msgdata = [message, clintID, workerID]
+        // await socketRef.current.emit("new_chore", msgdata)
+        // await setChat([...chat, message])
+       
         if(role==="user"){
             let respose = await axios.get(`${Api}/clientData`, {
                 headers: {
@@ -134,7 +137,7 @@ function Chat(props) {
             <div className="chatlogs">
                 <div className="chat">
 
-                    {
+                    {/* {
                         chat.map((message, index) => (
                             <div key={index} >
                                 
@@ -152,8 +155,44 @@ function Chat(props) {
                                
                             </div>
                         ))
-                    }
+                        
+                    } */}
+                    <>
+                    {msClient!==context.chatContext?<><div className="user-photo"> </div>
+                                <p className="chat-message">
+                                    
+                                    {msClient}
+                                    
+                                </p>
+                                <div className="user-photo2"> </div>
+                                <p className="chat-message2">
+                                    {msWorker}
+                                </p>
 
+                                <div className="user-photo"> </div>
+                                <p className="chat-message">
+                                    
+                                    {context.chatContext}
+                                    
+                                </p>
+                    </>:<>
+                    <div className="user-photo2"> </div>
+                                <p className="chat-message2">
+                                    {msWorker}
+                                </p>
+                    <div className="user-photo"> </div>
+                                <p className="chat-message">
+                                    
+                                    {context.chatContext}
+                                    
+                                </p>
+                    </>}
+                     
+                                
+                                </>
+
+
+                    
                 </div>
             </div>
             <form onSubmit={onMessageSubmit} className="chat-form">
