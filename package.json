@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/volcanoconiosis/front-craft-services/issues"
   },
-
+  "homepage": ".",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
