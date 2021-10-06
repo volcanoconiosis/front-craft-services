@@ -9,16 +9,16 @@ function PersonalInformation() {
     <>
       <form>
         <Row className="mb-3" style={{ justifyContent: "center" }}>
-          {list.profilePicture && list.profilePicture.includes("upload") ? (
-            <img
-              src={`${Api}/${list.profilePicture}`}
-              style={{ width: "11.1rem", height: "10rem", borderRadius: "50%" }}
-            />
-          ) : (
-            <img src={list.profilePicture} />
-          )}
+          <Col>
+            <div className="view-personal-info-img">
+              {list.profilePicture && list.profilePicture.includes("upload") ? (
+                <img src={`${Api}/${list.profilePicture}`} alt="img" />
+              ) : (
+                <img src={list.profilePicture} alt="img" />
+              )}
+            </div>
+          </Col>
         </Row>
-        <hr />
         <Row className="mb-3">
           <Col>
             <Form.Label>First Name</Form.Label>

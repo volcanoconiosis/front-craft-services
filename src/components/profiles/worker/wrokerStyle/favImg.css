@@ -101,6 +101,10 @@
   height: 2.5rem;
 }
 
+.fav-img {
+  width: 18rem !important;
+}
 .fav-Img-section .container .row:nth-child(1) {
-  display: flex;
+    display: flex;
+    width: 100%;
 }

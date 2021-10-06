@@ -100,7 +100,10 @@
     width: 6rem;
     height: 2.5rem;
 }
-
+.fav-img {
+  width: 18rem !important;
+}
 .fav-worker-section .container .row:nth-child(1) {
     display: flex;
+    width: 100%;
 }

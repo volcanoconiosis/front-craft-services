@@ -149,7 +149,7 @@ function FavImg() {
             {workerList.favoriteImg &&
               workerList.favoriteImg.map((item, indx) => {
                 return (
-                  <div className="fav-worker-card" key={indx}>
+                  <div className="fav-worker-card fav-img" key={indx}>
                     <div className="profile--card">
                       {item.imges &&
                         item.imges.map((el, indx) => {

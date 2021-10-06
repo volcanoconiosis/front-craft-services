@@ -182,7 +182,7 @@ function FavWorker() {
             {workerList.favoriteWorker &&
               workerList.favoriteWorker.map((item, indx) => {
                 return (
-                  <div className="fav-worker-card" key={indx}>
+                  <div className="fav-worker-card fav-img" key={indx}>
                     <div className="profile--card">
                       {item.profilePicture &&
                       item.profilePicture.includes("upload") ? (

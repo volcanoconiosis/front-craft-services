@@ -137,10 +137,19 @@ function Chat(props) {
                     {
                         chat.map((message, index) => (
                             <div key={index} >
-                                <div className="user-photo"> </div>
+                                
+                                {index%2==0? 
+                               <> <div className="user-photo"> </div>
                                 <p className="chat-message">
                                     {message}
-                                </p>
+                                </p></>: 
+                                <> <div className="user-photo2"> </div>
+                                <p className="chat-message2">
+                                    {message}
+                                </p></>
+                                
+                                }
+                               
                             </div>
                         ))
                     }
