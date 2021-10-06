@@ -23,6 +23,7 @@ import {
   FcSupport,
 } from "react-icons/fc";
 import Typed from "react-typed";
+import {Fade,Zoom } from 'react-reveal';
 
 function Home() {
   // =========Start for Render 6 Workers in Home Page =============
@@ -118,7 +119,7 @@ function Home() {
     <div>
       <ContactUs/>
       <div className="home">
-      <canvas></canvas>
+      <canvas style={{zIndex:"20"}}></canvas>
         {/* // =========== top section =========== */}
         <section className="home-top-section">
           <Container>
@@ -126,7 +127,10 @@ function Home() {
               <Col>
                 <h2 className="home-title home-center-text">
                   Maintaining your property just got
-                  <Typed
+                  
+                </h2>
+                <h2 className="home-title home-center-text text-change"><Typed
+                
                   strings={[
                     "Easier",
                     "Faster",
@@ -135,8 +139,7 @@ function Home() {
                   loop={true}
                   typeSpeed={200}
                   className="home__typed-dynamic"
-                />
-                </h2>
+                /></h2>
                 <p className="home--para">
                   Maintaining your property just got easier Wherever our
                   services are available, with the most skilled industrialists
@@ -151,7 +154,9 @@ function Home() {
                 </p>
               </Col>
               <Col>
-                <img src={toolsPic} alt class="bounce-top" />
+                <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/illustration.jpg" 
+                style={{width:"39rem",marginLeft:"3rem"}}
+                alt class="bounce-top" />
               </Col>
             </Row>
           </Container>
@@ -257,7 +262,7 @@ function Home() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src="https://img.misterworker.com/img/splash_banner_mobile.jpg"
+                        src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/illustration.jpg"
                         alt="Second slide"
                       />
                       {/* 
@@ -271,7 +276,7 @@ function Home() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src="https://img.misterworker.com/img/splash_banner_mobile.jpg"
+                        src="https://images.creativemarket.com/0.1.0/ps/7509922/1820/1214/m1/fpnw/wm0/present1-.jpg?1577363339&s=1109b6eb2d60ad5eb0981b877462cad9"
                         alt="Third slide"
                       />
 
@@ -287,6 +292,7 @@ function Home() {
                 </div>
               </Col>
               <Col className="home-solutions-list">
+              <Fade right>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -303,7 +309,8 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
-
+                </Fade>
+                <Fade right>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -320,7 +327,8 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
-
+                </Fade>
+                <Fade right>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -337,10 +345,12 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
+                    </Fade>
               </Col>
             </Row>
             <Row className="mt10rem">
               <Col className="home-solutions-list list-2">
+              <Fade left>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -357,6 +367,8 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
+                </Fade>
+                <Fade left>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -373,7 +385,8 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
-
+                </Fade>
+                <Fade left>
                 <Row>
                   <Col>
                     <div className="home-solutions-icon">
@@ -391,6 +404,7 @@ function Home() {
                     </Row>
                   </Col>
                 </Row>
+                </Fade>
               </Col>
               <Col xs={2}>
                 <div className="home-carousel-r">
@@ -398,7 +412,7 @@ function Home() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src="https://img.misterworker.com/img/splash_banner_mobile.jpg"
+                        src="https://us.123rf.com/450wm/stmool/stmool1603/stmool160300208/53250666-home-improvement-and-renovation-services.jpg?ver=6"
                         alt="First slide"
                       />
                       {/* <Carousel.Caption>
@@ -412,7 +426,7 @@ function Home() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src="https://img.misterworker.com/img/splash_banner_mobile.jpg"
+                        src="https://media-exp1.licdn.com/dms/image/C511BAQHBopfaAwjBqw/company-background_10000/0/1563452711438?e=2159024400&v=beta&t=8FI7ENDU7LCOGaJwqDdCP0wKtWHCM-1JI3gi3XQvJGw"
                         alt="Second slide"
                       />
 
@@ -426,7 +440,7 @@ function Home() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src="https://img.misterworker.com/img/splash_banner_mobile.jpg"
+                        src="https://dagmarmarketing.com/wp-content/uploads/2016/03/google-home-services-concierge.jpg"
                         alt="Third slide"
                       />
 
@@ -457,6 +471,7 @@ function Home() {
           }}
         >
           <Container>
+          <Zoom top  cascade>
             <Row className="home-tools-icons">
               <Col>
                 <div className="home-icon-item">
@@ -489,10 +504,12 @@ function Home() {
                 </div>
               </Col>
             </Row>
+            </Zoom>
             <Row>
               <p className="home-section-title">Best our skills workers</p>
             </Row>
             <Row>
+            <Zoom>
               <div class="home-worker-viwe">
                 <Row>
                   
@@ -504,6 +521,7 @@ function Home() {
                       return(<>
                       {oo.profilePicture.includes("upload") ? (
                         <>
+                      
                         <Col>
                   <div
                   class="feature-card"
@@ -542,10 +560,12 @@ function Home() {
                   </div>
                 </div>
                 </Col>
+              
                 <Col></Col>
                 </>
                 ) : (
                   <>
+                  
                   <Col>
                   <div
                       class="feature-card"
@@ -584,6 +604,7 @@ function Home() {
                       </div>
                     </div>
                     </Col>
+                    
                     <Col></Col>
                     </>
                 )}
@@ -696,6 +717,7 @@ function Home() {
                   }
                 </Row>
               </div>
+              </Zoom>
             </Row>
           </Container>
         </section>

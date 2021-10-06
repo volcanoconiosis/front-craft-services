@@ -4,7 +4,7 @@ import ChartistGraph from "react-chartist";
 import "../worker/ibrahem.css";
 import "./admin.css";
 // import images
-import personalImg from "../worker/ryan.jpg";
+import personalImg from "./default-avatar.png";
 import PersonalAdmin from "./PersonalAdmin";
 import TheClients from "./TheClients";
 import TheWokers from "./TheWokers";

@@ -25,7 +25,7 @@ function Footer() {
     <div>
       <div class="d-flex flex-column">
         <footer class="footer-footer">
-          <Navbar collapseOnSelect expand="lg" className="foter-nav">
+          <Navbar collapseOnSelect expand="lg" className="foter-nav" bg="dark" variant="dark" >
             <Container>
               <Navbar.Brand href="/"><img src={img} alt="logo home" style={{ width: "15%" }} className="o2art-logo" /></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />

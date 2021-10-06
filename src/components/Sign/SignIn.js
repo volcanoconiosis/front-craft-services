@@ -9,9 +9,12 @@ function SignIn() {
   let [password, setPassword] = useState("");
   let [className, setClassName] = useState("container");
   let [values, setValues] = useState({});
+  let [hide,setHide]=useState(true);
 
   const handleChangeSignUp = (e) => {
+    
     setValues((values) => ({ ...values, [e.target.name]: e.target.value }));
+    values.role=="worker"?setHide(true):setHide(false);
     console.log("from sign comp:", values);
   };
   const handleInputUser = (e) => {
@@ -25,20 +28,20 @@ function SignIn() {
     // handle login function
     await context.login(userName, password);
     e.target.reset();
-    window.location.href="/"
+    window.location.href = "/";
   };
   const handlerSubmitSignUp = async (e) => {
     e.preventDefault();
-    
+
     // handle login function
     await context.signUp(values);
     e.target.reset();
     Swal.fire({
-      title: 'Thank You For Join Us',
+      title: "Thank You For Join Us",
       width: 600,
-      height:400,
-      padding: '3em',
-      background: '#fff url(/images/trees.png)',
+      height: 400,
+      padding: "3em",
+      background: "#fff url(/images/trees.png)",
       backdrop: `
         rgba(0,0,123,0.4)
         url("/images/nyan-cat.gif")
@@ -46,17 +49,17 @@ function SignIn() {
         no-repeat
       `,
       showConfirmButton: false,
-      timer: 1200
-    })
+      timer: 1200,
+    });
 
-    window.location.href="/sign"
+    window.location.href = "/sign";
   };
   return (
     <>
-      <div className="SignIn-SignUp" style={{width:"100%"}}>
-        <div className={className} style={{width:"100%"}}>
-          <div className="forms-container" style={{width:"100%"}}>
-            <div className="signin-signup" >
+      <div className="SignIn-SignUp" style={{ width: "100%" }}>
+        <div className={className} style={{ width: "100%" }}>
+          <div className="forms-container" style={{ width: "100%" }}>
+            <div className="signin-signup">
               <form className="sign-in-form" onSubmit={handlerSubmit}>
                 <h2 className="title">Sign in</h2>
                 <div className="input-field">
@@ -80,161 +83,159 @@ function SignIn() {
                   />
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
-            
               </form>
-              
-              
-              <form className="sign-up-form" onSubmit={handlerSubmitSignUp}>
-                <section style={{margin:"15px 15px 0 0"}}>
-                <div className="input-field">
-                  <i className="fas fa-user"></i>
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    name="username"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                
-                <div className="input-field">
-                  <i className="fas fa-user-edit"></i>
-                  <input
-                    type="text"
-                    placeholder="Firstname"
-                    name="firstName"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                
-                <div className="input-field">
-                  <i className="fas fa-envelope"></i>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                <div className="input-field" >
-                  <i className="fas fa-calendar-check"></i>
-                  <select
-                    type="text"
-                    placeholder="Role"
-                    name="role"
-                    className="select-signin"
-                    onChange={handleChangeSignUp}
-                    required
-                  >
-                    <option
+
+              <form
+                className="sign-up-form"
+                style={{ margin: "0px 0px 0 -70px" }}
+                onSubmit={handlerSubmitSignUp}
+              >
+                <section style={{ margin: "15px 15px 0 0" }}>
+                  <div className="input-field">
+                    <i className="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      name="username"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <i className="fas fa-user-edit"></i>
+                    <input
+                      type="text"
+                      placeholder="Firstname"
+                      name="firstName"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <i className="fas fa-user-edit"></i>
+                    <input
+                      type="text"
+                      placeholder="Lastname"
+                      name="lastName"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <i className="fas fa-calendar-check"></i>
+                    <select
+                      type="text"
                       placeholder="Role"
-                      value="user"
                       name="role"
                       className="select-signin"
+                      onChange={handleChangeSignUp}
+                      required
                     >
-                      user
-                    </option>
-                    <option
-                      value="worker"
+                      <option
+                        placeholder="Role"
+                        value="user"
+                        name="role"
+                        className="select-signin"
+                      >
+                        user
+                      </option>
+                      <option
+                        value="worker"
+                        className="select-signin"
+                        name="role"
+                      >
+                        worker
+                      </option>
+                    </select>
+                  </div>
+                  {hide==true?
+                  <div className="input-field">
+                    <i className="fas fa-wrench"></i>
+                    <select
+                      type="text"
+                      placeholder="workType"
+                      name="workType"
                       className="select-signin"
-                      name="role"
+                      onChange={handleChangeSignUp}
                     >
-                      worker
-                    </option>
-                  </select>
-                </div>
-
-                <div className="input-field">
-                  <i className="fas fa-wrench"></i>
-                  <select
-                    type="text"
-                    placeholder="workType"
-                    name="workType"
-                    className="select-signin"
-                    onChange={handleChangeSignUp}
-                    
-                  >
-                    <option value="Carpenter" className="select-signin">
-                    Carpenter
-                    </option>
-                    <option value="Plumber" className="select-signin">
-                    Plumber
-                    </option>
-                    <option value="Electrician" className="select-signin">
-                    Electrician
-                    </option>
-                    <option value="Tile-worker" className="select-signin">
-                    Tile-worker
-                    </option>
-                    <option value="Blacksmith" className="select-signin">
-                    Blacksmith
-                    </option>
-                  </select>
-                </div>
+                      <option value="Carpenter" className="select-signin">
+                        Carpenter
+                      </option>
+                      <option value="Plumber" className="select-signin">
+                        Plumber
+                      </option>
+                      <option value="Electrician" className="select-signin">
+                        Electrician
+                      </option>
+                      <option value="Tile-worker" className="select-signin">
+                        Tile-worker
+                      </option>
+                      <option value="Blacksmith" className="select-signin">
+                        Blacksmith
+                      </option>
+                    </select>
+                  </div>:<div  style={{marginTop:"6rem"}}></div>}
                 </section>
-                <section style={{margin:"15px 15px 0 0"}}>
+                <section style={{ margin: "15px 15px 0 0" }}>
+                  <div className="input-field">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <i className="fas fa-lock"></i>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
 
-                <div className="input-field">
-                  <i className="fas fa-lock"></i>
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                <div className="input-field">
-                  <i className="fas fa-user-edit"></i>
-                  <input
-                    type="text"
-                    placeholder="Lastname"
-                    name="lastName"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                <div className="input-field">
-                  <i className="fas fa-mobile-alt"></i>
-                  <input
-                    type="text"
-                    placeholder="phone"
-                    name="phone"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>    
-               
-                <div className="input-field" style={{marginBottom:"30px"}}>
-                  <i className="fas fa-map-marker-alt"></i>
-                  <input
-                    type="text"
-                    placeholder="Location"
-                    name="location"
-                    onChange={handleChangeSignUp}
-                    required
-                  />
-                </div>
-                
-               
-                
-                <input type="submit" className="btn" value="Sign up" />
+                  <div className="input-field">
+                    <i className="fas fa-mobile-alt"></i>
+                    <input
+                      type="text"
+                      placeholder="phone"
+                      name="phone"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+
+                  <div className="input-field" style={{ marginBottom: "30px" }}>
+                    <i className="fas fa-map-marker-alt"></i>
+                    <input
+                      type="text"
+                      placeholder="Location"
+                      name="location"
+                      onChange={handleChangeSignUp}
+                      required
+                    />
+                  </div>
+
+                  <input type="submit" className="btn" value="Sign up" />
                 </section>
-            
               </form>
             </div>
           </div>
 
-          <div className="panels-container" >
+          <div className="panels-container">
             <div className="panel left-panel">
               <div className="content">
                 <h3>New here ?</h3>
-                <p style={{fontSize:"20px"}}>
-                 Sign Up Now To Becoume On Of Us 
+                <p style={{ fontSize: "20px" }}>
+                  Sign Up Now To Becoume On Of Us
                 </p>
-                
+
                 <button
                   className="btn transparent"
                   id="sign-up-btn"
@@ -251,12 +252,10 @@ function SignIn() {
                 alt=""
               />
             </div>
-            <div className="panel right-panel" >
-              <div className="content"  >
+            <div className="panel right-panel">
+              <div className="content">
                 <h3>One of us ?</h3>
-                <p style={{fontSize:"20px"}}>
-                 Sign In To Access Data  
-                </p>
+                <p style={{ fontSize: "20px" }}>Sign In To Access Data</p>
                 <button
                   className="btn transparent"
                   id="sign-in-btn"
