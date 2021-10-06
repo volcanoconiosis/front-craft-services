@@ -13,7 +13,7 @@ export default function LoginProvider(props) {
   const [list2, setList2]=useState({});
   const[socketid,setSocketid]=useState('')
   const[userID,setUserid]=useState('')
-  
+  const role=cookie.load("user")
 
   const login = async (username, password) => {
     try {
@@ -93,6 +93,14 @@ export default function LoginProvider(props) {
     
     cookie.remove('token', { path: '/' })
     cookie.remove('user', { path: '/' })
+    // if(role==="user"){
+
+    //   cookie.remove('chatCookieWorker', { path: '/' })
+    // }else if(role==="worker"){
+      
+    //   cookie.remove('chatCookieClient', { path: '/' })
+    // }
+    
   };
  
 
