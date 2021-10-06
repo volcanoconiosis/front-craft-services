@@ -1,0 +1,21 @@
+.navbar-header .login-btn:hover,.logout-btn:hover{
+    color: black;
+    background-color: rgba(105, 2, 54, 0.26);
+    text-shadow: 0 0 4px rgb(255, 255, 255);
+    font-weight: 600;
+  }
+
+  .navbar-header a{
+    color: black;
+    text-decoration: none;
+    margin: 1px;
+    text-shadow: 0 0 6px  black,
+                 0 0 8px  black,
+                 0 0 2px  rgb(0, 0, 0) ;
+    font-weight: 600;
+  }
+  .navbar-header a:hover{
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 4px rgb(255, 255, 255);
+    font-weight: 600;
+  }
