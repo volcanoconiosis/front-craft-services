@@ -46,7 +46,7 @@ function Services() {
     <div>
       <ContactUs/>
       <div className="services-div">
-        <a style={{ color: "white" }} id="uniqueid">
+        <a style={{ color: "white" }} id="uniqueid" href="/">
           {" "}
           Home
           <MdDoubleArrow style={{ color: "#03a9f4", "&:hover": "red" }} />{" "}
