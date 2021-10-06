@@ -506,7 +506,7 @@ function Home() {
             </Row>
             </Zoom>
             <Row>
-              <p className="home-section-title">Best our skills workers</p>
+              <p className="home-section-title">Best Workers</p>
             </Row>
             <Row>
             <Zoom>
