@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import { LoginContext } from "../../../context/Auth";
-import {Button} from "react-bootstrap"
+import {Button, Container,Row} from "react-bootstrap"
 import Swal from "sweetalert2";
 function Recently() {
   const [userList, setUserList] = useState({});
@@ -178,10 +178,12 @@ function Recently() {
   return (
     <>
       <section className="recently-section">
+        <Container>
+          <Row>
         {workerList.recently &&
           workerList.recently.map((item, indx) => {
             return (
-              <div className="fav-worker-card" key={indx}>
+              <div className="fav-worker-card fav-img" key={indx}>
                     <div className="profile--card">
                       {item.profilePicture &&
                       item.profilePicture.includes("upload") ? (
@@ -227,6 +229,8 @@ function Recently() {
                   </div>
             );
           })}
+          </Row>
+          </Container>
       </section>
     </>
   );
