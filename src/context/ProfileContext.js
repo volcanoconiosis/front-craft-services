@@ -58,7 +58,8 @@ useEffect(async()=>{
     list: context.list,
     userData:userData,
     list2:list2,
-    list3:list3
+    list3:list3,
+    setUserData:setUserData
   };
 
   console.log("from new context", state.userData);

@@ -5,20 +5,21 @@ import "./profiles/worker/ibrahem.css";
 // import images
 import Chat from "./chats/Chats"
 import cookie from "react-cookies"
-import personalImg from "./profiles/worker/ryan.jpg";
 import PersonalInformation from "./profiles/workerProfile/PersonalInformation";
 import WorkerWork from "./profiles/workerProfile/WorkerWork";
 import WorkerTools from "./profiles/workerProfile/WorkerTools";
 import WorkerReview from "./profiles/workerProfile/WorkerReview";
 import WorkerOffers from "./profiles/workerProfile/WorkerOffers";
 import WorkerSec from "./profiles/workerProfile/WorkerSec";
-import axios from "axios";
+
 
 function ViewWorkerProfile() {
   // /client/recently
  
   const role=cookie.load("user")
+  const Api = "https://craft-service.herokuapp.com";
 
+  const list = cookie.load("list");
 
   return (
     <>
@@ -29,7 +30,14 @@ function ViewWorkerProfile() {
             <Col></Col>
             <Col>
               <div class="profile-top-img">
-                <img src={personalImg} />
+              {list.profilePicture && list.profilePicture.includes("upload") ? (
+            <img
+              src={`${Api}/${list.profilePicture}`}
+              style={{ width: "11.1rem", height: "10rem", borderRadius: "50%" }}
+            />
+          ) : (
+            <img src={list.profilePicture} />
+          )}
               </div>
             </Col>
             <Col></Col>
@@ -38,7 +46,7 @@ function ViewWorkerProfile() {
             <Col></Col>
             <Col>
               <div className="profile-top-name">
-                <h1>Worker Profile</h1>
+                <h1>{list.firstName} {list.lastName}</h1>
               </div>
             </Col>
             <Col></Col>
@@ -47,7 +55,7 @@ function ViewWorkerProfile() {
             <Col></Col>
             <Col>
               <div className="profile-top-jop">
-                <h3>WorkType</h3>
+                <h3>{list.workType}</h3>
               </div>
             </Col>
             <Col></Col>

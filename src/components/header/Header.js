@@ -3,7 +3,7 @@ import cookie from "react-cookies"
 import {LoginContext} from "../../context/Auth"
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "./Header.css"
-import img from "./logo6-removebg-preview.png"
+import img from "./copy_193958164.png"
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +61,8 @@ class Header extends Component {
           }}
         >
          <Container>
-          <Navbar.Brand href="/"><img src={img} alt="logo home" style={{width:"15%" }} className="o2art-logo" /></Navbar.Brand>
+          <Navbar.Brand href="/">Crafts<img src={img} alt="logo home" style={{width:"16%" }} className="o2art-logo" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import "./ibrahem.css";
 import PersonalInfo from "./PersonalInfo";
-// import images
-import personalImg from "./ryan.jpg";
 import FavWorker from "./FavWorker";
 import FavImg from "./FavImg";
 import Recently from "./Recently";
@@ -11,8 +9,13 @@ import ManWorks from "./ManWorks";
 import Tools from "./Tools";
 import Reviews from "./Reviews";
 import Resever from "../../chats/Resever"
+import cookie from "react-cookies"
+import {ProfileContext} from "../../../context/ProfileContext"
 function WorkerPage() {
   const [iconPills, setIconPills] = useState("1");
+  const dataForRender=cookie.load("dataForRender")
+  const context=useContext(ProfileContext)
+  const Api = "https://craft-service.herokuapp.com";
   return (
     <>
     <svg
@@ -46,17 +49,26 @@ function WorkerPage() {
           <Row>
             <Col xs={1}>
               <div class="profile-top-img">
-                <img src={personalImg} />
+              {context.userData.profilePicture &&
+                context.userData.profilePicture.includes("upload") ? (
+                  <img
+                    src={`${Api}/${context.userData.profilePicture}`}
+                    alt={context.userData.id}
+                  />
+                ) : (
+                  <img src={context.userData.profilePicture} alt={context.userData.id} />
+                )}
+                
               </div>
             </Col>
           </Row>
           <Row>
             <Col xs={6} className="profile-top-identity">
             <div className="profile-top-name">
-                <h1>Ibrahem Alomari</h1>
+                <h1>{dataForRender.firstName} {dataForRender.lastName}</h1>
               </div>
               <div className="profile-top-jop">
-                <h3>Mosarjy</h3>
+                <h3>{dataForRender.workType}</h3>
               </div>
             </Col>
           </Row>
@@ -115,27 +127,27 @@ function WorkerPage() {
                   <Nav.Link eventKey="T3">Favorite Image</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T4">recently</Nav.Link>
+                  <Nav.Link eventKey="T4">Recently</Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
-                  <Nav.Link eventKey="T6">his Work</Nav.Link>
+                  <Nav.Link eventKey="T6">My Work</Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
-                  <Nav.Link eventKey="T8">tools</Nav.Link>
+                  <Nav.Link eventKey="T8">Tools</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T9">reviews</Nav.Link>
+                  <Nav.Link eventKey="T9">Reviews</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T10">inbox</Nav.Link>
+                  <Nav.Link eventKey="T10">Inbox</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T5">schedule Work</Nav.Link>
+                  <Nav.Link eventKey="T5">Schedule Work</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T7">offers</Nav.Link>
+                  <Nav.Link eventKey="T7">Offers</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>

@@ -13,6 +13,7 @@ import {
   Modal,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { ProfileContext } from "../../../context/ProfileContext";
 
 function PersonalInfo() {
   const role = cookie.load("user");
@@ -24,6 +25,7 @@ function PersonalInfo() {
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
   const [show, setShow] = useState(false);
+  const context =useContext(ProfileContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -180,6 +182,7 @@ function PersonalInfo() {
       });
       setShow(false);
       setWorkerList(res.data);
+      context.setUserData(res.data);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -197,6 +200,7 @@ function PersonalInfo() {
       });
 
       setWorkerList(res.data);
+      context.setUserData(res.data);
       setShow(false);
       Swal.fire({
         position: "center",
@@ -208,6 +212,56 @@ function PersonalInfo() {
     }
     e.target.reset();
   };
+
+  //  ===================== delete account ================ 
+   // :::::::::: delete account ::::::::::
+   const handleDeleteAccount = async () => {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+            let res = await axios.delete(`${Api}/deleteaccount`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            });
+            
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          
+          cookie.remove('token', { path: '/' })
+          cookie.remove('user', { path: '/' })
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
+   
+};
 
   return (
     <>
@@ -398,7 +452,9 @@ function PersonalInfo() {
             </form>
           </div>
         )}
+
       </section>
+      <Button variant="danger" onClick={handleDeleteAccount}>delete account</Button>
     </>
   );
 }
