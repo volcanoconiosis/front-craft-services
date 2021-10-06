@@ -21,8 +21,8 @@ function App() {
   return (
     <>
       <ProfileProvider>
-        <Header />
         <BrowserRouter>
+        <Header />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -50,10 +50,10 @@ function App() {
               <ViewWorkerProfile/>
             </Route>
           </Switch>
+        <Footer />
         </BrowserRouter>
 
 
-        <Footer />
       </ProfileProvider>
     </>
   );
