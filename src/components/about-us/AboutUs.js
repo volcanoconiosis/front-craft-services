@@ -17,11 +17,7 @@ function AboutUs() {
       <div className="headershow">
         <img className="imgheader" src="https://www.durgasteelgroup.com/uploaded/blog/ps16034431084106.jpg" alt='' />
         <h1 > About Us </h1>
-        <h2>Phone: 777-999-000</h2>
-        <h2>
-          Email: info@crrafts-services.com
-        </h2>
-
+       
         <h2> <br></br>
           <FontAwesomeIcon icon={faFacebook} className="icon3" size="2x" />
           <FontAwesomeIcon icon={faInstagram} className="icon3" size="2x" />
@@ -122,17 +118,15 @@ function AboutUs() {
 
 
 
-            <Card  border="primary"  className="card1">
+            <Card   className="card1">
               <Card.Img variant="top" src="https://media-exp1.licdn.com/dms/image/C4D03AQHg8GoF-y9CHQ/profile-displayphoto-shrink_800_800/0/1611509700916?e=1638403200&v=beta&t=jg2FtRRkWoOYBcfIWzzXxHLC5bwhxrhBcW8_znUlEQA" className='images1' />
               <Card.Body>
-                <Card.Title className='text'>Munther AbdelRhman</Card.Title>
-                <Card.Text className='text'>
+                <Card.Title >Munther AbdelRhman</Card.Title>
+                <Card.Text >
                   Full Stack Develpoer
                 </Card.Text>
                 <p>
-                nly five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of L
+               Electrical engineer 
                 </p>
                 <a href="https://www.linkedin.com/in/munther-abdel-rahman-833814172/"><img className="smallimg" src="https://www.pngjoy.com/pngm/381/7044985_linkedin-logo-png-linkedin-logo-png-black-transparent.png " alt="LinkedIn" /></a>
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
@@ -147,9 +141,7 @@ function AboutUs() {
                   Full Stack Develpoer
                 </Card.Text>
                 <p>
-                nly five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of L
+               Mechanical engineer
                 </p>
                 <a href="https://www.linkedin.com/in/munther-abdel-rahman-833814172/"><img className="smallimg" src="   https://www.pngjoy.com/pngm/381/7044985_linkedin-logo-png-linkedin-logo-png-black-transparent.png " alt="LinkedIn" /></a>
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
@@ -157,30 +149,28 @@ function AboutUs() {
             </Card>
 
             <Card className="card1">
-              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images1' />
+              <Card.Img variant="top" src="https://scontent.famm6-1.fna.fbcdn.net/v/t1.6435-9/143767199_1089788088114919_2838493288402680726_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=PSOYhNs6UpQAX-BEK_g&tn=gshzaliIpxtizMYj&_nc_ht=scontent.famm6-1.fna&oh=48f6832720821c6cb68a49344a6cbdf2&oe=61816E7B" className='images1' />
               <Card.Body>
-                <Card.Title className='text'>Ibrahem Alomari</Card.Title>
-                <Card.Text className='text'>
+                <Card.Title>Ibrahem Alomari</Card.Title>
+                <Card.Text >
                   Full Stack Develpoer
                 </Card.Text>
                 <p>
-                nly five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of L
+              Computer Since
                 </p>
                 <a href="https://www.linkedin.com/in/munther-abdel-rahman-833814172/"><img className="smallimg" src="   https://www.pngjoy.com/pngm/381/7044985_linkedin-logo-png-linkedin-logo-png-black-transparent.png " alt="LinkedIn" /></a>
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>
               </Card.Body>
             </Card>
             <Card className="card1">
-              <Card.Img variant="top" src="https://www.blexar.com/avatar.png" className='images' />
+              <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/82364624?s=400&u=7048f586e1dde6bac25bf1a18f6c03a2ace5de10&v=4" className='images' />
               <Card.Body>
                 <Card.Title> Osama Momani</Card.Title>
                 <Card.Text>
                   Full Stack Develpoer
                 </Card.Text>
                 <p>
-               
+               Mechatronics engineer
                 </p>
                 <a href="https://www.linkedin.com/in/munther-abdel-rahman-833814172/"><img className="smallimg" src="   https://www.pngjoy.com/pngm/381/7044985_linkedin-logo-png-linkedin-logo-png-black-transparent.png " alt="LinkedIn" /></a>
                 <a href="https://github.com/muntherabdlrahman"><img className="smallimg" src=" https://cdn.iconscout.com/icon/free/png-512/github-154-675675.png" alt="GitHub" /></a>

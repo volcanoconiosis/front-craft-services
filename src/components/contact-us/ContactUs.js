@@ -44,7 +44,7 @@ export default function ContactUs() {
     <>
       <Modal show={show} onHide={handleModal} closeButton>
         <Modal.Header className="profile-modal-header" closeButton>
-          <h3 style={{ textAlign: "center" }}>Contact Us Form</h3>
+          <h3 style={{ textAlign: "center" }}>Contact Us</h3>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
