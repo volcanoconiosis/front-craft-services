@@ -77,7 +77,7 @@ class Header extends Component {
                     Home
                     <Link to="/"></Link>
                   </Nav.Link>
-                  <Nav.Link href="/services">
+                  <Nav.Link >
                     Services
                     <Link to="/services"></Link>
                   </Nav.Link>
