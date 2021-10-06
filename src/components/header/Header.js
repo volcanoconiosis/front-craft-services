@@ -48,13 +48,17 @@ class Header extends Component {
             backgroundColor:
               this.state.status === "top"
                 ? "rgba(255, 255, 255, 0.0)"
-                : "#2eb9ed",
+                : "#76C6FF",
             color: this.state.status === "top" ? "black" : "white",
             boxShadow:
               this.state.status === "top"
-                ? "0 8px 8px rgba(0, 0, 0, 0)"
-                : "0 8px 8px rgba(0, 0, 0, 0.308)",
+                ? "0 8px 4px rgba(0, 0, 0, 0.0)"
+                : "0 3px 2px rgba(0, 0, 0, 0.1)",
             transition: "1s",
+            textShadow:
+              this.state.status === "top"
+                ? "0 0 1px #003cff, 0 0 1px #003cff"
+                : "0 0 1px #FFF, 0 0 1px #FFF",
           }}
         >
           <BrowserRouter>
@@ -64,7 +68,7 @@ class Header extends Component {
                 <img
                   src={img}
                   alt="logo home"
-                  style={{ width: "16%" }}
+                  style={{ width: "10%" }}
                   className="o2art-logo"
                 />
                 

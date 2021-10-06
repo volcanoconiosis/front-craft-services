@@ -85,12 +85,12 @@ function WorkerPage() {
             <Col></Col>
             <Col>
               <div className="profile-top-about">
-                <h3>About</h3>
+                {/* <h3>About</h3> */}
               </div>
             </Col>
             <Col></Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col xs={2}></Col>
             <Col xs={8}>
               <div className="profile-top-about">
@@ -106,13 +106,13 @@ function WorkerPage() {
               </div>
             </Col>
             <Col xs={2}></Col>
-          </Row>
+          </Row> */}
         </Container>
       </section>
       {/* ========== end about section ============== */}
 
       {/* ========== contant section ============== */}
-      <section className="profile-contant-section">
+      <section className="profile-contant-section mt-5">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
             <Col sm={2} className="profile-contant-left">
@@ -143,12 +143,12 @@ function WorkerPage() {
                 <Nav.Item>
                   <Nav.Link eventKey="T10">Inbox</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
+                {/* <Nav.Item>
                   <Nav.Link eventKey="T5">Schedule Work</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
+                </Nav.Item> */}
+                {/* <Nav.Item>
                   <Nav.Link eventKey="T7">Offers</Nav.Link>
-                </Nav.Item>
+                </Nav.Item> */}
               </Nav>
             </Col>
             
