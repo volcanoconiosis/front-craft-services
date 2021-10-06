@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import { Table, Button } from "react-bootstrap";
-
+import Swal from "sweetalert2";
 function TheWokers() {
   const [allUsers, setAllUsers] = useState([]);
   const token = cookie.load("token");
   const Api = "https://craft-service.herokuapp.com";
+
 
   useEffect(async () => {
     // get users form admin
@@ -23,14 +24,50 @@ function TheWokers() {
 
   // ::::::: handleDeleteUser::::::
   const handleDeleteUser = async (id) => {
-    // /deleteuser/:id
 
-    let res = await axios.delete(`${Api}/deleteuser/${id}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
+    // /deleteuser/:id
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
-    });
-    setAllUsers(res.data);
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        let res = await axios.delete(`${Api}/deleteuser/${id}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        setAllUsers(res.data);
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+  
   };
 
   return (

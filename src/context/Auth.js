@@ -25,6 +25,7 @@ export default function LoginProvider(props) {
         );
       console.log(response.body);
       setList(response.body.user);
+      cookie.save("dataForRender",response.body.user)
       cookie.save("user", response.body.user.role);
       cookie.save('userID', response.body.user.id)
    
@@ -89,7 +90,9 @@ export default function LoginProvider(props) {
   const logout = () => {
     setLoggedIn(false);
     setUser({});
-    cookie.remove("token");
+    
+    cookie.remove('token', { path: '/' })
+    cookie.remove('user', { path: '/' })
   };
  
 

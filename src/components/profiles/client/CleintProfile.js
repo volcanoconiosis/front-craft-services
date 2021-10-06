@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import "../worker/ibrahem.css";
-// import images
-import personalImg from "../worker/ryan.jpg";
 import FavWorker from "../worker/FavWorker";
 import FavImg from "../worker/FavImg";
 import Recently from "../worker/Recently";
 import PersonalInfo from "../worker/PersonalInfo";
-
+import cookie from "react-cookies"
+import {ProfileContext} from "../../../context/ProfileContext"
 function ClientProfile() {
+  const dataForRender=cookie.load("dataForRender")
+  const context=useContext(ProfileContext)
+  const Api = "https://craft-service.herokuapp.com";
   return (
     <>
       <svg
@@ -42,17 +44,25 @@ function ClientProfile() {
           <Row>
             <Col xs={1}>
               <div class="profile-top-img">
-                <img src={personalImg} />
+              {context.userData.profilePicture &&
+                context.userData.profilePicture.includes("upload") ? (
+                  <img
+                    src={`${Api}/${context.userData.profilePicture}`}
+                    alt={context.userData.id}
+                  />
+                ) : (
+                  <img src={context.userData.profilePicture} alt={context.userData.id} />
+                )}
               </div>
             </Col>
           </Row>
           <Row>
             <Col xs={6} className="profile-top-identity">
               <div className="profile-top-name">
-                <h1>Ahmad Nofal </h1>
+                <h1>{dataForRender.firstName} {dataForRender.lastName}</h1>
               </div>
               <div className="profile-top-jop">
-                <h3>Client</h3>
+                {/* <h3>Client</h3> */}
               </div>
             </Col>
           </Row>
@@ -110,7 +120,7 @@ function ClientProfile() {
                   <Nav.Link eventKey="T3">Favorite Image</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="T4">recently</Nav.Link>
+                  <Nav.Link eventKey="T4">Recently</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
