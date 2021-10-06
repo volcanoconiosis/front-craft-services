@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import cookie from "react-cookies"
 import {LoginContext} from "../../context/Auth"
 import { Navbar, Container, Nav } from "react-bootstrap";
-import "./Header.css"
+// import { Link } from "react-router-dom";
+import {LoginContext} from "../../context/Auth"
 import img from "./logo6-removebg-preview.png"
 class Header extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Header extends Component {
   }
  
   static contextType = LoginContext;
-  async handleLogOut(){
+  handleLogOut(){
     await this.context.logout()
    
    }
@@ -49,10 +50,7 @@ class Header extends Component {
             backgroundColor:
               this.state.status === "top"
                 ? "rgba(255, 255, 255, 0.0)"
-                : "#2eb9ed",
-                color:this.state.status === "top"
-                ? "black"
-                : "white",
+                : "rgba(255, 255, 255, 1)",
             boxShadow:
               this.state.status === "top"
                 ? "0 8px 8px rgba(0, 0, 0, 0)"
@@ -61,7 +59,7 @@ class Header extends Component {
           }}
         >
          <Container>
-          <Navbar.Brand href="/"><img src={img} alt="logo home" style={{width:"15%" }} className="o2art-logo" /></Navbar.Brand>
+          <Navbar.Brand href="/"><img src={img} alt="logo home" style={{width:"15%" }} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
