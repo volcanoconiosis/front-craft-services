@@ -72,40 +72,11 @@ function ClientProfile() {
 
       {/* ========== about section ============== */}
 
-      <section className="profile-about-section">
-        <Container>
-          <Row>
-            <Col></Col>
-            <Col>
-              <div className="profile-top-about">
-                <h3>About</h3>
-              </div>
-            </Col>
-            <Col></Col>
-          </Row>
-          <Row>
-            <Col xs={2}></Col>
-            <Col xs={8}>
-              <div className="profile-top-about">
-                <p>
-                  Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc
-                  pulvinar aliquam aliquam ullamcorper aliquet nec nostra
-                  bibendum ad. Tempor tempus maecenas, nisl adipiscing felis
-                  taciti. Penatibus leo convallis dictumst ex sem litora sed
-                  ullamcorper blandit. Luctus nulla rhoncus auctor nibh massa
-                  enim consectetur facilisi. Phasellus diam ad dolor donec
-                  dapibus amet? Amet urna consequat tincidunt quis 
-                </p>
-              </div>
-            </Col>
-            <Col xs={2}></Col>
-          </Row>
-        </Container>
-      </section>
+      
       {/* ========== end about section ============== */}
 
       {/* ========== contant section ============== */}
-      <section className="profile-contant-section">
+      <section className="profile-contant-section mt-5">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
             <Col sm={2} className="profile-contant-left">

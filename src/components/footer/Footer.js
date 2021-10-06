@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import img from "../header/logo6-removebg-preview.png"
-// copy_193958164.png
+import img from "../header/copy_193958164.png"
+// 
 import './footer.css'
 import{
   FaFacebookSquare,
