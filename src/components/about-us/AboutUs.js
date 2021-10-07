@@ -43,7 +43,7 @@ function AboutUs() {
       <br />
       <br />
       <div>
-        <h2 id="Howweare">How we are?</h2>
+        <h2 id="Howweare">Who we are?</h2>
         <h5 id="how">
           We are creative developers who try to think out of the box, exactly in
           this app that would provide you a unique service, the type of this
